@@ -11,8 +11,8 @@ public class TestDBConnection{
 	 */
 	@Before()
 	protected void beforeTest(){
-		co1 = new DBConnection("Celie", "e16", "1000", "string", 42);
-		co2 = new DBConnection("Marc", "e17", "lol", "host", 1000);
+		co1 = new DBConnection("Celie", "e16", "1000", "string", "bdd1");
+		co2 = new DBConnection("Marc", "e17", "lol", "host", "bdd2");
 	}
 
 	

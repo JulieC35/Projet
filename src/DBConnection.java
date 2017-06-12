@@ -6,7 +6,7 @@ public class DBConnection{
 	private String username;
 	private String password;
 	private String host;
-	private int port;
+	private String databaseName;
 
 	/**
 	 * Constructeur de la classe
@@ -14,9 +14,9 @@ public class DBConnection{
 	 * @param username le nom utilisé sur JDBC (nom de l'utilisateur sur la BDD)
 	 * @param password le mot de passe pour la connexion JDBC
 	 * @param host le lieu de stockage de la BDD
-	 * @param port le port de connexion à la BDD
+	 * @param databaseName le nom de la bdd
 	 */
-	public DBConnection(String name, String username, String password, String host, int port){
+	public DBConnection(String name, String username, String password, String host, String databaseName){
 		if(name != null){
 			this.name = name;
 		}
@@ -31,7 +31,9 @@ public class DBConnection{
 		if(host != null){
 			this.host = host;
 		}
-		this.port = port;
+		if(databaseName != null){
+			this.databaseName = databaseName;
+		}
 	}
 
 	/**
@@ -99,19 +101,20 @@ public class DBConnection{
 	}
 
 	/**
-	 * Getter du port
-	 * @return l'attribut port
+	 * Getter du databaseName
+	 * @return l'attribut databaseName
 	 */
-	public int getPort(){
-		return this.port;
+	public String getDatabaseName(){
+		return this.databaseName;
 	}
 
 	/**
-	 * Setter du port
-	 * @param port le nouveau port
+	 * Setter du databaseName
+	 * @param databaseName le nouveau databaseName
 	 */
-	public void setPort(int port){
-		this.port = port;
+	public void setDatabaseName(String databaseName){
+		if ( databaseName != null )
+			this.databaseName = databaseName;
 	}
 
 	/**
@@ -119,7 +122,20 @@ public class DBConnection{
 	 * @return vrai si la connexion s'effectue
 	 */
 	public boolean testConnectivity(){
-		boolean ret = false;
+		boolean ret = true;
+	    try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+        }
+
+        String address = "jdbc:mysql://" + this.host + "/" + this.databaseName;
+
+        try {
+			Connection connection = DriverManager.getConnection(address, this.username, this.password);
+        } catch (SQLException ex) {
+            ret = false;
+        }
+
 		return ret;
 	}
 
@@ -131,7 +147,7 @@ public class DBConnection{
 		String s = "Le nom de la connexion est: " + this.name;
 		s += "\nVotre nom d'utilisateur: " + this.username;
 		s += "\nLa base de donnée est stockée ici: " + this.host;
-		s += "\nLe port de connexion: " + this.port;
+		s += "\nLe nom de la base données: " + this.databaseName;
 		return s;
 	}
 
