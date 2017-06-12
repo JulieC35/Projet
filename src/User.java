@@ -42,7 +42,7 @@ public class User{
 	*
 	* @param fName the first name of the user
 	*/
-	public void setFirstName(Strinf fName){
+	public void setFirstName(String fName){
 		this.fName=fName;
 	}
 
@@ -90,8 +90,8 @@ public class User{
 	*
 	*
 	*/
-	public DBConnection[*] getDBConnections(){
-		return this.DBConnection;
+	public DBConnection[] getDBConnections(){
+		return null;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class User{
 	* @return language 
 	*/
 	public Language getLanguage(){
-
+		return null;
 	}
 
 	/**
@@ -138,6 +138,6 @@ public class User{
 	* @return the informations 
 	*/
 	public String toString(){
-
+		return null;
 	}
 }
