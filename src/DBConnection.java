@@ -1,3 +1,5 @@
+import java.sql.*;
+
 public class DBConnection{
 	
 	private String name;
@@ -15,7 +17,21 @@ public class DBConnection{
 	 * @param port le port de connexion à la BDD
 	 */
 	public DBConnection(String name, String username, String password, String host, int port){
-
+		if(name != null){
+			this.name = name;
+		}
+		if(username != null){
+			this.username = username;
+		}
+		if(password != null){
+			this.password = password;
+		} else{
+			this.password = new String("");
+		}
+		if(host != null){
+			this.host = host;
+		}
+		this.port = port;
 	}
 
 	/**
@@ -77,7 +93,9 @@ public class DBConnection{
 	 * @param host la nouvelle valeur de host
 	 */
 	public void setHost(String host){
-
+		if(host != null){
+			this.host = host;
+		}
 	}
 
 	/**
@@ -93,7 +111,7 @@ public class DBConnection{
 	 * @param port le nouveau port
 	 */
 	public void setPort(int port){
-
+		this.port = port;
 	}
 
 	/**
@@ -101,7 +119,8 @@ public class DBConnection{
 	 * @return vrai si la connexion s'effectue
 	 */
 	public boolean testConnectivity(){
-		return false;
+		boolean ret;
+		return ret;
 	}
 
 	/**
@@ -109,7 +128,11 @@ public class DBConnection{
 	 * @return les caractéristiques
 	 */
 	public String toString(){
-		return "lol";
+		String s = "Le nom de la connexion est: " + this.name;
+		s += "\nVotre nom d'utilisateur: " + this.username;
+		s += "\nLa base de donnée est stockée ici: " + this.host;
+		s += "\nLe port de connexion: " + this.port;
+		return s;
 	}
 
 
