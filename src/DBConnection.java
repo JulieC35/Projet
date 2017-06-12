@@ -119,7 +119,7 @@ public class DBConnection{
 	 * @return vrai si la connexion s'effectue
 	 */
 	public boolean testConnectivity(){
-		boolean ret;
+		boolean ret = false;
 		return ret;
 	}
 

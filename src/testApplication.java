@@ -1,15 +1,15 @@
-import org.junit.*; 
-import static org.junit.Assert.*; 
+//import org.junit.*; 
+//import static org.junit.Assert.*; 
 
 public class testApplication{
 
-	private Application app1;
+	/*private Application app1;
 	private Application app2;
 
 	/*
 	 * Initialise les objets avant chaque tests
 	 */
-	@Before()
+	/*@Before()
 	protected void beforeTest(){
 		app1 = new Application();
 		app2 = new Application();
@@ -18,7 +18,7 @@ public class testApplication{
 	/*
 	 * Nettoie les objets après chaque tests
 	 */
-	@After()
+	/*@After()
 	protected void clearTest(){
 		user1 = null;
 		user2 = null;
@@ -28,7 +28,7 @@ public class testApplication{
 	/*
 	 * Test de la méthode login de la classe Application
 	 */
-	@Test()
+	/*@Test()
 	public void testLogin(){
 		Assert.assertTrue(app1.checkLoginInfos());
 	}
@@ -38,9 +38,9 @@ public class testApplication{
 	/*
 	 * test de la méthode connect de la classe Application
 	 */
-	@Test()
+	/*@Test()
 	public void testConnect(){
 		Assert.assertTrue(dbC.testConnectivity());
-	}
+	}*/
 
 }
