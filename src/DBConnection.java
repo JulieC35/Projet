@@ -113,8 +113,9 @@ public class DBConnection{
 	 * @param databaseName le nouveau databaseName
 	 */
 	public void setDatabaseName(String databaseName){
-		if ( databaseName != null )
+		if (databaseName != null){
 			this.databaseName = databaseName;
+		}
 	}
 
 	/**
@@ -126,6 +127,7 @@ public class DBConnection{
 	    try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
+        	System.out.println("Driver non installé");
         }
 
         String address = "jdbc:mysql://" + this.host + "/" + this.databaseName;
