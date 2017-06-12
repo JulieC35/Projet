@@ -1,0 +1,46 @@
+<project name="C'EST NOTRE PROJET" default="compile" basedir="."> 
+    <description> 
+        simple example build file 
+    </description> 
+
+	<!-- set global properties for this build --> 
+	<property name="src" location="src" /> 
+	<property name="build" location="build" /> 
+	<property name="dist"  location="dist" /> 
+	<property name="javadoc" location="javadoc" />
+
+	<target name="init"> 
+		<!-- Create the time stamp --> 
+		<tstamp/>
+	    <!-- Create the build directory structure used by compile --> 
+	    <mkdir dir="${build}" /> 
+		<!-- Creation of the distribution's directory structure used by dist -->
+		<mkdir dir="${dist}/lib" />
+		<!-- Creation of the documentation's directory structure used by javadoc -->
+		<mkdir dir="${javadoc}" />
+	</target> 
+
+	<target name="compile" depends="init" description="Compile the source"> 
+    	<!-- Compile the java code from ${src} into ${build} --> 
+    	<javac srcdir="${src}" destdir="${build}" includeAntRuntime="false" classpath="/home/logiciels/junit-4.12.jar:hamcrest-core-1.3.jar" /> 
+	</target>
+
+	<target name="dist" depends="compile" description="Generate the distrib file">
+		<!-- Genration of the jar file -->
+		<jar jarfile="${dist}/lib/MyProjet-${DSTAMP}.jar" basedir="${build}" />
+	</target>
+
+	<target name="javadoc" description="Generate the Javadoc">
+		<javadoc destdir="${javadoc}" sourcepath="${src}">
+			<fileset dir="${src}"/>
+		</javadoc>
+	</target>
+
+	<target name="clean" description="Clean up the build and dist directories" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target> 
+</project>
+
+
