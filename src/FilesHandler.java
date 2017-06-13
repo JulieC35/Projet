@@ -45,4 +45,15 @@ public class FilesHandler {
 
         return map;
     }
+
+    /**
+     * Allows to get an ArrayList of objects from an objects file
+     * @param location the location of the file
+     * @return a list of objects
+     */
+    public static ArrayList<Object> objectsToList(String location){
+        ArrayList<Object> ret = new ArrayList<Object>();
+
+        return ret;
+    }
 }
