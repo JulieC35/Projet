@@ -6,7 +6,7 @@ public class User{
 	private Authorization authorization;
 	private String firstName;
 	private String lastName;
-	private String email;
+	private String mail;
 	private String pwd;
 	private Language language;
 	private ArrayList<DBConnection> connections;
@@ -48,10 +48,10 @@ public class User{
 
 	/**
 	* Get the authorization level
-	* @return authLevel the level
+	* @return authorization the level
 	*/
-	public Authorization getAuthLevel(){
-		return this.authLevel;
+	public Authorization getAuthorization(){
+		return this.authorization;
 	}
 
 	/**
@@ -103,19 +103,19 @@ public class User{
 	}
 
 	/**
-	* Get the email
-	* @return email the email of the user
+	* Get the mail
+	* @return mail the email of the user
 	*/
-	public String getEmail(){
-		return this.email;
+	public String getMail(){
+		return this.mail;
 	}
 
 	/**
-	* Set the email
+	* Set the mail
 	* @param email the email of the user
 	*/
-	public void setEmail(String email){
-		this.email=email;
+	public void setMail(String email){
+		this.mail=email;
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class User{
 	*/
 	public DBConnection[] getDBConnections(){
 		DBConnection[] ret = new DBConnection[this.connections.size()];
-		ret = this.connections.toArray();
+		//ret = this.connections.toArray(); //Problème de typage
 		return ret;
 	}
 
@@ -168,7 +168,7 @@ public class User{
 	public void removeDBConnection(String nameCo){
 		boolean ret = false;
 		Iterator<DBConnection> itr = this.connections.iterator();
-		while((it.hasNext()) && (!ret)){
+		while((itr.hasNext()) && (!ret)){
 			DBConnection db = itr.next();
 			if(db.getName().equals(nameCo)){
 				ret = this.connections.remove(db);
