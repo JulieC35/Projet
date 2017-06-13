@@ -27,10 +27,12 @@ public class UserManager{
 	 */
 	public User authentication(String username, String password){
 		User ret = null;
-			for ( User u : this.users ){
-				if ( u.getUsername().equals(username) )
-					ret = u;
-			}
+		User tempUser = null;
+		for (int i = 0 ; i < this.users.size() ; i++) {
+			tempUser = this.users.get(i);
+			if ( tempUser.getUsername().equals(username) && tempUser.verifyPassword(password) )
+				ret = u;
+		}
 		return ret;
 	}
 }
