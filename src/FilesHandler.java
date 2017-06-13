@@ -3,7 +3,6 @@
  * Calling FilesHandler.xmlToMap("myFile.xml") will attempt to add to find xml tags of this shape : 
  * <element code="" value="" /> and use the values of the attributes code and value as 
  * key and value of a HashMap<String,String>
- * @author M.Lamy
  */
 
 import java.io.*;
