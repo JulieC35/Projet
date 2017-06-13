@@ -45,8 +45,10 @@ public class Table{
 	 * Getter of the schema 
 	 * @return a table of all the column
 	 */
-	public String[] getSchema(){
-		return null;
+	public Column[] getSchema(){
+		Column[] ret;
+		ret = (Column[])schema.toArray();
+		return ret;
 	}
 
 	/**
@@ -54,7 +56,9 @@ public class Table{
 	 * @return all the rows in the table
 	 */
 	public Row[] getRows(){
-		return null;
+		Row[] ret;
+		ret = (Row[])rows.toArray();
+		return ret;
 	}
 
 	/**
@@ -62,7 +66,9 @@ public class Table{
 	 * @param row the row to add
 	 */
 	public void addRow(Row r){
-
+		if(r != null){
+			this.rows.add(r);
+		}
 	}
 
 	/**
@@ -70,14 +76,16 @@ public class Table{
 	 * @param id the id of the row to delete
 	 */
 	public void deleteRow(int id){
-
+		if((id >= 0) && (id < this.rows.size())){
+			Row r = this.rows.remove(id);
+		}
 	}
 
 	/**
 	 * Clear the table
 	 */
 	public void empty(){
-
+		this.rows.clear();
 	}
 
 	/**
@@ -85,7 +93,7 @@ public class Table{
 	 * @return the description
 	 */
 	public String toString(){
-		String s = "";
+		String s = "Table";
 		return s;
 	}
 
