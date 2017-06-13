@@ -53,7 +53,13 @@ public class FilesHandler {
      */
     public static ArrayList<Object> objectsToList(String location){
         ArrayList<Object> ret = new ArrayList<Object>();
-
+        User u1, u2, u3;
+        u1 = new User("celie", "Célie", "Rault", "celie@awesome.com", "rault", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
+        u2 = new User("julie", "Julie", "Chapdelaine", "julie@awesome.com", "chapdelaine", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
+        u3 = new User("marc", "Marc", "Lamy", "marc@awesome.com", "lamy", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
+        ret.add(u1);
+        ret.add(u2);
+        ret.add(u3);
         return ret;
     }
 }

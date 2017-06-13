@@ -8,7 +8,7 @@ public class Application {
 	 * Initialisation des paramètres
 	 */
 	public Application(){
-		
+		this.authSystem = new UserManager();
 	}
 
 	/*
@@ -23,14 +23,15 @@ public class Application {
 	 * s'il à les bons identifiants/mot de passe
 	 */
 	public void login(){
-
 	}
 
 	/*
 	 * Permet à l'utilisateur courant de se déconnecter
 	 */
 	public void logout(){
-
+        this.user = null;
+        this.connection = null;
+        this.db = null;
 	}
 
 	/*

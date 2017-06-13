@@ -8,7 +8,6 @@ public class User{
 	private String firstName;
 	private String lastName;
 	private String mail;
-	private String pwd;
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
@@ -16,7 +15,6 @@ public class User{
 		if(username != null){
 			this.username = username;
 		}
-		this.password = "";
 		if(firstName != null){
 			this.firstName = firstName;
 		}
@@ -27,9 +25,9 @@ public class User{
 			this.mail = mail;
 		}
 		if(pwd != null){
-			this.pwd = pwd;
+			this.password = pwd;
 		} else{
-			this.pwd = new String("");
+			this.password = new String("");
 		}
 		if(authorization != null){
 			this.authorization = authorization;
@@ -129,14 +127,6 @@ public class User{
 	}
 
 	/**
-	* Set the password
-	* @param pwd the password of the user
-	*/
-	public void setPasswrd(String pwd){
-		this.pwd=pwd;
-	}
-
-	/**
 	* Get the DBConnection
 	* @return 
 	*/
@@ -219,12 +209,14 @@ public class User{
 	* @return the informations 
 	*/
 	public String toString(){
-		String s = "Le nom d'utilisateur: " + this.username;
-		s += "Le prénom et nom: " + this.firstName + this.lastName;
-		s += "L'adresse mail est: " + this.mail;
-		s += "La langue selectionnée est: " + this.language;
-		s += "Son authorisation est: " + this.authorization;
-		s += "Il possède " + this.connections.size() + "connections";
-		return s;
+		StringBuilder sb = new StringBuilder();
+		sb.append("username: " + this.username);
+		sb.append(", firstName: " + this.firstName);
+		sb.append(", lastName: " + this.lastName);
+		sb.append(", mail: " + this.mail);
+		sb.append(", language: " + this.language);
+		sb.append(", authorization: " + this.authorization);
+		sb.append(", connections: " + this.connections.size());
+		return sb.toString();
 	}
 }
