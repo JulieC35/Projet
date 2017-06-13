@@ -58,7 +58,7 @@ public class DBConnection{
 	 * Getter de l'username
 	 * @return l'attribut username
 	 */
-	public String getusername(){
+	public String getUsername(){
 		return this.username;
 	}
 
@@ -66,7 +66,7 @@ public class DBConnection{
 	 * Setter de l'username
 	 * @param username le nouveau nom d'utilisateur
 	 */
-	public void setusername(String username){
+	public void setUsername(String username){
 		if(username != null){
 			this.username = username;
 		}
