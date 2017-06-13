@@ -132,7 +132,7 @@ public class User{
 	*/
 	public DBConnection[] getDBConnections(){
 		DBConnection[] ret = new DBConnection[this.connections.size()];
-		//ret = this.connections.toArray(); //Problème de typage
+		ret = (DBConnection[])connections.toArray(); //Problème de typage
 		return ret;
 	}
 
