@@ -31,7 +31,7 @@ public class UserManager{
 		for (int i = 0 ; i < this.users.size() ; i++) {
 			tempUser = this.users.get(i);
 			if ( tempUser.getUsername().equals(username) && tempUser.verifyPassword(password) )
-				ret = u;
+				ret = tempUser;
 		}
 		return ret;
 	}
