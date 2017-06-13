@@ -166,7 +166,14 @@ public class User{
 	* @param nameCo the name of the connection
 	*/
 	public void removeDBConnection(String nameCo){
-
+		boolean ret = false;
+		Iterator<DBConnection> itr = this.connections.iterator();
+		while((it.hasNext()) && (!ret)){
+			DBConnection db = itr.next();
+			if(db.getName().equals(nameCo)){
+				ret = this.connections.remove(db);
+			}
+		}
 	}
 
 	/**
