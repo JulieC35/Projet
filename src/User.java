@@ -2,7 +2,7 @@ import java.util.*;
 
 public class User{
 
-	private String name;
+	private String username;
 	private Authorization authorization;
 	private String firstName;
 	private String lastName;
@@ -11,9 +11,9 @@ public class User{
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
-	public User(String name, String firstName, String lastName, String mail, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
-		if(name != null){
-			this.name = name;
+	public User(String username, String firstName, String lastName, String mail, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
+		if(username != null){
+			this.username = username;
 		}
 		if(firstName != null){
 			this.firstName = firstName;
@@ -56,18 +56,18 @@ public class User{
 
 	/**
 	* Get the pseudonym
-	* @return name the pseudonym of the user
+	* @return username the username of the user
 	*/
-	public String getName(){
-		return this.name;
+	public String getUsername(){
+		return this.username;
 	}
 
 	/**
-	* Set the pseudonym
-	* @param name the pseudonym of the user
+	* Set the username
+	* @param username the pseudonym of the user
 	*/
-	public void setName(String name){
-		this.name=name;
+	public void setUsername(String username){
+		this.username=username;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class User{
 	* @return the informations 
 	*/
 	public String toString(){
-		String s = "Le nom d'utilisateur: " + this.name;
+		String s = "Le nom d'utilisateur: " + this.username;
 		s += "Le prénom et nom: " + this.firstName + this.lastName;
 		s += "L'adresse mail est: " + this.mail;
 		s += "La langue selectionnée est: " + this.language;
