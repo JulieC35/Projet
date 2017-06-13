@@ -3,6 +3,7 @@ import java.util.*;
 public class User{
 
 	private String username;
+	private String password;
 	private Authorization authorization;
 	private String firstName;
 	private String lastName;
@@ -15,6 +16,7 @@ public class User{
 		if(username != null){
 			this.username = username;
 		}
+		this.password = "";
 		if(firstName != null){
 			this.firstName = firstName;
 		}
@@ -68,6 +70,14 @@ public class User{
 	*/
 	public void setUsername(String username){
 		this.username=username;
+	}
+
+	/**
+	 * Allows to change the password of the user
+	 * @param password The new password
+	 */
+	public void setPassword(String password){
+		this.password = ( password != null ) ? password : "";
 	}
 
 	/**
@@ -193,6 +203,15 @@ public class User{
 				connections.get(index).setName(nameCo);
 			}
 		}
+	}
+
+	/**
+	 * Verifies if the given password matches the user's
+	 * @param password The password to check
+	 * @return true if the passwords match
+	 */
+	public boolean verifyPassword(String password){
+		return ( password != null && this.password.equals(password) ) ? true : false;
 	}
 
 	/**
