@@ -158,8 +158,6 @@ public class User{
 	public void setLanguage(Language lng){
 		if(lng != null){
 			this.language = lng;
-		} else{
-			System.err.println("Pas d'autre langage en paramètre");
 		}
 	}
 
@@ -175,9 +173,6 @@ public class User{
 			if(db.getName().equals(nameCo)){
 				ret = this.connections.remove(db);
 			}
-		}
-		if(!ret){
-			System.err.println("La base de donnée n'existe pas");
 		}
 	}
 
@@ -200,12 +195,12 @@ public class User{
 	* @return the informations 
 	*/
 	public String toString(){
-		String s = "Le nom d'utilisateur: " + this.name;
-		s += "Le prénom et nom: " + this.firstName + this.lastName;
-		s += "L'adresse mail est: " + this.mail;
-		s += "La langue selectionnée est: " + this.language;
-		s += "Son authorisation est: " + this.authLevel;
-		s += "Il possède " + this.connections.size() + "connections";
+		String s = L.get("user-name-label") + this.name;
+		s += L.get("user-flName-label") + this.firstName + this.lastName;
+		s += L.get("user-mail-label") + this.mail;
+		s += L.get("user-lang-label") + this.language;
+		s += L.get("user-authorization-label") + this.authLevel;
+		s += L.get("user-connection-label") + this.connections.size() + "connections";
 		return s;
 	}
 }

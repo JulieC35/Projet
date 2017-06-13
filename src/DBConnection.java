@@ -146,12 +146,13 @@ public class DBConnection{
 	 * @return les caractéristiques
 	 */
 	public String toString(){
-		String s = "Le nom de la connexion est: " + this.name;
-		s += "\nVotre nom d'utilisateur: " + this.username;
-		s += "\nLa base de donnée est stockée ici: " + this.host;
-		s += "\nLe nom de la base données: " + this.databaseName;
+		String s = L.get("connection-name-label") + this.name;
+		s += "\n" + L.get("connection-username-label") + this.username;
+		s += "\n" + L.get("connection-dataHost-label") + this.host;
+		s += "\n" + L.get("connection-dataName-label") + this.databaseName;
 		return s;
 	}
 
 
 }
+

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <localization>
     <word code="code" value="Le code" />
+    <word code="connection-name-label" value="Le nom de la connexion est: " />
+    <word code="connection-username-label" value="Votre nom d'utilisateur: " />
+    <word code="connection-dataHost-label" value="La base de donnée est stockée ici: " />
+    <word code="connection-dataName-label" value="Le nom de la base données: " />
+    <word code="user-name-label" value="Le nom d'utilisateur: " />
+    <word code="user-flName-label" value="Le prénom et nom: " />
+    <word code="user-mail-label" value="L'adresse mail est: " />
+    <word code="user-lang-label" value="La langue selectionnée est: " />
+    <word code="user-authorization-label" value="Son authorisation est: " />
+    <word code="user-connection-label" value="Il possède " />
+    
 </localization>
