@@ -4,6 +4,9 @@ public class QueryResult{
 	private ArrayList<Column> schema;
 	private ArrayList<Row> rows;
 
+	/**
+	 * The constructor
+	 */
 	public QueryResult(){
 
 	}
@@ -15,7 +18,7 @@ public class QueryResult{
 	}
 
 	public String toString(){
-		String s = "";
+		String s = "QueryResult";
 		return s;
 	}
 }	

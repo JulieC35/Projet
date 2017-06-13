@@ -85,7 +85,7 @@ public class Column{
 	 * @return the description
 	 */
 	public String toString(){
-		String s = "";
+		String s = "Column";
 		return s;
 	}
 
