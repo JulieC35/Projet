@@ -1,5 +1,5 @@
 public class Application {
-	private Authenticator authSystem;
+	private UserManager authSystem;
 	private User user;
 	private Database db;
 	private DBConnection connection;
@@ -8,7 +8,7 @@ public class Application {
 	 * Initialisation des paramètres
 	 */
 	public Application(){
-
+		
 	}
 
 	/*
