@@ -3,7 +3,7 @@ import java.util.*;
 public class User{
 
 	private String name;
-	private Authorization authorization;
+	private Authorization authLevel;
 	private String firstName;
 	private String lastName;
 	private String mail;
@@ -11,7 +11,7 @@ public class User{
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
-	public User(String name, String firstName, String lastName, String mail, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
+	public User(String name, String firstName, String lastName, String mail, String pwd, Authorization authLevel, Language language, ArrayList<DBConnection> connections){
 		if(name != null){
 			this.name = name;
 		}
@@ -29,10 +29,10 @@ public class User{
 		} else{
 			this.pwd = new String("");
 		}
-		if(authorization != null){
-			this.authorization = authorization;
+		if(authLevel != null){
+			this.authLevel = authLevel;
 		} else{
-			this.authorization = Authorization.DEFAULT;
+			this.authLevel = Authorization.DEFAULT;
 		}
 		if(language != null){
 			this.language = language;
@@ -51,7 +51,7 @@ public class User{
 	* @return authorization the level
 	*/
 	public Authorization getAuthorization(){
-		return this.authorization;
+		return this.authLevel;
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class User{
 			}
 		}
 		if(!ret){
-			System.err.println("La base de donnée n'existait pas");
+			System.err.println("La base de donnée n'existe pas");
 		}
 	}
 
@@ -204,7 +204,7 @@ public class User{
 		s += "Le prénom et nom: " + this.firstName + this.lastName;
 		s += "L'adresse mail est: " + this.mail;
 		s += "La langue selectionnée est: " + this.language;
-		s += "Son authorisation est: " + this.authorization;
+		s += "Son authorisation est: " + this.authLevel;
 		s += "Il possède " + this.connections.size() + "connections";
 		return s;
 	}
