@@ -132,7 +132,7 @@ public class User{
 	*/
 	public DBConnection[] getDBConnections(){
 		DBConnection[] ret = new DBConnection[this.connections.size()];
-		ret = (DBConnection[])connections.toArray(); //Problème de typage
+		ret = (DBConnection[])connections.toArray();
 		return ret;
 	}
 
@@ -158,6 +158,8 @@ public class User{
 	public void setLanguage(Language lng){
 		if(lng != null){
 			this.language = lng;
+		} else{
+			System.err.println("Pas d'autre langage en paramètre");
 		}
 	}
 
@@ -174,14 +176,23 @@ public class User{
 				ret = this.connections.remove(db);
 			}
 		}
+		if(!ret){
+			System.err.println("La base de donnée n'existait pas");
+		}
 	}
 
 	/**
 	* Edit a connection 
 	* @param nameCo the name of the connection
+	* @param db the dbConnection to change name
 	*/
-	public void editDBConnection(String nameCo){
-
+	public void editDBConnection(String nameCo, DBConnection db){
+		if((nameCo != null) && (db != null)){
+			if(connections.contains(db)){
+				int index = connections.indexOf(db);
+				connections.get(index).setName(nameCo);
+			}
+		}
 	}
 
 	/**
@@ -189,6 +200,12 @@ public class User{
 	* @return the informations 
 	*/
 	public String toString(){
-		return null;
+		String s = "Le nom d'utilisateur: " + this.name;
+		s += "Le prénom et nom: " + this.firstName + this.lastName;
+		s += "L'adresse mail est: " + this.mail;
+		s += "La langue selectionnée est: " + this.language;
+		s += "Son authorisation est: " + this.authorization;
+		s += "Il possède " + this.connections.size() + "connections";
+		return s;
 	}
 }
