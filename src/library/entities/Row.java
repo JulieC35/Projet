@@ -6,16 +6,18 @@ import java.util.*;
 * Class Row
 */
 public class Row{
-	private ArrayList<Column> schema;
-	private HashMap<String, String> values;
+	private HashMap<Column, String> values;
 
 	/**
 	* The constructor of the method
 	* @param schema the list of column
 	*/
 	public Row(ArrayList<Column> schema){
+		values = new HashMap<Column, String>();
 		if(schema!=null){
-			this.schema=schema;
+			for(Column col : schema){
+				values.put(col, null);
+			}
 		}
 	}
 
@@ -24,7 +26,19 @@ public class Row{
 	* @param col the column
 	*/
 	public String getValue(String col){
-		return col;
+		String s = "null";
+		Iterator iterator = this.values.entrySet().iterator();
+		boolean trouve = false;
+		while ((iterator.hasNext()) && (!trouve)) {
+			Map.Entry entry = (Map.Entry) iterator.next();
+			Column key = (Column)entry.getKey();
+			String value = (String)entry.getValue();
+			if(key.getName().equals(col)){
+				trouve = true;
+				s = value;
+			}
+		}
+		return s;
 	}
 
 	/**
@@ -40,7 +54,7 @@ public class Row{
 	* Get the values of the list
 	* @return values the hashmap
 	*/
-	public HashMap<String, String> getValues(){
+	public HashMap<Column, String> getValues(){
 		return this.values;
 	}
 
@@ -48,7 +62,7 @@ public class Row{
 	* Set the values of the list
 	* @param vals the hashmap 
 	*/
-	public void setValues(HashMap<String, String> vals){
+	public void setValues(HashMap<Column, String> vals){
 		this.values=vals;
 	}
 
@@ -56,7 +70,7 @@ public class Row{
 	* Display informations
 	*/
 	public String toString(){
-		String s="Cette ligne a "+schema.size()+"colonnes";
+		String s="Cette ligne a "+values.size()+" colonnes";
 		return s;
 	}
 

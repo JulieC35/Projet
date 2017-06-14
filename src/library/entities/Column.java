@@ -56,33 +56,6 @@ public class Column{
 	}
 
 	/**
-	 * test if the column is a primary key
-	 * @return true if it is
-	 */
-	public boolean isPrimaryKey(){
-		boolean ret = false;
-		return ret;
-	}
-
-	/**
-	 * test if the column is nullable
-	 * @return true if it is
-	 */
-	public boolean isNullable(){
-		boolean ret = false;
-		return ret;
-	}
-
-	/**
-	 * test if the column is unique (contains only unique attributs)
-	 * @return true if it is
-	 */
-	public boolean isUnique(){
-		boolean ret = false;
-		return ret;
-	}
-
-	/**
 	 * Show a description of the column
 	 * @return the description
 	 */
