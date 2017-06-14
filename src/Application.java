@@ -1,3 +1,9 @@
+
+
+import library.*;
+import library.entities.*;
+import library.managers.*;
+
 public class Application {
 	private UserManager authSystem;
 	private User user;
