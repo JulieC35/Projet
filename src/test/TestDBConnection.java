@@ -1,6 +1,6 @@
 package test;
 
-import library.entities.*;
+import model.entities.*;
 import org.junit.*; 
 import static org.junit.Assert.*;
 
