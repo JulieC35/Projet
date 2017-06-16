@@ -64,7 +64,7 @@ public class Application {
 	 * @param dbC the connection to the database
 	 */
 	public void connect(DBConnection dbC){
-
+		
 	}
 
 	/**
