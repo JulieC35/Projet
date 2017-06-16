@@ -3,6 +3,9 @@ package library.entities;
 import java.util.*;
 import library.*;
 
+/**
+* Class User
+*/
 public class User{
 
 	private String username;
@@ -14,6 +17,17 @@ public class User{
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
+	/**
+	* The constructor of the class
+	* @param username the name of the user
+	* @param firstName the first name of the user
+	* @param lsatName the last name of the user
+	* @param mail the mail of the user
+	* @param pwd the password of the user
+	* @param authorization the authorization of the user
+	* @param language the language use
+	* @param connections the list of connections
+	*/
 	public User(String username, String firstName, String lastName, String mail, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
 		if(username != null){
 			this.username = username;
@@ -131,7 +145,7 @@ public class User{
 
 	/**
 	* Get the DBConnection
-	* @return 
+	* @return ret the list of database connection
 	*/
 	public DBConnection[] getDBConnections(){
 		DBConnection[] ret = new DBConnection[this.connections.size()];
@@ -141,6 +155,11 @@ public class User{
 
 	/**
 	* Add a connection
+	* @param name the name of the connection
+	* @param username the pseudonym of the user
+	* @param password the password of the user
+	* @param host the server
+	* @param databaseName the name of the database
 	*/
 	public void addDBConnection(String name, String username, String password, String host, String databaseName){
 		this.connections.add(new DBConnection(name, username, password, host, databaseName));
@@ -199,7 +218,7 @@ public class User{
 	}
 
 	/**
-	 * Verifies if the given password matches the user's
+	 * Check if the given password matches the user's
 	 * @param password The password to check
 	 * @return true if the passwords match
 	 */
