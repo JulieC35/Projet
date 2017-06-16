@@ -154,6 +154,4 @@ public class DBConnection{
 		s += "\nLe nom de la base données: " + this.databaseName;
 		return s;
 	}
-
-
 }
