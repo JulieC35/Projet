@@ -4,6 +4,7 @@
 package application.console.screens;
 
 import application.console.*;
+import model.RequestResult;
 import model.entities.*;
 import lang.*;
 
@@ -19,7 +20,6 @@ public class LoginScreen extends TerminalScreen{
         super.initialize();
         terminal.printTitle(L.get("login"));
         this.login();
-        System.out.println(L.get("welcome") + " " + app.getUser().getFirstName() + " !");
         this.exit();
     }
 

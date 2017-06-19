@@ -4,6 +4,7 @@
 package application.console.screens;
 
 import application.console.*;
+import model.RequestResult;
 import model.entities.Application;
 import lang.*;
 
@@ -32,5 +33,46 @@ public abstract class TerminalScreen{
      */
     public void exit(){
         terminal.loadPreviousScreen();
+    }
+
+    /**
+     * Starts the loop that asks the user to type information
+     */
+    protected void startPrompting(){
+        boolean continuePrompting = true;
+        String[] currentRequest = null;
+
+        while ( continuePrompting ) {
+            // We first get the user's request and parse it into an array of string
+            currentRequest = terminal.parseRequest(terminal.prompt());
+            // We proceed to the request
+            RequestResult result = this.proceedRequest( currentRequest );
+            // If the request was to exit, we set the boolean to false. If there was an error and the request could not be executed,
+            // we indicate it.
+            switch ( result ){
+                case END:
+                    continuePrompting = false;
+                break;
+                case ERROR:
+                    System.err.println(L.get("request-error"));
+                break;
+            }
+        }
+    }
+
+    /**
+     * Takes a parsed request and tries to proceed it
+     * @param request An array of strings containing the request (at index 0) and its parameters
+     * @return The result of the request
+     */
+    public RequestResult proceedRequest(String[] request){
+        RequestResult ret = RequestResult.OK;
+
+        if ( request == null || request.length == 0 )
+            ret = RequestResult.ERROR;
+        else if ( request[0].equals("exit") )
+            ret = RequestResult.END;
+
+        return ret;
     }
 }
