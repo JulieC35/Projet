@@ -13,21 +13,21 @@ import lang.*;
 import application.console.screens.*;
 
 public class ConsoleApplication{
-    private Application app;
+    private Application appModel;
     private TerminalScreen currentScreen;
     private ArrayList<TerminalScreen> stack;
 
-    final String PROMPT = "> ";
+    final String PROMPT = "javaMyAdmin> ";
 
     /**
      * Constructor
      */
     public ConsoleApplication(){
-        this.app = new Application();
+        this.appModel = new Application();
 
         // We load the first screen of the application, and the stack stays empty
         this.stack = new ArrayList<TerminalScreen>();
-        this.currentScreen = new HomeScreen(this, app);
+        this.currentScreen = new HomeScreen(this, appModel);
         this.refresh();
     }
 
@@ -37,8 +37,9 @@ public class ConsoleApplication{
      */
     public void setCurrentScreen(TerminalScreen screen){
         if ( screen != null ) {
-            System.out.println("setCurrentScreen");
-            this.stack.add(this.currentScreen);
+            if ( !( this.currentScreen instanceof LoginScreen || this.currentScreen instanceof SubscribeScreen ) )
+                this.stack.add(this.currentScreen);
+
             this.currentScreen = screen;
             this.refresh();
         }
@@ -56,7 +57,6 @@ public class ConsoleApplication{
      * Loads the previous screen of the application on the top of the stack
      */
     public void loadPreviousScreen(){
-        System.out.println("loadPreviousScreen");
         if ( this.stack.size() > 0 )
             this.setCurrentScreen(this.stack.remove(this.stack.size() - 1));
     }
@@ -74,9 +74,14 @@ public class ConsoleApplication{
      * Allos to print the title of a screen
      */
     public void printTitle(String title){
-        System.out.println("-------------------------");
+        String border = "---------";
+        for(int i = 0 ; i < title.length() ; i++){
+            border += "-";
+        }
+        border += "---------";
+        System.out.println(border);
         System.out.println("\t" + title);
-        System.out.println("-------------------------");
+        System.out.println(border);
     }
 
     /**
@@ -85,6 +90,13 @@ public class ConsoleApplication{
     public void clear() {  
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
+    }
+
+    /**
+     * Allows to exit the application
+     */
+    public void quit(){
+        System.exit(0);
     }
 
     /**
@@ -100,6 +112,14 @@ public class ConsoleApplication{
             ret = System.console().readLine(PROMPT);
          return ret;
      }   
+    
+    /**
+     * Asks the user to type something
+     * @return The typed information
+     */
+     public String prompt(){
+         return System.console().readLine(PROMPT);
+     }   
 
     /**
      * Asks the user to type a password
@@ -113,4 +133,15 @@ public class ConsoleApplication{
             ret = System.console().readPassword(PROMPT);
          return new String(ret);
      }
+
+    /**
+     * Converts the request into an array of String objects
+     * The first one is the action, and the others are the parameters
+     * The elements are separated with spaces
+     * @param request The request
+     * @return The parsed request
+     */
+    public String[] parseRequest(String request){
+        return request.split(" ");
+    }
 }
