@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <localization>
+    <!-- Generiques -->
+    <word code="app-name" value="Est-ce QL ?" />
+    <word code="username" value="Nom d'utilisateur" />
+    <word code="password" value="Mot de passe" />
+    <word code="login" value="Connexion" />
+    <word code="subscribe" value="Inscription" />
+    <word code="welcome" value="Bienvenue" />
+    <word code="request-error" value="Requête invalide, veuillez re-essayer." />
+
+    <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
     <word code="connection-username-label" value="Votre nom d'utilisateur: " />
     <word code="connection-dataHost-label" value="La base de donnée est stockée ici: " />
@@ -10,4 +20,20 @@
     <word code="user-lang-label" value="La langue selectionnée est: " />
     <word code="user-authorization-label" value="Son authorisation est: " />
     <word code="user-connection-label" value="Il possède " />
+
+    <!-- Launcher -->
+    <word code="launcher-console-mode" value=" - Mode console" />
+    <word code="launcher-gui-mode" value=" - Mode graphique" />
+
+    <!-- Application -->
+    <word code="application-description" value="Cette application permet la visualisation et la modification de basées de données mysql en lignes de commandes et avec interface graphique" />
+    <word code="application-copyright" value ="Copyright (c) 2017. Tous droits réservés." />
+
+    <!-- Home -->
+    <word code="home-title" value="Ecran de connexion/inscription" />
+    <word code="home-connect" value="Se connecter" />
+    <word code="home-subscribe" value="S'inscrire" />
+
+    <!-- Login -->
+    <word code="login-failed" value="Echec de connexion, veuillez re-essayer." />
 </localization>
