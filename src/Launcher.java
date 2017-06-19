@@ -1,7 +1,7 @@
 /**
  * Launcher of the application. If console argument is recieved, the GUI is not built
  */
-import application.*;
+import application.console.*;
 import lang.*;
 
 public class Launcher{
