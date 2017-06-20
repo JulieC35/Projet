@@ -13,7 +13,7 @@ public abstract class TerminalScreen{
     protected ConsoleApplication terminal;
 
     /**
-     * The constructor of the TerminalScreen and children
+     * The constructor of the TerminalScreen
      */
     public TerminalScreen(ConsoleApplication terminal, Application app){
         this.terminal = terminal;
@@ -23,10 +23,7 @@ public abstract class TerminalScreen{
     /**
      * Clears the terminal and prints default information
      */
-    public void initialize(){
-        terminal.clear();
-        terminal.printHeader();
-    }
+    public abstract void initialize();
 
     /**
      * Gets back to the previous screen of the application
@@ -50,8 +47,12 @@ public abstract class TerminalScreen{
             // If the request was to exit, we set the boolean to false. If there was an error and the request could not be executed,
             // we indicate it.
             switch ( result ){
-                case END:
+                case BACK:
                     continuePrompting = false;
+                break;
+                case END:
+                    terminal.clear();
+                    terminal.quit();
                 break;
                 case ERROR:
                     System.err.println(L.get("request-error"));
@@ -70,6 +71,8 @@ public abstract class TerminalScreen{
 
         if ( request == null || request.length == 0 )
             ret = RequestResult.ERROR;
+        else if ( request[0].equals("back") )
+            ret = RequestResult.BACK;
         else if ( request[0].equals("exit") )
             ret = RequestResult.END;
 

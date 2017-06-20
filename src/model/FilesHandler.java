@@ -56,15 +56,59 @@ public class FilesHandler {
      * @param location the location of the file
      * @return a list of objects
      */
-    public static ArrayList<Object> objectsToList(String location){
+    public static ArrayList<Object> fileToList(String location){
         ArrayList<Object> ret = new ArrayList<Object>();
-        User u1, u2, u3;
-        u1 = new User("celie", "Célie", "Rault", "celie@awesome.com", "rault", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
-        u2 = new User("julie", "Julie", "Chapdelaine", "julie@awesome.com", "chapdelaine", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
-        u3 = new User("marc", "Marc", "Lamy", "marc@awesome.com", "lamy", Authorization.ADMIN, Language.FRENCH, new ArrayList<DBConnection>());
-        ret.add(u1);
-        ret.add(u2);
-        ret.add(u3);
+        ObjectInputStream in = null;
+        try {
+            in = new ObjectInputStream(new FileInputStream(location));
+            Object obj = null;
+            
+            obj = in.readObject();
+            int i = 0;
+            while(obj != null){
+                ret.add(obj);
+                obj = in.readObject();
+                i++;
+            }
+
+        } catch(Exception e) { // To handle throwing of ClassNotFoundException and IOException
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if ( in != null )
+                    in.close();
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
         return ret;
+    }
+
+    /**
+     * Allows to save an ArrayList of objects into a file
+     * @param list The list of objects to save
+     * @param location the location of the file
+     */
+    public static void listToFile(ArrayList<? extends Object> list, String location){
+        if ( list != null && location != null ) {
+            ObjectOutputStream out = null;
+            try{
+                out = new ObjectOutputStream(new FileOutputStream(location));
+                for(Object obj : list){
+                    out.writeObject(obj);
+                }
+            }
+            catch (IOException e){
+                System.err.println(e.getMessage());
+            } finally {
+                try {
+                    if ( out != null )
+                        out.close();
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }
     }
 }

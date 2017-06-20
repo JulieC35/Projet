@@ -18,6 +18,13 @@ public class Application {
 	}
 
 	/**
+	 * @return The auth systeù
+	 */
+	public UserManager getAuthSystem(){
+		return this.authSystem;
+	}
+
+	/**
 	 * Getter de l'utilisateur
 	 */
 	public User getUser(){
@@ -36,6 +43,8 @@ public class Application {
 		User tempUser = this.authSystem.authenticate(username, password);
 		if ( tempUser != null ) {
 			this.user = tempUser;
+			this.db = null;
+			this.connection = null;
 			ret = true;
 		}
 		return ret;	
