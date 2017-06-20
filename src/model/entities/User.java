@@ -1,21 +1,22 @@
 package model.entities;
 
 import java.util.*;
+import java.io.Serializable;
 import model.*;
 import lang.*;
 
-public class User{
+public class User implements Serializable{
 
 	private String username;
 	private String password;
 	private Authorization authorization;
 	private String firstName;
 	private String lastName;
-	private String mail;
+	private String emailAddress;
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
-	public User(String username, String firstName, String lastName, String mail, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
+	public User(String username, String firstName, String lastName, String emailAddress, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
 		if(username != null){
 			this.username = username;
 		}
@@ -25,8 +26,8 @@ public class User{
 		if(lastName != null){
 			this.lastName = lastName;
 		}
-		if(mail != null){
-			this.mail = mail;
+		if(emailAddress != null){
+			this.emailAddress = emailAddress;
 		}
 		if(pwd != null){
 			this.password = pwd;
@@ -118,33 +119,51 @@ public class User{
 	* Get the mail
 	* @return mail the email of the user
 	*/
-	public String getMail(){
-		return this.mail;
+	public String getEmailAddress(){
+		return this.emailAddress;
 	}
 
 	/**
 	* Set the mail
 	* @param email the email of the user
 	*/
-	public void setMail(String email){
-		this.mail=email;
+	public void setEmailAddress(String emailAddress){
+		this.emailAddress=emailAddress;
 	}
 
 	/**
 	* Get the DBConnection
-	* @return 
+	* @return The list of connections
 	*/
-	public DBConnection[] getDBConnections(){
+	/*public DBConnection[] getDBConnections(){
 		DBConnection[] ret = new DBConnection[this.connections.size()];
 		ret = (DBConnection[])connections.toArray();
 		return ret;
+	}*/
+
+	/**
+	* Get the DBConnection
+	* @return The list of connections
+	*/
+	public ArrayList<DBConnection> getDBConnections(){
+		return this.connections;
 	}
 
 	/**
-	* Add a connection
+	* Adds a connection
 	*/
 	public void addDBConnection(String name, String username, String password, String host, String databaseName){
 		this.connections.add(new DBConnection(name, username, password, host, databaseName));
+	}
+
+	/**
+	* Adds a connection
+	* @param dbC The connection to add
+	*/
+	public void addDBConnection(DBConnection dbC){
+		if ( dbC != null ){
+			this.connections.add(dbC);
+		}
 	}
 
 	/**
@@ -171,18 +190,27 @@ public class User{
 	* Remove a connection
 	* @param nameCo the name of the connection
 	*/
-	public void removeDBConnection(String nameCo){
+	public boolean removeDBConnection(String nameCo){
 		boolean ret = false;
-		Iterator<DBConnection> itr = this.connections.iterator();
+		DBConnection tempDBC = null;
+
+		for (int i = 0 ; i < this.connections.size() ; i++){
+			tempDBC = this.connections.get(i);
+			if ( tempDBC.getName().equals(nameCo) ) {
+				this.connections.remove(i);
+				ret = true;
+			}
+		}
+
+		/*Iterator<DBConnection> itr = this.connections.iterator();
 		while((itr.hasNext()) && (!ret)){
 			DBConnection db = itr.next();
 			if(db.getName().equals(nameCo)){
 				ret = this.connections.remove(db);
 			}
-		}
-		if(!ret){
-			System.err.println("La base de donnée n'existait pas");
-		}
+		}*/
+
+		return ret;
 	}
 
 	/**
@@ -217,7 +245,7 @@ public class User{
 		sb.append("username: " + this.username);
 		sb.append(", firstName: " + this.firstName);
 		sb.append(", lastName: " + this.lastName);
-		sb.append(", mail: " + this.mail);
+		sb.append(", emailAddress: " + this.emailAddress);
 		sb.append(", language: " + this.language);
 		sb.append(", authorization: " + this.authorization);
 		sb.append(", connections: " + this.connections.size());

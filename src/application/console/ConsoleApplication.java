@@ -16,6 +16,7 @@ public class ConsoleApplication{
     private Application appModel;
     private TerminalScreen currentScreen;
     private ArrayList<TerminalScreen> stack;
+    private String message;
 
     final String PROMPT = "javaMyAdmin> ";
 
@@ -24,11 +25,44 @@ public class ConsoleApplication{
      */
     public ConsoleApplication(){
         this.appModel = new Application();
+        this.message = "";
 
         // We load the first screen of the application, and the stack stays empty
         this.stack = new ArrayList<TerminalScreen>();
         this.currentScreen = new HomeScreen(this, appModel);
         this.refresh();
+    }
+
+    /**
+     * Displays the message of the application and removes it afterwards
+     */
+    public void printMessage(){
+        if ( this.message != null && !this.message.equals("") ){
+            System.out.println(L.get("feedback") + " : " + this.message + "\n");
+        }
+
+        this.message = "";
+    }
+
+    /**
+     * Ask the user to confirm his current action
+     * @return true if The user confirmed his action
+     */
+    public boolean askConfirmation(){
+        boolean ret = false;
+        String answer = this.prompt(L.get("confirmation-prompt"));
+        if ( answer.equals("y") || answer.equals("Y") || answer.equals("o") || answer.equals("O") )
+            ret = true;
+
+        return false;
+    }
+
+    /**
+     * Allows to set the message to a specific string
+     */
+    public void setMessage(String message){
+        if ( message != null ) 
+            this.message = message;
     }
 
     /**
@@ -57,14 +91,17 @@ public class ConsoleApplication{
      * Loads the previous screen of the application on the top of the stack
      */
     public void loadPreviousScreen(){
-        if ( this.stack.size() > 0 )
-            this.setCurrentScreen(this.stack.remove(this.stack.size() - 1));
+        if ( this.stack.size() > 0 ) {
+            this.currentScreen = this.stack.remove(this.stack.size() - 1);
+            this.refresh();
+        }
     }
 
     /**
      * Displays the header of the application
      */
     public void printHeader(){
+        this.clear();
         System.out.println("Console mode");
         System.out.println("\n" + L.get("application-copyright"));
         System.out.println("\n" + L.get("application-description") + "\n");
@@ -110,7 +147,7 @@ public class ConsoleApplication{
             ret = System.console().readLine(label + " :\n" + PROMPT);
          else
             ret = System.console().readLine(PROMPT);
-         return ret;
+        return ret;
      }   
     
     /**
@@ -118,7 +155,8 @@ public class ConsoleApplication{
      * @return The typed information
      */
      public String prompt(){
-         return System.console().readLine(PROMPT);
+        String ret = System.console().readLine(PROMPT);
+        return ret;
      }   
 
     /**

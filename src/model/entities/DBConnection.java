@@ -1,9 +1,10 @@
 package model.entities;
 
 import java.sql.*;
+import java.io.Serializable;
 import lang.*;
 
-public class DBConnection{
+public class DBConnection implements Serializable{
 	
 	private String name;
 	private String username;

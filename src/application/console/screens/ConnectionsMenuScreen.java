@@ -1,5 +1,5 @@
 /**
- * Home page screen
+ * Connections menu screen
  */
 package application.console.screens;
 
@@ -8,17 +8,17 @@ import model.RequestResult;
 import model.entities.*;
 import lang.*;
 
-public class HomeScreen extends TerminalScreen{
+public class ConnectionsMenuScreen extends TerminalScreen{
     /**
-     * Constructor of the home screen
+     * Constructor of the screen
      */
-    public HomeScreen(ConsoleApplication terminal, Application app){
+    public ConnectionsMenuScreen(ConsoleApplication terminal, Application app){
         super(terminal, app);
     } 
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("home-title"));
+        terminal.printTitle(L.get("my-connections"));
         terminal.printMessage();
         this.printMenu();
         this.startPrompting();
@@ -31,23 +31,28 @@ public class HomeScreen extends TerminalScreen{
      */
     public void printMenu(){
         StringBuilder sb = new StringBuilder();
-        sb.append("1 : " + L.get("home-connect") + "\n");
-        sb.append("2 : " + L.get("home-subscribe") + "\n");
+        sb.append("1 : " + L.get("list") + "\n");
+        sb.append("2 : " + L.get("add") + "\n");
+        sb.append("3 : " + L.get("remove") + "\n");
         sb.append("-----\n");
+        sb.append("back\n");
         sb.append("exit\n\n");
         System.out.println(sb.toString());
     }
-    
+
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = super.proceedRequest(request);
 
         if ( ret != RequestResult.BACK && ret != RequestResult.END && ret != RequestResult.ERROR ){
             switch ( request[0] ){
                 case "1":
-                    terminal.setCurrentScreen(new LoginScreen(terminal, app));
+                    terminal.setCurrentScreen(new ConnectionsListScreen(terminal, app));
                     break;
                 case "2": 
-                    terminal.setCurrentScreen(new SubscribeScreen(terminal, app));
+                    terminal.setCurrentScreen(new ConnectionAddScreen(terminal, app));
+                    break;
+                case "3":
+                    terminal.setCurrentScreen(new ConnectionRemoveScreen(terminal, app));
                     break;
                 default:
                     ret = RequestResult.ERROR;
@@ -58,11 +63,8 @@ public class HomeScreen extends TerminalScreen{
         return ret;
     }
 
-    /**
-     * Allows to exit the application because it's the first screen
-     */
     public void exit(){
-        terminal.clear();
-        terminal.quit();
+        app.logout();
+        terminal.loadPreviousScreen();
     }
 }
