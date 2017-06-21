@@ -22,6 +22,7 @@
     <word code="database-name" value="Database name" />
     <word code="confirmation-prompt" value="Are you sure ? (y/n)" />
     <word code="empty-list" value="There's nothing here" />
+    <word code="boolean-answer" value="(y/n)" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -75,5 +76,13 @@
     <word code="table-removal-success" value="Table removed." />
     <word code="table-failure" value="Table loading failed." />
     <word code="table-success" value="Table loaded." />
-    <word code="table-nb-columns" value="Number of columns" />
+    <word code="table-nb-columns" value="Number of columns ?" />
+
+    <!-- Columns -->
+    <word code="column-ask-name" value="Column name ?" />
+    <word code="column-ask-type" value="Column type ?" />
+    <word code="column-ask-primary" value="Set primary key ?" />
+    <word code="column-ask-unique" value="Set unique ?" />
+    <word code="column-ask-notnull" value="Set not null ?" />
+    <word code="column-ask-autoincrement" value="Set auto increment ?" />
 </localization>

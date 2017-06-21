@@ -20,8 +20,9 @@
     <word code="not-valid-input" value="Entrée non valide" />
     <word code="host" value="Hôte" />
     <word code="database-name" value="Nom de la base de données" />
-    <word code="confirmation-prompt" value="Êtes-vous sûr ? (o/n)" />
+    <word code="confirmation-prompt" value="Êtes-vous sûr ?" />
     <word code="empty-list" value="Il n'y a rien ici" />
+    <word code="boolean-answer" value="(o/n)" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -75,5 +76,13 @@
     <word code="table-removal-success" value="Table supprimée." />
     <word code="table-access-failure" value="Impossible d'accéder à la table." />
     <word code="table-access-success" value="Accès à la table." />
-    <word code="table-nb-columns" value="Nombre de colonnes" />
+    <word code="table-ask-nb-columns" value="Nombre de colonnes ?" />
+
+    <!-- Columns -->
+    <word code="column-ask-name" value="Nom de la colonne ?" />
+    <word code="column-ask-type" value="Type de la colonne ?" />
+    <word code="column-ask-primary" value="Définir comme clé primaire ?" />
+    <word code="column-ask-unique" value="Créer unique ?" />
+    <word code="column-ask-notnull" value="Créer non nulle ?" />
+    <word code="column-ask-autoincrement" value="Activer l'auto incrémentation ?" />
 </localization>

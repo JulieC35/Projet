@@ -89,6 +89,23 @@ public class Table{
 	}
 
 	/**
+	 * @return true if the table has a primary key
+	 */
+	public boolean hasPrimary(){
+		boolean ret = false;
+		int i = 0;
+
+		while ( i < this.scheme.size() && !ret ){
+			if ( this.scheme.get(i).isPrimary() )
+				ret = true;
+
+			i++;
+		}
+
+		return ret;
+	}
+
+	/**
 	 * Print a description of the object
 	 * @return the description
 	 */

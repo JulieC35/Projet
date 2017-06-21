@@ -38,16 +38,28 @@ public class TableAddScreen extends TerminalScreen{
 
         while ( nbColumns < 0 ) {
             try {
-                nbColumns = Integer.parseInt(terminal.prompt(L.get("table-nb-columns") + " ?"));
+                nbColumns = Integer.parseInt(terminal.prompt(L.get("table-ask-nb-columns")));
             } catch(Exception ex){
 
             }
         }
-
         for ( int i = 0 ; i < nbColumns ; i++ ){
+            terminal.printHeader();
+            terminal.printTitle(L.get("my-tables") + " : " + L.get("add") );
+            
             tempCol = new Column();
-            while ( !tempCol.setName(terminal.prompt(L.get("column-name"))) );
-            while ( !tempCol.setType(terminal.prompt(L.get("column-type"))) );
+            while ( !tempCol.setName(terminal.prompt(L.get("column-ask-name"))) );
+            while ( !tempCol.setType(terminal.prompt(tempCol.getName() + " : " + L.get("column-ask-type"))) );
+
+            // If the table has already a primary key, we just ask if the col is unique and/or not null
+            if ( !ret.hasPrimary() )
+                tempCol.setPrimary(terminal.askConfirmation(tempCol.getName() + " : " + L.get("column-ask-primary")));
+                if ( tempCol.isPrimary() )
+                    tempCol.setAutoIncrement(terminal.askConfirmation(tempCol.getName() + " : " + L.get("column-ask-autoincrement")));
+            else {
+                tempCol.setUnique(terminal.askConfirmation(tempCol.getName() + " : " + L.get("column-ask-unique")));
+                tempCol.setNotNull(terminal.askConfirmation(tempCol.getName() + " : " + L.get("column-ask-notnull")));
+            }
 
             ret.addColumn(tempCol);
         }

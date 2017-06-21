@@ -34,6 +34,14 @@ public class ConsoleApplication{
     }
 
     /**
+     * Allows to set the message to a specific string
+     */
+    public void setMessage(String message){
+        if ( message != null ) 
+            this.message = message;
+    }
+
+    /**
      * Displays the message of the application and removes it afterwards
      */
     public void printMessage(){
@@ -42,27 +50,6 @@ public class ConsoleApplication{
         }
 
         this.message = "";
-    }
-
-    /**
-     * Ask the user to confirm his current action
-     * @return true if The user confirmed his action
-     */
-    public boolean askConfirmation(String message){
-        boolean ret = false;
-        String answer = ( message != null ) ? this.prompt(message) : this.prompt();
-        if ( answer.equals("y") || answer.equals("Y") || answer.equals("o") || answer.equals("O") )
-            ret = true;
-
-        return false;
-    }
-
-    /**
-     * Allows to set the message to a specific string
-     */
-    public void setMessage(String message){
-        if ( message != null ) 
-            this.message = message;
     }
 
     /**
@@ -80,14 +67,6 @@ public class ConsoleApplication{
     }
 
     /**
-     * Refreshes the terminal to display the current screen
-     */
-    public void refresh(){
-        if ( this.currentScreen != null )
-            this.currentScreen.initialize();
-    }
-
-    /**
      * Loads the previous screen of the application on the top of the stack
      */
     public void loadPreviousScreen(){
@@ -95,6 +74,14 @@ public class ConsoleApplication{
             this.currentScreen = this.stack.remove(this.stack.size() - 1);
             this.refresh();
         }
+    }
+
+    /**
+     * Refreshes the terminal to display the current screen
+     */
+    public void refresh(){
+        if ( this.currentScreen != null )
+            this.currentScreen.initialize();
     }
 
     /**
@@ -171,6 +158,20 @@ public class ConsoleApplication{
             ret = System.console().readPassword(PROMPT);
          return new String(ret);
      }
+
+
+    /**
+     * Ask the user to confirm his current action
+     * @return true if The user confirmed his action
+     */
+    public boolean askConfirmation(String message){
+        boolean ret = false;
+        String answer = ( message != null ) ? this.prompt(message + " " + L.get("boolean-answer")) : this.prompt(L.get("boolean-answer"));
+        if ( answer.equals("y") || answer.equals("Y") || answer.equals("o") || answer.equals("O") )
+            ret = true;
+
+        return ret;
+    }
 
     /**
      * Converts the request into an array of String objects
