@@ -5,7 +5,8 @@ import lang.*;
 public class Column{
 
 	private String name, type;
-	private boolean primary, unique, notNull;
+	private boolean primary, unique, notNull, autoIncrement;
+	public final String[] ALLOWED_TYPES = {"INT", "DATETIME", "VARCHAR", "TEXT", "TIMESTAMP", "DECIMAL", "BOOLEAN"};
 	
 	/**
 	 * The constructor of the class
@@ -29,6 +30,7 @@ public class Column{
 		this.primary = false;
 		this.unique = false;
 		this.notNull = false;
+		this.autoIncrement = false;
 	}
 
 	/**
@@ -66,6 +68,13 @@ public class Column{
 	 */
 	public boolean isNotNull(){
 		return this.notNull;
+	}
+
+	/**
+	 * @return true if the column has auto increment set on
+	 */
+	public boolean hasAutoIncrement(){
+		return this.autoIncrement;
 	}
 
 	/**
@@ -120,12 +129,37 @@ public class Column{
 	}
 
 	/**
+	 * @param autoI Has the column auto increment ?
+	 */
+	public void setAutoIncrement(boolean autoI){
+		this.autoIncrement = autoI;
+	}
+
+	/**
 	 * Show a description of the column
 	 * @return the description
 	 */
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("`" + this.name + "` " + this.type);
+		if ( this.primary ){
+			sb.append(" NOT NULL");
+			if ( this.autoIncrement )
+				sb.append(" AUTO_INCREMENT");
+			sb.append(",\nPRIMARY KEY (`" + this.name + "`)");
+		}
+		else {
+			if ( this.unique && this.notNull) {
+				sb.append(" NOT NULL");
+				sb.append(",\nUNIQUE (`" + this.name + "`)");
+				// UNIQUE `uqUserEmail` (`email`)
+			}
+			else if ( this.unique )
+				sb.append(",\nUNIQUE (`" + this.name + "`)");
+			else if ( this.notNull ) 
+				sb.append(" NOT NULL");
+		}
+
 		return sb.toString();
 	}
 
