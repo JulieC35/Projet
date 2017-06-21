@@ -132,21 +132,24 @@ public class User implements Serializable{
 	}
 
 	/**
-	* Get the DBConnection
-	* @return The list of connections
-	*/
-	/*public DBConnection[] getDBConnections(){
-		DBConnection[] ret = new DBConnection[this.connections.size()];
-		ret = (DBConnection[])connections.toArray();
-		return ret;
-	}*/
-
-	/**
-	* Get the DBConnection
+	* Get the DBConnection list
 	* @return The list of connections
 	*/
 	public ArrayList<DBConnection> getDBConnections(){
 		return this.connections;
+	}
+
+	/**
+	* Get the DBConnection with the corresponding name
+	* @param nameCo the name of the DBConnection
+	* @return The connection
+	*/
+	public DBConnection getDBConnection(int idCo){
+		DBConnection ret = null;
+		if ( idCo >= 0 && idCo < this.connections.size() )
+			ret = this.connections.get(idCo);
+
+		return ret;
 	}
 
 	/**
@@ -190,25 +193,10 @@ public class User implements Serializable{
 	* Remove a connection
 	* @param nameCo the name of the connection
 	*/
-	public boolean removeDBConnection(String nameCo){
+	public boolean removeDBConnection(int idCo){
 		boolean ret = false;
-		DBConnection tempDBC = null;
-
-		for (int i = 0 ; i < this.connections.size() ; i++){
-			tempDBC = this.connections.get(i);
-			if ( tempDBC.getName().equals(nameCo) ) {
-				this.connections.remove(i);
-				ret = true;
-			}
-		}
-
-		/*Iterator<DBConnection> itr = this.connections.iterator();
-		while((itr.hasNext()) && (!ret)){
-			DBConnection db = itr.next();
-			if(db.getName().equals(nameCo)){
-				ret = this.connections.remove(db);
-			}
-		}*/
+		if ( idCo >= 0 && idCo < this.connections.size() && this.connections.remove(idCo) != null )
+			ret = true;
 
 		return ret;
 	}

@@ -48,9 +48,9 @@ public class ConsoleApplication{
      * Ask the user to confirm his current action
      * @return true if The user confirmed his action
      */
-    public boolean askConfirmation(){
+    public boolean askConfirmation(String message){
         boolean ret = false;
-        String answer = this.prompt(L.get("confirmation-prompt"));
+        String answer = ( message != null ) ? this.prompt(message) : this.prompt();
         if ( answer.equals("y") || answer.equals("Y") || answer.equals("o") || answer.equals("O") )
             ret = true;
 

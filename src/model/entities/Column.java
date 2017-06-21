@@ -4,21 +4,31 @@ import lang.*;
 
 public class Column{
 
-	private String name;
-	private String type;
+	private String name, type;
+	private boolean primary, unique, notNull;
 	
 	/**
 	 * The constructor of the class
 	 * @param name the name of the column
 	 * @param type the type of the column
 	 */
-	public Column(String name, String type){
-		if(name != null){
-			this.name = name;
-		}
-		if(type != null){
-			this.type = type;
-		}
+	public Column(String name, String type, boolean primary, boolean unique, boolean notNull){
+		this.name = ( name != null ) ? name : "n/a";
+		this.type = ( type != null ) ? type : "n/a";
+		this.primary = primary;
+		this.unique = unique;
+		this.notNull = notNull;
+	}
+
+	/**
+	 * The constructor of the class
+	 */
+	public Column(){
+		this.name = "n/a";
+		this.type = "n/a";
+		this.primary = false;
+		this.unique = false;
+		this.notNull = false;
 	}
 
 	/**
@@ -38,23 +48,75 @@ public class Column{
 	}
 
 	/**
+	 * @return true if the column is a primary key
+	 */
+	public boolean isPrimary(){
+		return this.primary;
+	}
+
+	/**
+	 * @return true if the column is unique
+	 */
+	public boolean isUnique(){
+		return this.unique;
+	}
+
+	/**
+	 * @return true if the column is not null
+	 */
+	public boolean isNotNull(){
+		return this.notNull;
+	}
+
+	/**
 	 * Setter of name
 	 * @param name the new name of the column
+	 * @return true if the name is valid
 	 */
-	public void setName(String name){
-		if(name != null){
+	public boolean setName(String name){
+		boolean ret = false;
+		if(name != null && !name.equals("")){
 			this.name = name;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
 	 * Setter of type
 	 * @param type the new type of the column
+	 * @return true is the type is valid
 	 */
-	public void setType(String type){
-		if(type != null){
+	public boolean setType(String type){
+		boolean ret = false;
+		if(type != null && !type.equals("")){
 			this.type = type;
+			ret = true;
 		}
+
+		return ret;
+	}
+	
+	/**
+	 * @param primary Is the column a primary key ?
+	 */
+	public void setPrimary(boolean primary){
+		this.primary = primary;
+	}
+	
+	/**
+	 * @param unique Is the column unique ?
+	 */
+	public void setUnique(boolean unique){
+		this.unique = unique;
+	}
+	
+	/**
+	 * @param notNull Is the column not null ?
+	 */
+	public void setNotNull(boolean notNull){
+		this.notNull = notNull;
 	}
 
 	/**
@@ -62,8 +124,9 @@ public class Column{
 	 * @return the description
 	 */
 	public String toString(){
-		String s = "Column";
-		return s;
+		StringBuilder sb = new StringBuilder();
+		sb.append("`" + this.name + "` " + this.type);
+		return sb.toString();
 	}
 
 }
