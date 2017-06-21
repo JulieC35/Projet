@@ -69,4 +69,14 @@ public class QueryBuilder{
 
         this.query = sb.toString();
     }
+
+    /**
+     *
+     */
+    public void dropTable(String nameTable){
+        if(nameTable != null){
+            String requeteText = "DROP TABLE " + nameTable + ";";
+            this.query = requeteText;
+        }
+    }
 }
