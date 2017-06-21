@@ -22,8 +22,8 @@ public class TableAddScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("my-tables") + " : " + L.get("add") );
         terminal.printMessage();
+        
         this.addTable(this.requestInformation());
-        startPrompting();
         this.exit();
     }
 
@@ -82,8 +82,11 @@ public class TableAddScreen extends TerminalScreen{
 
                 // And execute it in the new statement
                 stm.executeUpdate(queryBuilder.getQuery());
+                terminal.setMessage(L.get("table-add-success"));
             } catch (SQLException ex){
-                ex.printStackTrace();
+                terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
+            } finally{
+                terminal.loadPreviousScreen();
             }
         }
     }

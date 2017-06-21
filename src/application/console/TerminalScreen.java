@@ -1,9 +1,8 @@
 /**
  * Parent of every terminal screen
  */
-package application.console.screens;
+package application.console;
 
-import application.console.*;
 import model.*;
 import lang.*;
 
@@ -55,7 +54,10 @@ public abstract class TerminalScreen{
                     terminal.quit();
                 break;
                 case ERROR:
-                    this.initialize();
+                    terminal.clear();
+                    terminal.printHeader();
+                    //terminal.printLastTitle();
+                    terminal.printMessage();
                 break;
             }
         }
@@ -68,7 +70,6 @@ public abstract class TerminalScreen{
      */
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = RequestResult.OK;
-
         if ( request == null || request.length == 0 )
             ret = RequestResult.ERROR;
         else if ( request[0].equals("back") )

@@ -20,6 +20,7 @@ public class LoginScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("login"));
         terminal.printMessage();
+        
         this.login();
         this.exit();
     }
@@ -41,12 +42,11 @@ public class LoginScreen extends TerminalScreen{
             password = terminal.promptSecret(L.get("password"));
         }*/
         if ( app.login(username, password) ){
-            terminal.setCurrentScreen(new ConnectionsMenuScreen(terminal, app));
             terminal.setMessage(L.get("welcome") + " " + app.getUser().getFirstName() + " !");
+            terminal.setCurrentScreen(new ConnectionsMenuScreen(terminal, app));
         }
         else {
             terminal.setMessage(L.get("login-failed"));
         }
-            
     }
 }

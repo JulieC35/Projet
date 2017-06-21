@@ -2,6 +2,10 @@
 <localization>
     <!-- Generiques -->
     <word code="app-name" value="Est-ce QL ?" />
+    <word code="instructions" value="Global commands available" />
+    <word code="instruction-sql" value="execute a query" />
+    <word code="instruction-back" value="return to the previous screen" />
+    <word code="instruction-exit" value="terminate the application" />
     <word code="username" value="Username" />
     <word code="password" value="Password" />
     <word code="first-name" value="First name" />
@@ -12,7 +16,9 @@
     <word code="welcome" value="Welcome" />
     <word code="request-error" value="Invalid request, please try again." />
     <word code="mandatory-fields" value="Fields marked with an (*) are mandatory." />
-    <word code="feedback" value="Feedback" />
+    <word code="feedback" value="System feedback" />
+    <word code="unkown-error" value="An unkown error happened." />
+    <word code="sql-error" value="A SQL error happened." />
     <word code="list" value="List" />
     <word code="add" value="Add" />
     <word code="remove" value="Remove" />

@@ -20,6 +20,7 @@ public class SubscribeScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("subscribe"));
         terminal.printMessage();
+        
         this.subscribe();
         this.exit();
     }
@@ -35,17 +36,18 @@ public class SubscribeScreen extends TerminalScreen{
         String emailAddress = "";
         boolean validUsername = false;
         boolean validEmailAddress = false;
-        System.out.println(L.get("mandatory-fields") + "\n");
 
         // Username part
-        username = terminal.prompt(L.get("username") + " (*)");
+        username = terminal.prompt(L.get("username"));
         while ( !validUsername ) {
             if ( username.length() < 2 ) {
-                System.err.println(L.get("username-too-short") + " (*)");
+                terminal.setMessage(L.get("username-too-short"));
+                terminal.printMessage();
                 username = terminal.prompt(L.get("username"));
             } else if ( !app.getAuthSystem().checkUsernameAvailability(username) ) {
-                System.err.println(L.get("username-not-available"));
-                username = terminal.prompt(L.get("username") + " (*)");
+                terminal.setMessage(L.get("username-not-available"));
+                terminal.printMessage();
+                username = terminal.prompt(L.get("username"));
             } else {
                 validUsername = true;
             }
@@ -61,7 +63,8 @@ public class SubscribeScreen extends TerminalScreen{
             if ( app.getAuthSystem().checkEmailAddress(emailAddress) )
                 validEmailAddress = true;
             else {
-                System.err.println(L.get("email-address-not-valid"));
+                terminal.setMessage(L.get("email-address-not-valid"));
+                terminal.printMessage();
                 emailAddress = terminal.prompt(L.get("email-address"));
             }
         }
