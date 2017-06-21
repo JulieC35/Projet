@@ -11,6 +11,8 @@ public class DBConnection implements Serializable{
 	private String password;
 	private String host;
 	private String databaseName;
+	private String driver;
+	private String prefix;
 
 	/**
 	 * Constructeur de la classe
@@ -38,6 +40,8 @@ public class DBConnection implements Serializable{
 		if(databaseName != null){
 			this.databaseName = databaseName;
 		}
+		this.prefix = "jdbc:mysql";
+		this.driver = "com.mysql.jdbc.Driver";
 	}
 
 	/**
@@ -123,25 +127,52 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
+	 * @return The JDBC driver
+	 */
+	public String getDriver(){
+		return this.driver;
+	}
+
+	/**
+	 * @param driver the new driver
+	 */
+	public void setDriver(String driver){
+		if ( driver != null ) 
+			this.driver = driver;
+	}
+
+	/**
+	 * Initializes the connection
+	 * @return The connection depending on this connection profile
+	 */
+	public Connection initialize(){
+		Connection ret = null;
+
+	    try {
+            Class.forName(this.driver);
+        } catch (ClassNotFoundException ex) {
+        }
+
+        String address = this.prefix + "://" + this.host + "/" + this.databaseName;
+
+        try {
+			ret = DriverManager.getConnection(address, this.username, this.password);
+        } catch (SQLException ex) {
+        }
+
+		return ret;
+	}
+
+	/**
 	 * Test la connexion à la BDD 
 	 * @return vrai si la connexion s'effectue
 	 */
 	public boolean testConnectivity(){
-		boolean ret = true;
-	    try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-        	System.out.println("Driver non installé");
-        }
-
-        String address = "jdbc:mysql://" + this.host + "/" + this.databaseName;
-
-        try {
-			Connection connection = DriverManager.getConnection(address, this.username, this.password);
-        } catch (SQLException ex) {
-            ret = false;
-        }
-
+		boolean ret = false;
+		
+		if ( this.initialize() != null )
+			ret = true;
+			
 		return ret;
 	}
 
@@ -150,10 +181,10 @@ public class DBConnection implements Serializable{
 	 * @return les caractéristiques
 	 */
 	public String toString(){
-		String s = "Le nom de la connexion est: " + this.name;
-		s += "\nVotre nom d'utilisateur: " + this.username;
-		s += "\nLa base de donnée est stockée ici: " + this.host;
-		s += "\nLe nom de la base données: " + this.databaseName;
-		return s;
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(this.username + "@" + this.databaseName);
+
+		return sb.toString();
 	}
 }

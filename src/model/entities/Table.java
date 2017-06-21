@@ -5,24 +5,47 @@ import lang.*;
 
 public class Table{
 	private String name;
-	private ArrayList<Column> schema;
-	private ArrayList<Row> rows;
+	private ArrayList<Column> scheme;
+
+	/**
+	 * The constructor
+	 */
+	public Table(){
+		this.name = null;
+		this.scheme = new ArrayList<Column>();
+	}
 
 	/**
 	 * The constructor
 	 * @param name the name of the table
-	 * @param schema all the column of the table
+	 * @param scheme all the column of the table
 	 */
-	public Table(String name, Column[] schema){
+	public Table(String name, Column[] scheme){
 		if(name != null){
 			this.name = name;
 		}
-		if(schema != null){
-			this.schema = new ArrayList<Column>();
-			for(int i = 0; i < schema.length; i++){
-				this.schema.add(schema[i]);
+		if(scheme != null){
+			this.scheme = new ArrayList<Column>();
+			for(int i = 0; i < scheme.length; i++){
+				this.scheme.add(scheme[i]);
 			}
-			this.rows = new ArrayList<Row>();
+		}
+	}
+	
+	/**
+	 * The constructor
+	 * @param name the name of the table
+	 * @param scheme all the column of the table
+	 */
+	public Table(String name, ArrayList<Column> scheme){
+		if(name != null){
+			this.name = name;
+		}
+		if(scheme != null){
+			this.scheme = new ArrayList<Column>();
+			for(int i = 0; i < scheme.size(); i++){
+				this.scheme.add(scheme.get(i));
+			}
 		}
 	}
 
@@ -38,57 +61,31 @@ public class Table{
 	 * Setter of the name
 	 * @param the new name of the table
 	 */
-	public void setName(String name){
-		if(name != null){
+	public boolean setName(String name){
+		boolean ret = false;
+		if ( name != null && !name.equals("") && ( name.length() == name.replaceAll("\\s","").length() ) ) {
 			this.name = name;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
-	 * Getter of the schema 
+	 * Getter of the scheme 
 	 * @return a table of all the column
 	 */
-	public Column[] getSchema(){
-		Column[] ret;
-		ret = (Column[])schema.toArray();
-		return ret;
+	public ArrayList<Column> getScheme(){
+		return this.scheme;
 	}
 
 	/**
-	 * Getter of the rows
-	 * @return all the rows in the table
+	 * Allows to add a column to the table scheme
+	 * @param col The coloumn to add to the table scheme
 	 */
-	public Row[] getRows(){
-		Row[] ret;
-		ret = (Row[])rows.toArray();
-		return ret;
-	}
-
-	/**
-	 * Add a row in the table
-	 * @param row the row to add
-	 */
-	public void addRow(Row r){
-		if(r != null){
-			this.rows.add(r);
-		}
-	}
-
-	/**
-	 * Delete a row from the table
-	 * @param id the id of the row to delete
-	 */
-	public void deleteRow(int id){
-		if((id >= 0) && (id < this.rows.size())){
-			Row r = this.rows.remove(id);
-		}
-	}
-
-	/**
-	 * Clear the table
-	 */
-	public void empty(){
-		this.rows.clear();
+	public void addColumn(Column col){
+		if ( col != null ) 
+			this.scheme.add(col);
 	}
 
 	/**
@@ -96,7 +93,7 @@ public class Table{
 	 * @return the description
 	 */
 	public String toString(){
-		String s = "Table";
+		String s = "name: " + this.name;
 		return s;
 	}
 

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <localization>
     <!-- Generiques -->
-    <word code="app-name" value="Est-ce QL ?" />
+    <word code="app-name" value="JavaMyAdmin" />
     <word code="username" value="Nom d'utilisateur" />
     <word code="password" value="Mot de passe" />
+    <word code="first-name" value="Prénom" />
+    <word code="last-name" value="Nom" />
+    <word code="email-address" value="Adresse email" />
     <word code="login" value="Connexion" />
     <word code="subscribe" value="Inscription" />
     <word code="welcome" value="Bienvenue" />
     <word code="request-error" value="Requête invalide, veuillez re-essayer." />
+    <word code="mandatory-fields" value="Les champs marqués d'un (*) sont obligatoires." />
+    <word code="feedback" value="Retour" />
+    <word code="list" value="Liste" />
+    <word code="add" value="Ajouter" />
+    <word code="remove" value="Supprimer" />
+    <word code="input-too-short" value="Entrée trop courte" />
+    <word code="not-valid-input" value="Entrée non valide" />
+    <word code="host" value="Hôte" />
+    <word code="database-name" value="Nom de la base de données" />
+    <word code="confirmation-prompt" value="Êtes-vous sûr ? (o/n)" />
+    <word code="empty-list" value="Il n'y a rien ici" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -35,5 +49,31 @@
     <word code="home-subscribe" value="S'inscrire" />
 
     <!-- Login -->
-    <word code="login-failed" value="Echec de connexion, veuillez re-essayer." />
+    <word code="login-failed" value="Echec de connexion." />
+
+    <!-- Subscribe -->
+    <word code="username-not-available" value="Ce nom d'utilisateur n'est pas disponible." />
+    <word code="username-too-short" value="Ce nom d'utilisateur est trop court." />
+    <word code="email-address-not-valid" value="L'adresse email n'est pas valide." />
+
+    <!-- DBConnections -->
+    <word code="my-connections" value="Mes connexions" />
+    <word code="connection-name" value="Nom de la connexion" />
+    <word code="connection-add-failure" value="L'ajout de connexion a échoué." />
+    <word code="connection-add-success" value="Connexion ajoutée." />
+    <word code="connection-removal-failure" value="La suppression de connexion a échoué." />
+    <word code="connection-removal-success" value="Connexion supprimée." />
+    <word code="connection-failure" value="Impossible d'initialiser la connexion." />
+    <word code="connection-success" value="Connexion initialisée." />
+
+    <!-- Tables -->
+    <word code="my-tables" value="Mes tables" />
+    <word code="table-name" value="Nom de la table" />
+    <word code="table-add-failure" value="L'ajout de table a échoué." />
+    <word code="table-add-success" value="Table ajoutée." />
+    <word code="table-removal-failure" value="La suppression de table a échoué." />
+    <word code="table-removal-success" value="Table supprimée." />
+    <word code="table-access-failure" value="Impossible d'accéder à la table." />
+    <word code="table-access-success" value="Accès à la table." />
+    <word code="table-nb-columns" value="Nombre de colonnes" />
 </localization>

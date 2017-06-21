@@ -6,12 +6,13 @@ import lang.*;
 public class QueryResult{
 	private ArrayList<Column> schema;
 	private ArrayList<Row> rows;
+	private String message;
 
 	/**
 	 * The constructor
 	 */
 	public QueryResult(){
-
+		this.message = null;
 	}
 
 	public Row[] getRows(){

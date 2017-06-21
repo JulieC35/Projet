@@ -4,7 +4,7 @@
 package application.console.screens;
 
 import application.console.*;
-import model.RequestResult;
+import model.*;
 import model.entities.*;
 import lang.*;
 

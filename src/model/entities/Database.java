@@ -7,13 +7,11 @@ import lang.*;
 * Class Database
 */
 public class Database {
-	
 
 	/**
 	* The constructor of the method
 	*/
 	public Database(){
-
 	}
 
 	/**
@@ -49,6 +47,10 @@ public class Database {
 	public ArrayList<Table> getTables(){
 		return null;
 	}
+
+	/**
+	 * 
+	 */
 
 	/**
 	* Display informations

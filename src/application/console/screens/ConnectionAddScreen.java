@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.RequestResult;
 import model.entities.*;
+import model.*;
 import lang.*;
 
 public class ConnectionAddScreen extends TerminalScreen{
@@ -33,7 +33,7 @@ public class ConnectionAddScreen extends TerminalScreen{
         String name = "";
         String username = "";
         String password = "";
-        String host ="";
+        String host = "";
         String databaseName = "";
 
         name = terminal.prompt(L.get("connection-name"));

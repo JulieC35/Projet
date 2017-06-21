@@ -4,13 +4,13 @@
 package application.console.screens;
 
 import application.console.*;
-import model.RequestResult;
-import model.entities.Application;
+import model.*;
 import lang.*;
 
 public abstract class TerminalScreen{
     protected Application app;
     protected ConsoleApplication terminal;
+    protected QueryBuilder queryBuilder;
 
     /**
      * The constructor of the TerminalScreen
@@ -55,7 +55,7 @@ public abstract class TerminalScreen{
                     terminal.quit();
                 break;
                 case ERROR:
-                    System.err.println(L.get("request-error"));
+                    this.initialize();
                 break;
             }
         }
