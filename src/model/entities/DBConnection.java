@@ -45,6 +45,19 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
+	 * Constructeur de la classe
+	 */
+	public DBConnection(){
+		this.name = "";
+		this.username = "";
+		this.password = "";
+		this.host = "";
+		this.databaseName = "";
+		this.prefix = "jdbc:mysql";
+		this.driver = "com.mysql.jdbc.Driver";
+	}
+
+	/**
 	 * Getter du nom
 	 * @return l'attribut name
 	 */
@@ -55,11 +68,16 @@ public class DBConnection implements Serializable{
 	/**
 	 * Setter du nom
 	 * @param nom le nouveau nom
+	 * @return true if the setting succeeded
 	 */
-	public void setName(String name){
-		if(name != null){
+	public boolean setName(String name){
+		boolean ret = false;
+		if( name != null && !name.equals("") && (name.length() == name.replaceAll("\\s","").length()) ){
 			this.name = name;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
@@ -73,21 +91,31 @@ public class DBConnection implements Serializable{
 	/**
 	 * Setter de l'username
 	 * @param username le nouveau nom d'utilisateur
+	 * @return true if the setting succeeded
 	 */
-	public void setUsername(String username){
-		if(username != null){
+	public boolean setUsername(String username){
+		boolean ret = false;
+		if( username != null && !username.equals("") ){
 			this.username = username;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
 	 * Setter du password
 	 * @param password le nouveau mot de passe
+	 * @return true if the setting succeeded
 	 */
-	public void setPassword(String password){
+	public boolean setPassword(String password){
+		boolean ret = false;
 		if(password != null){
 			this.password = password;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
@@ -101,11 +129,16 @@ public class DBConnection implements Serializable{
 	/**
 	 * Setter du host
 	 * @param host la nouvelle valeur de host
+	 * @return true if the setting succeeded
 	 */
-	public void setHost(String host){
-		if(host != null){
+	public boolean setHost(String host){
+		boolean ret = false;
+		if( host != null && !host.equals("") ){
 			this.host = host;
+			ret = true;
 		}
+
+		return ret;
 	}
 
 	/**
@@ -119,26 +152,16 @@ public class DBConnection implements Serializable{
 	/**
 	 * Setter du databaseName
 	 * @param databaseName le nouveau databaseName
+	 * @return true if the setting succeeded
 	 */
-	public void setDatabaseName(String databaseName){
-		if (databaseName != null){
+	public boolean setDatabaseName(String databaseName){
+		boolean ret = false;
+		if ( databaseName != null && !databaseName.equals("") ){
 			this.databaseName = databaseName;
+			ret = true;
 		}
-	}
 
-	/**
-	 * @return The JDBC driver
-	 */
-	public String getDriver(){
-		return this.driver;
-	}
-
-	/**
-	 * @param driver the new driver
-	 */
-	public void setDriver(String driver){
-		if ( driver != null ) 
-			this.driver = driver;
+		return ret;
 	}
 
 	/**

@@ -13,23 +13,23 @@ import lang.*;
 import application.console.screens.*;
 
 public class ConsoleApplication{
-    private Application appModel;
+    private Application app;
     private TerminalScreen currentScreen;
     private ArrayList<TerminalScreen> stack;
     private String message;
 
-    final String PROMPT = "javaMyAdmin> ";
+    final String PROMPT = "> ";
 
     /**
      * Constructor
      */
     public ConsoleApplication(){
-        this.appModel = new Application();
+        this.app = new Application();
         this.message = "";
 
         // We load the first screen of the application, and the stack stays empty
         this.stack = new ArrayList<TerminalScreen>();
-        this.currentScreen = new HomeScreen(this, appModel);
+        this.currentScreen = new HomeScreen(this, app);
         this.refresh();
     }
 
@@ -46,10 +46,11 @@ public class ConsoleApplication{
      */
     public void printMessage(){
         if ( this.message != null && !this.message.equals("") ){
-            System.out.println(L.get("feedback") + " : " + this.message + "\n");
+            System.out.println(L.get("feedback") + " : " + this.message);
+            this.message = "";
+        } else {
+            //System.out.println(L.get("feedback") + " : " + L.get("unknown-error") + "\n");
         }
-
-        this.message = "";
     }
 
     /**
@@ -91,13 +92,37 @@ public class ConsoleApplication{
         this.clear();
         System.out.println("Console mode");
         System.out.println("\n" + L.get("application-copyright"));
-        System.out.println("\n" + L.get("application-description") + "\n");
+        System.out.println("\n" + L.get("application-description"));
+        System.out.println("\n" + L.get("instructions") + " :");
+        System.out.println(" - sql : " + L.get("instruction-sql"));
+        System.out.println(" - back : " + L.get("instruction-back"));
+        System.out.println(" - exit : " + L.get("instruction-exit") + "\n");
     }
 
     /**
      * Allos to print the title of a screen
      */
     public void printTitle(String title){
+        if ( title != null ) {
+            String border = "---------";
+            for(int i = 0 ; i < title.length() ; i++){
+                border += "-";
+            }
+            border += "---------";
+            System.out.println(border);
+            System.out.println("\t" + title);
+            System.out.println(border);
+        }
+    }
+
+    /**
+     * Allos to print the title of a screen
+     */
+    public void printTitle(String title, String subtitle){
+        if ( title != null ) {
+            if (subtitle != null )
+                title = title + " : " + subtitle;
+
         String border = "---------";
         for(int i = 0 ; i < title.length() ; i++){
             border += "-";
@@ -106,7 +131,43 @@ public class ConsoleApplication{
         System.out.println(border);
         System.out.println("\t" + title);
         System.out.println(border);
+        }
     }
+
+    /**
+     * Allows to display a menu
+     * @param list the list of items of the menu
+     */
+    public void printMenu(String[] list){
+        if ( list != null ){
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n");
+            int i = 1;
+            for(String element : list){
+                sb.append(i + " : " + element + "\n");
+                i++;
+            }
+            System.out.println(sb.toString());
+        }
+     }
+
+    /**
+     * Allows to display a list
+     * @param list the list of items
+     */
+    public void printList(ArrayList<String> list){
+        if ( list != null && list.size() > 0 ){
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n");
+            int i = 0;
+            for(String element : list){
+                sb.append(i + " : " + element + "\n");
+                i++;
+            }
+            System.out.println(sb.toString());
+        } else 
+            System.out.println("\n" + L.get("empty-list"));
+     }
 
     /**
      * Clearing the terminal
@@ -120,6 +181,7 @@ public class ConsoleApplication{
      * Allows to exit the application
      */
     public void quit(){
+        app.logout();
         System.exit(0);
     }
 
@@ -131,9 +193,16 @@ public class ConsoleApplication{
      public String prompt(String label){
          String ret = "";
          if ( label != null && !label.equals("") ) 
-            ret = System.console().readLine(label + " :\n" + PROMPT);
+            ret = System.console().readLine("\n" + label + " :\n" + PROMPT);
          else
-            ret = System.console().readLine(PROMPT);
+            ret = System.console().readLine("\n" + PROMPT);
+
+        if ( ret.equals("back") ) {
+            this.loadPreviousScreen();
+        } else if ( ret.equals("exit") ) {
+            this.quit();
+        }
+
         return ret;
      }   
     
@@ -142,8 +211,7 @@ public class ConsoleApplication{
      * @return The typed information
      */
      public String prompt(){
-        String ret = System.console().readLine(PROMPT);
-        return ret;
+        return this.prompt(null);
      }   
 
     /**
@@ -153,12 +221,11 @@ public class ConsoleApplication{
      public String promptSecret(String label){
          char[] ret = null;
          if ( label != null && !label.equals("") ) 
-            ret = System.console().readPassword(label + " :\n" + PROMPT);
+            ret = System.console().readPassword("\n" + label + " :\n" + PROMPT);
          else
             ret = System.console().readPassword(PROMPT);
          return new String(ret);
      }
-
 
     /**
      * Ask the user to confirm his current action
@@ -167,10 +234,40 @@ public class ConsoleApplication{
     public boolean askConfirmation(String message){
         boolean ret = false;
         String answer = ( message != null ) ? this.prompt(message + " " + L.get("boolean-answer")) : this.prompt(L.get("boolean-answer"));
+        // If the answer is anything but y, Y, o or O we consider the user refused
         if ( answer.equals("y") || answer.equals("Y") || answer.equals("o") || answer.equals("O") )
             ret = true;
 
         return ret;
+    }
+
+    /**
+     * Starts the loop that asks the user to type information
+     */
+    public void startPrompting(){
+        boolean continuePrompting = true;
+        String[] currentRequest = null;
+
+        while ( continuePrompting ) {
+            // We first get the user's request and parse it into an array of string
+            currentRequest = this.parseRequest( this.prompt() );
+            // We proceed to the request
+            RequestResult result = this.currentScreen.proceedRequest( currentRequest );
+            // If the request was to exit, we set the boolean to false. If there was an error and the request could not be executed,
+            // we indicate it.
+            switch ( result ){
+                case BACK:
+                    continuePrompting = false;
+                break;
+                case END:
+                    this.clear();
+                    this.quit();
+                break;
+                case ERROR:
+                    this.printMessage(); // We print the message if there were an error
+                break;
+            }
+        }
     }
 
     /**

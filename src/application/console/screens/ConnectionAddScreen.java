@@ -20,6 +20,7 @@ public class ConnectionAddScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("my-connections") + " : " + L.get("add") );
         terminal.printMessage();
+        
         this.addConnection(this.requestInformation());
         this.exit();
     }
@@ -28,36 +29,33 @@ public class ConnectionAddScreen extends TerminalScreen{
      * Requesting information to create a DBConnection
      */
     public DBConnection requestInformation(){
-        DBConnection ret = null;
+        DBConnection ret = new DBConnection();
 
-        String name = "";
-        String username = "";
-        String password = "";
-        String host = "";
-        String databaseName = "";
-
-        name = terminal.prompt(L.get("connection-name"));
-        while ( name == null || name.equals("") || (name.length() != name.replaceAll("\\s","").length() )){
-            System.err.println(L.get("not-valid-input"));
-            name = terminal.prompt(L.get("connection-name"));
+        while ( !ret.setName(terminal.prompt(L.get("connection-name")) )){
+            terminal.setMessage(L.get("not-valid-input"));
+            terminal.printMessage();
         }
 
-        username = terminal.prompt(L.get("username"));
-        password = terminal.promptSecret(L.get("password"));
-
-        host = terminal.prompt(L.get("host"));
-        while ( host == null || host.equals("") ) {
-            System.err.println(L.get("input-too-short"));
-            host = terminal.prompt(L.get("host"));
+        while ( !ret.setUsername(terminal.prompt(L.get("username"))) ){
+            terminal.setMessage(L.get("not-valid-input"));
+            terminal.printMessage();
         }
 
-        databaseName = terminal.prompt(L.get("database-name"));
-        while ( databaseName == null || databaseName.equals("") ) {
-            System.err.println(L.get("input-too-short"));
-            host = terminal.prompt(L.get("database-name"));
+        while ( !ret.setPassword(terminal.promptSecret(L.get("password"))) ){
+            terminal.setMessage(L.get("not-valid-input"));
+            terminal.printMessage();
         }
 
-        ret =  new DBConnection(name, username, password, host, databaseName);
+        while ( !ret.setHost(terminal.prompt(L.get("host"))) ){
+            terminal.setMessage(L.get("not-valid-input"));
+            terminal.printMessage();
+        }
+
+        while ( !ret.setDatabaseName(terminal.prompt(L.get("database-name"))) ) {
+            terminal.setMessage(L.get("input-too-short"));
+            terminal.printMessage();
+        }
+
         return ret;            
     }
 

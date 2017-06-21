@@ -20,28 +20,15 @@ public class HomeScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("home-title"));
         terminal.printMessage();
-        this.printMenu();
-        this.startPrompting();
+        terminal.printMenu(new String[]{L.get("home-connect"), L.get("home-subscribe")});
+        terminal.startPrompting();
         this.exit();
-    }
-
-    /**
-     * Displays the menu of the current screen
-     * It is a list of the different possible actions
-     */
-    public void printMenu(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("1 : " + L.get("home-connect") + "\n");
-        sb.append("2 : " + L.get("home-subscribe") + "\n");
-        sb.append("-----\n");
-        sb.append("exit\n\n");
-        System.out.println(sb.toString());
     }
     
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = super.proceedRequest(request);
 
-        if ( ret != RequestResult.BACK && ret != RequestResult.END && ret != RequestResult.ERROR ){
+        if ( ret == RequestResult.OK ){            
             switch ( request[0] ){
                 case "1":
                     terminal.setCurrentScreen(new LoginScreen(terminal, app));
@@ -50,6 +37,7 @@ public class HomeScreen extends TerminalScreen{
                     terminal.setCurrentScreen(new SubscribeScreen(terminal, app));
                     break;
                 default:
+                    terminal.setMessage(L.get("not-valid-input"));
                     ret = RequestResult.ERROR;
                     break;
             }

@@ -2,6 +2,10 @@
 <localization>
     <!-- Generiques -->
     <word code="app-name" value="JavaMyAdmin" />
+    <word code="instructions" value="Commandes globales disponibles" />
+    <word code="instruction-sql" value="exécuter une requête" />
+    <word code="instruction-back" value="Retourner à l'écran précédent" />
+    <word code="instruction-exit" value="Fermer l'application" />
     <word code="username" value="Nom d'utilisateur" />
     <word code="password" value="Mot de passe" />
     <word code="first-name" value="Prénom" />
@@ -12,7 +16,9 @@
     <word code="welcome" value="Bienvenue" />
     <word code="request-error" value="Requête invalide, veuillez re-essayer." />
     <word code="mandatory-fields" value="Les champs marqués d'un (*) sont obligatoires." />
-    <word code="feedback" value="Retour" />
+    <word code="feedback" value="Message système" />
+    <word code="unkown-error" value="Une erreur inconnue est survenue." />
+    <word code="sql-error" value="Une erreur SQL est survenue." />
     <word code="list" value="Liste" />
     <word code="add" value="Ajouter" />
     <word code="remove" value="Supprimer" />

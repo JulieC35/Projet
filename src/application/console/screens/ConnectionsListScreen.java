@@ -21,29 +21,23 @@ public class ConnectionsListScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("my-connections") + " : " + L.get("list"));
         terminal.printMessage();
-        this.printList();
-        this.startPrompting();
+        terminal.printList(this.generateList());
+        terminal.startPrompting();
+        
         this.exit();
     }
 
     /**
-     * Displays the menu of the current screen
-     * It is a list of the different possible actions
+     * Generates a list of the different possible actions
+     * @return The list of strings
      */
-    public void printList(){
-        StringBuilder sb = new StringBuilder();
-        ArrayList<DBConnection> dbConnections = app.getUser().getDBConnections();
-        if ( dbConnections.size() == 0 )
-            System.out.println(L.get("empty-list"));
-        else {
-            for (int i = 0 ; i < dbConnections.size() ; i++){
-                System.out.println(i + " : " + dbConnections.get(i).getName());
-            }
-        }
-        sb.append("-----\n");
-        sb.append("back\n");
-        sb.append("exit\n\n");
-        System.out.println(sb.toString());
+    public ArrayList<String> generateList(){
+        ArrayList<String> ret = new ArrayList<String>();
+
+        for(DBConnection dbC : app.getUser().getDBConnections())
+            ret.add(dbC.getName());
+
+        return ret;
     }
 
     /**

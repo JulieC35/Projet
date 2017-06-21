@@ -20,30 +20,16 @@ public class ConnectionsMenuScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("my-connections"));
         terminal.printMessage();
-        this.printMenu();
-        this.startPrompting();
+        terminal.printMenu(new String[]{L.get("list"), L.get("add"), L.get("remove")});
+        terminal.startPrompting();
+        
         this.exit();
-    }
-
-    /**
-     * Displays the menu of the current screen
-     * It is a list of the different possible actions
-     */
-    public void printMenu(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("1 : " + L.get("list") + "\n");
-        sb.append("2 : " + L.get("add") + "\n");
-        sb.append("3 : " + L.get("remove") + "\n");
-        sb.append("-----\n");
-        sb.append("back\n");
-        sb.append("exit\n\n");
-        System.out.println(sb.toString());
     }
 
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = super.proceedRequest(request);
-
-        if ( ret != RequestResult.BACK && ret != RequestResult.END && ret != RequestResult.ERROR ){
+        
+        if ( ret == RequestResult.OK ){            
             switch ( request[0] ){
                 case "1":
                     terminal.setCurrentScreen(new ConnectionsListScreen(terminal, app));
@@ -55,16 +41,16 @@ public class ConnectionsMenuScreen extends TerminalScreen{
                     terminal.setCurrentScreen(new ConnectionRemoveScreen(terminal, app));
                     break;
                 default:
+                    terminal.setMessage(L.get("not-valid-input"));
                     ret = RequestResult.ERROR;
                     break;
             }
         }
-
+        
         return ret;
     }
 
     public void exit(){
         app.logout();
-        terminal.loadPreviousScreen();
     }
 }

@@ -21,40 +21,26 @@ public class TablesMenuScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables"));
         terminal.printMessage();
+        terminal.printMenu(new String[]{L.get("list"), L.get("add"), L.get("remove")});
+        terminal.startPrompting();
 
-        System.out.println(app.getConnectionProfile());
-        System.out.println("-----");
-        this.printMenu();
-        this.startPrompting();
         this.exit();
-    }
-
-    /**
-     * Displays the menu of the current screen
-     * It is a list of the different possible actions
-     */
-    public void printMenu(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("1 : " + L.get("list") + "\n");
-        sb.append("2 : " + L.get("add") + "\n");
-        sb.append("3 : " + L.get("remove") + "\n");
-        sb.append("-----\n");
-        sb.append("back\n");
-        sb.append("exit\n\n");
-        System.out.println(sb.toString());
     }
 
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = super.proceedRequest(request);
         DBConnection dbC = null;
 
-        if ( ret != RequestResult.END && ret != RequestResult.ERROR ){            switch ( request[0] ){
+        if ( ret == RequestResult.OK ){            
+            switch ( request[0] ){
                 case "1":
+                    terminal.setCurrentScreen(new TablesListScreen(terminal, app));
                     break;
                 case "2": 
                     terminal.setCurrentScreen(new TableAddScreen(terminal, app));
                     break;
                 case "3":
+                    terminal.setCurrentScreen(new TableRemoveScreen(terminal, app));
                     break;
                 default:
                     ret = RequestResult.ERROR;
