@@ -7,6 +7,7 @@ import application.console.*;
 import model.entities.*;
 import model.*;
 import lang.*;
+import java.sql.*;
 
 public class TableAddScreen extends TerminalScreen{
     /**
@@ -72,8 +73,18 @@ public class TableAddScreen extends TerminalScreen{
      */
     public void addTable(Table table){
         if ( table != null ) {
-            queryBuilder.createTable(table);
-            System.out.println(queryBuilder.getQuery());
+            Statement stm = null;
+            try {
+                stm = app.getConnection().createStatement();
+
+                // We build the query with the recieved table
+                queryBuilder.createTable(table);
+
+                // And execute it in the new statement
+                stm.executeUpdate(queryBuilder.getQuery());
+            } catch (SQLException ex){
+                ex.printStackTrace();
+            }
         }
     }
 }
