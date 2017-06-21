@@ -55,6 +55,7 @@ public class TablesMenuScreen extends TerminalScreen{
                     terminal.setCurrentScreen(new TableAddScreen(terminal, app));
                     break;
                 case "3":
+                    terminal.setCurrentScreen(new TableRemoveScreen(terminal, app));
                     break;
                 default:
                     ret = RequestResult.ERROR;
