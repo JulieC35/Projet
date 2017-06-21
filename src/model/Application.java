@@ -28,6 +28,15 @@ public class Application {
 	}
 
 	/**
+	 * @return the connection
+	 */
+	public Connection getConnection(){
+		return this.connection;
+	}
+
+
+
+	/**
 	 * @return The auth systeù
 	 */
 	public UserManager getAuthSystem(){
