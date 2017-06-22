@@ -19,7 +19,7 @@ public class RowsMenuScreen extends TerminalScreen{
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables"));
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + app.getCurrentTable());
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("list"), L.get("add"), L.get("remove")});
         terminal.startPrompting();

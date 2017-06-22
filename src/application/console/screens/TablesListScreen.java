@@ -58,8 +58,26 @@ public class TablesListScreen extends TerminalScreen{
         RequestResult ret = super.proceedRequest(request);
 
         if ( ret == RequestResult.OK ){
-            terminal.setMessage("Proceeding...");
-            ret = RequestResult.BACK;
+            int tableId = 0;
+            try {
+                tableId = Integer.parseInt(request[0]);
+                try {
+                    String tableName = this.generateList().get(tableId);
+                    try {
+                        app.setCurrentTable(tableName);
+                        terminal.setCurrentScreen(new RowsMenuScreen(terminal, app));
+                    } catch (SQLException ex) {
+                        terminal.setMessage(L.get("table-not-exists"));
+                        ret = RequestResult.ERROR;
+                    }
+                } catch (IndexOutOfBoundsException ex){
+                    terminal.setMessage(L.get("not-valid-input"));
+                    ret = RequestResult.ERROR;
+                }
+            } catch (NumberFormatException ex){
+                terminal.setMessage(L.get("not-valid-input"));
+                ret = RequestResult.ERROR;
+            }
         }
 
         return ret;
