@@ -9,6 +9,7 @@ import model.*;
 import lang.*;
 
 import java.sql.*;
+import java.util.*;
 
 public class TableRemoveScreen extends TerminalScreen{
     /**
@@ -23,26 +24,65 @@ public class TableRemoveScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(L.get("my-tables") + " : " + L.get("remove") );
         terminal.printMessage();
+        terminal.printList(this.generateList());
         this.removeTable(this.requestInformation());
         startPrompting();
         this.exit();
     }
 
     /**
-     * Requesting information to create a Table
+     * Generates a list of the different tables
+     * @return The list of strings
+     */
+    public ArrayList<String> generateList(){
+        ArrayList<String> ret = new ArrayList<String>();
+        try{
+            DatabaseMetaData metaData = app.getConnection().getMetaData();
+            ResultSet result = metaData.getTables(null, null, "%", null);
+
+            while(result.next()){
+                ret.add(result.getString("TABLE_NAME"));
+            }
+        } catch(SQLException ex){
+            terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
+            terminal.loadPreviousScreen();
+        }
+
+        return ret;
+    }
+
+    public RequestResult proceedRequest(String[] request){
+        RequestResult ret = super.proceedRequest(request);
+
+        if ( ret == RequestResult.OK ){
+            try {
+                if ( !this.removeTable(request[0]) )
+                    ret = RequestResult.ERROR;
+                else
+                    ret = RequestResult.BACK; // When the table is removed, we go back
+            } catch (Exception ex ){
+                System.out.println(ex.getMessage());
+                ret = RequestResult.ERROR;
+            }
+        }
+        return ret;
+    }
+
+    /**
+     * Requesting information to remove a Table
      */
     public String requestInformation(){
 
         String ret = new String();
         ret = terminal.prompt(L.get("table-name"));
-
         return ret;            
     }
 
     /**
-     * Adding a table to the database
+     * Removing a table to the database
      */
-    public void removeTable(String nameTable){
+    public boolean removeTable(String nameTable){
+        boolean ret = false;
         try{
             DatabaseMetaData metaData = app.getConnection().getMetaData();
             ResultSet result = metaData.getTables(null, null, "%", null);
@@ -56,9 +96,12 @@ public class TableRemoveScreen extends TerminalScreen{
             try{
                 Statement state = app.getConnection().createStatement();
                 state.executeUpdate(queryBuilder.getQuery());
+                ret = true;
             } catch(SQLException ex){
                 System.out.println(ex.getMessage());
             }
         }
+        System.out.println(ret);
+        return ret;
     }
 }
