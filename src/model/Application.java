@@ -15,6 +15,7 @@ public class Application {
 	private User user;
 	private DBConnection connectionProfile;
 	private Connection connection;
+	private String currentTable;
 
 	/**
 	 * Initialisation des paramètres
@@ -25,6 +26,7 @@ public class Application {
 		this.user = null;
 		this.connectionProfile = null;
 		this.connection = null;
+	
 	}
 
 	/**

@@ -22,6 +22,7 @@ public class HomeScreen extends TerminalScreen{
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("home-connect"), L.get("home-subscribe")});
         terminal.startPrompting();
+        
         this.exit();
     }
     

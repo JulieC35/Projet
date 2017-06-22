@@ -1,19 +1,19 @@
 /**
- * Connections list screen
+ * 
  */
+
 package application.console.screens;
 
 import application.console.*;
+import lang.*;
 import model.*;
 import model.entities.*;
-import lang.*;
-import java.util.*;
 
-public class TablesMenuScreen extends TerminalScreen{
+public class RowsMenuScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TablesMenuScreen(ConsoleApplication terminal, Application app){
+    public RowsMenuScreen(ConsoleApplication terminal, Application app){
         super(terminal, app);
     }
 
@@ -33,13 +33,13 @@ public class TablesMenuScreen extends TerminalScreen{
         if ( ret == RequestResult.OK ){            
             switch ( request[0] ){
                 case "1":
-                    terminal.setCurrentScreen(new TablesListScreen(terminal, app));
+                    //terminal.setCurrentScreen(new RowsListScreen(terminal, app));
                     break;
                 case "2": 
-                    terminal.setCurrentScreen(new TableAddScreen(terminal, app));
+                    
                     break;
                 case "3":
-                    terminal.setCurrentScreen(new TableRemoveScreen(terminal, app));
+                    
                     break;
                 default:
                     ret = RequestResult.ERROR;
