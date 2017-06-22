@@ -46,8 +46,10 @@ public class UserManager{
 	 * @param user The user to be removed
 	 */
 	public void removeUser(User user){
-		if ( user != null )
+		if ( user != null ) {
 			this.users.remove(user);
+			this.saveUsers();
+		}
 	}
 
 	/**
