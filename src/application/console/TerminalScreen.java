@@ -4,6 +4,7 @@
 package application.console;
 
 import model.*;
+import application.console.screens.*;
 import lang.*;
 
 public abstract class TerminalScreen{
@@ -45,6 +46,7 @@ public abstract class TerminalScreen{
             RequestResult result = this.proceedRequest( currentRequest );
             // If the request was to exit, we set the boolean to false. If there was an error and the request could not be executed,
             // we indicate it.
+
             switch ( result ){
                 case BACK:
                     continuePrompting = false;
@@ -76,6 +78,10 @@ public abstract class TerminalScreen{
             ret = RequestResult.BACK;
         else if ( request[0].equals("exit") )
             ret = RequestResult.END;
+        else if ( request[0].equals("sql") ){
+            ret = RequestResult.SQL;
+            terminal.setCurrentScreen(new SQLQueryScreen(terminal, app));
+        }
 
         return ret;
     }
