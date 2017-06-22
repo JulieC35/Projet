@@ -29,6 +29,7 @@
     <word code="confirmation-prompt" value="Are you sure ? (y/n)" />
     <word code="empty-list" value="There's nothing here" />
     <word code="boolean-answer" value="(y/n)" />
+    <word code="sql-query" value="SQL Query" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
