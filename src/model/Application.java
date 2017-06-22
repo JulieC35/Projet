@@ -12,9 +12,10 @@ import java.sql.*;
 public class Application {
     private UserManager authSystem;
 	private QueryBuilder queryBuilder;
-	private User user;
-	private DBConnection connectionProfile;
-	private Connection connection;
+
+	private User currentUser;
+	private DBConnection currentConnectionProfile;
+	private Connection currentConnection;
 	private String currentTable;
 
 	/**
@@ -23,20 +24,18 @@ public class Application {
 	public Application(){
 		this.authSystem = new UserManager();
 		this.queryBuilder = new QueryBuilder();
-		this.user = null;
-		this.connectionProfile = null;
-		this.connection = null;
+		this.currentUser = null;
+		this.currentConnectionProfile = null;
+		this.currentConnection = null;
 	
 	}
 
 	/**
-	 * @return the connection
+	 * @return the currentConnection
 	 */
 	public Connection getConnection(){
-		return this.connection;
+		return this.currentConnection;
 	}
-
-
 
 	/**
 	 * @return The auth systeù
@@ -49,14 +48,14 @@ public class Application {
 	 * Getter de l'utilisateur
 	 */
 	public User getUser(){
-		return this.user;
+		return this.currentUser;
 	}
 
 	/**
 	 * Getter de la connexion à la base de données
 	 */
 	public DBConnection getConnectionProfile(){
-		return this.connectionProfile;
+		return this.currentConnectionProfile;
 	}
 
 	/**
@@ -69,16 +68,16 @@ public class Application {
 	/**
 	 * Permet d'indiquer quel utilisateur est connecté
 	 * s'il à les bons identifiants/mot de passe
-	 * @param username The username
+	 * @param currentUsername The currentUsername
 	 * @param password  the password
 	 * @return true if the login process succeeded
 	 */
-	public boolean login(String username, String password){
+	public boolean login(String currentUsername, String password){
 		boolean ret = false;
-		User tempUser = this.authSystem.authenticate(username, password);
+		User tempUser = this.authSystem.authenticate(currentUsername, password);
 		if ( tempUser != null ) {
-			this.user = tempUser;
-			this.connectionProfile = null;
+			this.currentUser = tempUser;
+			this.currentConnectionProfile = null;
 			ret = true;
 		}
 		return ret;	
@@ -89,7 +88,7 @@ public class Application {
 	 */
 	public void logout(){
         this.disconnect();
-        this.user = null;
+        this.currentUser = null;
 	}
 
 	/**
@@ -97,16 +96,40 @@ public class Application {
 	 */
 	public void setConnectionProfile(DBConnection dbC){
 		if ( dbC != null ) {
-			this.connectionProfile = dbC;
+			this.currentConnectionProfile = dbC;
 		}
 	}
 
 	/**
-	 * Sets the connection profile and initializes the database
+	 * Allows to chagne the curent table name
+	 * @param table The new current table name
+	 * @return true if the table name was set properly
+	 * @throws SQLException if the table doesn't exist
+	 */
+	public boolean setCurrentTable(String table) throws SQLException{
+		boolean ret = false;
+		
+		Statement stm = null;
+		this.currentConnection.createStatement().executeQuery("SELECT * FROM " + table);
+		this.currentTable = table;
+		ret = true;
+
+		return ret;
+	}
+
+	/**
+	 * @return The current table name
+	 */
+	public String getCurrentTable(){
+		return ( this.currentTable != null && !this.currentTable.equals("") ) ? this.currentTable : "n/a";
+	}
+
+	/**
+	 * Sets the currentConnection profile and initializes the database
 	 */
 	public void connect(){
-		if ( this.connectionProfile != null )
-			this.connection = this.connectionProfile.initialize();
+		if ( this.currentConnectionProfile != null )
+			this.currentConnection = this.currentConnectionProfile.initialize();
 	}
 
 	/**
@@ -114,12 +137,12 @@ public class Application {
 	 */
 	public void disconnect(){
 		try{
-			if ( this.connection != null )	
-				this.connection.close();
+			if ( this.currentConnection != null )	
+				this.currentConnection.close();
 		} catch(SQLException ex){
 			System.err.println(L.get("sql-error-closing"));
 		}
-		this.connectionProfile = null;
+		this.currentConnectionProfile = null;
 	}
 
 	/**
@@ -128,8 +151,8 @@ public class Application {
 	 */
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.user + "\n");
-		sb.append(this.connectionProfile + "\n");
+		sb.append(this.currentUser + "\n");
+		sb.append(this.currentConnectionProfile + "\n");
 
 		return sb.toString();
 	}
