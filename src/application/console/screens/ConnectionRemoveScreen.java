@@ -69,7 +69,7 @@ public class ConnectionRemoveScreen extends TerminalScreen{
         if ( app.getUser().removeDBConnection(connectionId) ) {
             app.getAuthSystem().saveUsers();
             terminal.setMessage(L.get("connection-removal-success"));
-            ret= true;
+            ret = true;
         }
         else {
             terminal.setMessage(L.get("connection-removal-failure"));
