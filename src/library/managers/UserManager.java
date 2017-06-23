@@ -18,12 +18,13 @@ public class UserManager{
 	public UserManager(){
 		this.users = new ArrayList<User>();
 
-		this.addUser(new User("root", "Administrator", "", "root@localhost", "", Authorization.ADMIN, null, null));
-
 		// FilesHandler.objectsToList(location:String) returns a list of Object objects, we need to cast them into User objects
 		for ( Object u : FilesHandler.fileToList("data/users.save") ){
 			this.users.add((User)u);
 		}
+
+		if ( this.users.size() == 0 )
+			this.addUser(new User("root", "Administrator", "", "root@localhost", "", Authorization.SUPERADMIN, null, null));
 	}
 	
 	/**

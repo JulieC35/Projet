@@ -5,6 +5,7 @@
 package library;
 
 public enum Authorization{
+	SUPERADMIN,
 	ADMIN,
 	DEFAULT,
 	RESTRICTED;
