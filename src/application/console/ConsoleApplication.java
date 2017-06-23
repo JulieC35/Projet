@@ -13,7 +13,7 @@ import lang.*;
 import application.console.screens.*;
 
 public class ConsoleApplication{
-    private Application app;
+    private ApplicationModel app;
     private TerminalScreen currentScreen;
     private ArrayList<TerminalScreen> stack;
     private String message;
@@ -24,7 +24,7 @@ public class ConsoleApplication{
      * Constructor
      */
     public ConsoleApplication(){
-        this.app = new Application();
+        this.app = new ApplicationModel();
         this.message = "";
 
         // We load the first screen of the application, and the stack stays empty
@@ -83,6 +83,21 @@ public class ConsoleApplication{
     public void refresh(){
         if ( this.currentScreen != null )
             this.currentScreen.initialize();
+    }
+
+    /**
+     * Returns a separator based on a number of columns
+     * @param nb The number of columns
+     * @return The separator
+     */
+    public String getSeparator(int nb){
+        StringBuilder sb = new StringBuilder();
+        if ( nb > 0 ){
+            for ( int i = 0 ; i < nb ; i++ )
+                sb.append("--------");
+        }
+        sb.append("\n");
+        return sb.toString();
     }
 
     /**
@@ -167,7 +182,30 @@ public class ConsoleApplication{
             System.out.println(sb.toString());
         } else 
             System.out.println("\n" + L.get("empty-list"));
-     }
+    }
+
+    /**
+     * Allows to print the result of a query
+     */
+    public void printQueryResult(QueryResult result){
+        System.out.println(L.get("query-result") + " :\n");
+        this.setMessage(result.getMessage());
+        this.printMessage();
+
+		StringBuilder sb = new StringBuilder();
+		for (Column column : result.getScheme()){
+			sb.append("\t" + column.getName());
+		}
+		sb.append("\n");
+
+        sb.append("\t" + getSeparator(result.getScheme().size()));
+
+		for(Row element : result.getRows()){
+			sb.append(element + "\n");
+		}
+
+		System.out.println(sb.toString() + "\n");
+    }
 
     /**
      * Clearing the terminal

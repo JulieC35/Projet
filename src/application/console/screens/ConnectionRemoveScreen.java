@@ -13,7 +13,7 @@ public class ConnectionRemoveScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionRemoveScreen(ConsoleApplication terminal, Application app){
+    public ConnectionRemoveScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

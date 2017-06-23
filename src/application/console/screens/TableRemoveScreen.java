@@ -15,14 +15,14 @@ public class TableRemoveScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TableRemoveScreen(ConsoleApplication terminal, Application app){
+    public TableRemoveScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
         this.queryBuilder = app.getQueryBuilder();
     } 
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("my-tables") + " : " + L.get("remove") );
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables") + " : " + L.get("remove") );
         terminal.printMessage();
         terminal.printList(this.generateList());
         terminal.startPrompting();

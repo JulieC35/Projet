@@ -12,7 +12,7 @@ public class LoginScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public LoginScreen(ConsoleApplication terminal, Application app){
+    public LoginScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

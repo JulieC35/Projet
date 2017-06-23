@@ -12,7 +12,7 @@ public class HomeScreen extends TerminalScreen{
     /**
      * Constructor of the home screen
      */
-    public HomeScreen(ConsoleApplication terminal, Application app){
+    public HomeScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

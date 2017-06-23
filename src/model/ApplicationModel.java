@@ -9,7 +9,7 @@ import model.managers.*;
 import lang.*;
 import java.sql.*;
 
-public class Application {
+public class ApplicationModel {
     private UserManager authSystem;
 	private QueryBuilder queryBuilder;
 
@@ -21,7 +21,7 @@ public class Application {
 	/**
 	 * Initialisation des paramètres
 	 */
-	public Application(){
+	public ApplicationModel(){
 		this.authSystem = new UserManager();
 		this.queryBuilder = new QueryBuilder();
 		this.currentUser = null;
@@ -143,6 +143,24 @@ public class Application {
 			System.err.println(L.get("sql-error-closing"));
 		}
 		this.currentConnectionProfile = null;
+	}
+
+    /**
+     * Executes the reieved query on the current connection
+     * @param query
+     */
+    public QueryResult processSQL(String query) {
+        QueryResult ret = new QueryResult();
+		try {
+			Statement stm = this.currentConnection.createStatement();
+			stm.execute(query);
+            ret = new QueryResult(stm.getResultSet());
+		} catch(SQLException ex){
+			ret.setMessage(ex.getMessage());
+		} catch(NullPointerException ex){
+			ret.setMessage("Can't process a null query");
+		}
+        return ret;
 	}
 
 	/**

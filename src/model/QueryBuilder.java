@@ -5,6 +5,7 @@ package model;
 
 import model.entities.*;
 import java.util.*;
+import java.sql.*;
 
 public class QueryBuilder{
     private String query;
@@ -57,7 +58,7 @@ public class QueryBuilder{
         if ( table != null ){
             sb.append("CREATE TABLE `" + table.getName() + "` (\n");
                 for ( int i = 0 ; i < scheme.size() ; i++ ) {
-                    sb.append(scheme.get(i));
+                    sb.append(scheme.get(i).toSQL());
                     if ( i == scheme.size() - 1 ) 
                         sb.append("\n");
                     else 

@@ -12,7 +12,7 @@ public class SubscribeScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public SubscribeScreen(ConsoleApplication terminal, Application app){
+    public SubscribeScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

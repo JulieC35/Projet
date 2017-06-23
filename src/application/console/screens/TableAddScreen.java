@@ -13,14 +13,14 @@ public class TableAddScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TableAddScreen(ConsoleApplication terminal, Application app){
+    public TableAddScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
         this.queryBuilder = app.getQueryBuilder();
     } 
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("my-tables") + " : " + L.get("add") );
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables") + " : " + L.get("add") );
         terminal.printMessage();
         
         this.addTable(this.requestInformation());

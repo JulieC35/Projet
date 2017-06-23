@@ -12,7 +12,7 @@ public class ConnectionsMenuScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionsMenuScreen(ConsoleApplication terminal, Application app){
+    public ConnectionsMenuScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

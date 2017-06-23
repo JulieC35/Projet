@@ -13,7 +13,7 @@ public class ConnectionsListScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionsListScreen(ConsoleApplication terminal, Application app){
+    public ConnectionsListScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 
