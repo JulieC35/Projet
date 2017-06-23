@@ -11,7 +11,7 @@ public class Row{
 	private ArrayList<String> values;
 
 	/**
-	* The constructor of the method
+	* The constructor of the class
 	* @param schema the list of column
 	*/
 	public Row(){

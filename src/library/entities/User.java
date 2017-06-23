@@ -16,6 +16,9 @@ public class User implements Serializable{
 	private Language language;
 	private ArrayList<DBConnection> connections;
 
+	/*
+	 * The constructor of the class
+	 */
 	public User(String username, String firstName, String lastName, String emailAddress, String pwd, Authorization authorization, Language language, ArrayList<DBConnection> connections){
 		if(username != null){
 			this.username = username;
