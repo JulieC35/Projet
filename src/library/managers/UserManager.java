@@ -45,11 +45,14 @@ public class UserManager{
 	 * Allows to remove an user from the list
 	 * @param user The user to be removed
 	 */
-	public void removeUser(User user){
+	public boolean removeUser(User user){
+		boolean ret = false;
 		if ( user != null ) {
 			this.users.remove(user);
 			this.saveUsers();
+			ret = true;
 		}
+		return ret;
 	}
 
 	/**
