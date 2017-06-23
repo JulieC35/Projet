@@ -31,6 +31,7 @@
     <word code="empty-list" value="Il n'y a rien ici" />
     <word code="boolean-answer" value="(o/n)" />
     <word code="sql-query" value="Requête SQL" />
+    <word code="query-result" value="Résultat de la requête" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -113,4 +114,7 @@
     <word code="column-ask-unique" value="Créer unique ?" />
     <word code="column-ask-notnull" value="Créer non nulle ?" />
     <word code="column-ask-autoincrement" value="Activer l'auto incrémentation ?" />
+
+    <!-- Rows -->
+    <word code="entries" value="T-uples" />
 </localization>

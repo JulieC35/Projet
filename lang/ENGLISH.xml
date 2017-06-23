@@ -30,6 +30,7 @@
     <word code="empty-list" value="There's nothing here" />
     <word code="boolean-answer" value="(y/n)" />
     <word code="sql-query" value="SQL Query" />
+    <word code="query-result" value="Query result" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -42,6 +43,24 @@
     <word code="user-lang-label" value="La langue selectionnée est: " />
     <word code="user-authorization-label" value="Son authorisation est: " />
     <word code="user-connection-label" value="Il possède " />
+
+    <!-- Administrateur -->
+    <word code="admin-panel" value="Admin panel" />
+    <word code="admin-modify-access" value="Edit authorization" />
+    <word code="admin-remove" value="Delete user" />
+    <word code="admin-list" value="Users list" />
+    <word code="user-to-admin" value="Promote" />
+    <word code="user-to-restricted" value="Demote" />
+    <word code="user-up-ask" value="Who do you want to promote ?" />
+    <word code="user-down-ask" value="Who do you want to demote ?" />
+    <word code="restricted-up" value="User promoted from restricted to default." />
+    <word code="default-up" value="User propoted from default to administrator" />
+    <word code="already-admin" value="This user is already an administrator" />
+    <word code="already-restricted" value="This user is already restricted" />
+    <word code="default-down" value="User demoted from default to restricted" />
+    <word code="admin-down" value="Impossible to demote an administrator" />
+    <word code="user-removal-success" value="User deletion succeeded" />
+    <word code="user-removal-failure" value="The user could not be removed" />
 
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Console mode" />
@@ -93,4 +112,7 @@
     <word code="column-ask-unique" value="Set unique ?" />
     <word code="column-ask-notnull" value="Set not null ?" />
     <word code="column-ask-autoincrement" value="Set auto increment ?" />
+
+    <!-- Rows -->
+    <word code="entries" value="Entries" />
 </localization>
