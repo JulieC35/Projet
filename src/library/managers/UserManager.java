@@ -22,6 +22,9 @@ public class UserManager{
 		for ( Object u : FilesHandler.fileToList("data/users.save") ){
 			this.users.add((User)u);
 		}
+
+		if ( this.users.size() == 0 )
+			this.addUser(new User("root", "Administrator", "", "root@localhost", "", Authorization.SUPERADMIN, null, null));
 	}
 	
 	/**
