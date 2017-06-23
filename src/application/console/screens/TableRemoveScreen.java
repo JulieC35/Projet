@@ -97,8 +97,9 @@ public class TableRemoveScreen extends TerminalScreen{
                 Statement state = app.getConnection().createStatement();
                 state.executeUpdate(queryBuilder.getQuery());
                 ret = true;
+                terminal.setMessage(L.get("table-removal-success"));
             } catch(SQLException ex){
-                System.out.println(ex.getMessage());
+                terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
             }
         }
         System.out.println(ret);

@@ -82,6 +82,14 @@ public abstract class TerminalScreen{
             ret = RequestResult.SQL;
             terminal.setCurrentScreen(new SQLQueryScreen(terminal, app));
         }
+        else if (request[0].equals("admin")){
+            if(this.app.getUser().getAuthorization() == Authorization.ADMIN){
+                ret = RequestResult.ADMIN;
+                terminal.setCurrentScreen(new AdminPanelScreen(terminal, app));
+            } else{
+                ret = RequestResult.ERROR;
+            }
+        }
 
         return ret;
     }

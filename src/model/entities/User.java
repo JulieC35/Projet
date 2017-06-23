@@ -59,6 +59,12 @@ public class User implements Serializable{
 		return this.authorization;
 	}
 
+	public void setAuthorization(Authorization auth){
+		if(auth != null){
+			this.authorization = auth;
+		}
+	}
+
 	/**
 	* Get the pseudonym
 	* @return username the username of the user
