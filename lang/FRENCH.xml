@@ -6,6 +6,7 @@
     <word code="instruction-sql" value="exécuter une requête" />
     <word code="instruction-back" value="Retourner à l'écran précédent" />
     <word code="instruction-exit" value="Fermer l'application" />
+    <word code="instruction-admin" value="Panneau administrateur" />
     <word code="username" value="Nom d'utilisateur" />
     <word code="password" value="Mot de passe" />
     <word code="first-name" value="Prénom" />
@@ -43,6 +44,25 @@
     <word code="user-lang-label" value="La langue selectionnée est: " />
     <word code="user-authorization-label" value="Son authorisation est: " />
     <word code="user-connection-label" value="Il possède " />
+
+    <!-- Administrateur -->
+    <word code="admin-panel" value="Panneau administrateur" />
+    <word code="admin-modify-access" value="Modifier l'authorisation" />
+    <word code="admin-remove" value="Supprimer un utilisateur" />
+    <word code="admin-list" value="Liste des utilisateurs" />
+    <word code="user-to-admin" value="Augmenter des droits" />
+    <word code="user-to-restricted" value="Restreindre des droits" />
+    <word code="user-up-ask" value="De qui voulez vous augmenter les droits? " />
+    <word code="user-down-ask" value="De qui voulez vous restreindre les droits? " />
+    <word code="restricted-up" value="Niveau de l'utilisateur passé de restreint à défaut" />
+    <word code="default-up" value="Niveau de l'utilisateur passé de défaut à administrateur" />
+    <word code="already-admin" value="utilisateur déjà administrateur" />
+    <word code="already-restricted" value="utilisateur déjà restreint" />
+    <word code="default-down" value="Niveau de l'utilisateur passé de défaut à restreint" />
+    <word code="admin-down" value="Vous ne pouvez restreindre un administrateur" />
+    <word code="user-removal-success" value="Utilisateur supprimé" />
+    <word code="user-removal-failure" value="L'utilisateur n'a pas pu être supprimé" />
+
 
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Mode console" />
