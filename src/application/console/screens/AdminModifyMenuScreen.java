@@ -4,14 +4,14 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 import java.util.*;
 
 public class AdminModifyMenuScreen extends TerminalScreen{
 
-	public AdminModifyMenuScreen(ConsoleApplication terminal, Application app){
+	public AdminModifyMenuScreen(ConsoleApplication terminal, ApplicationModel app){
 		super(terminal, app);
 	}
 

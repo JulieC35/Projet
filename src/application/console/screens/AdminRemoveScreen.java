@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class AdminRemoveScreen extends TerminalScreen{
 
 	private ArrayList<String> users;
 
-	public AdminRemoveScreen(ConsoleApplication terminal, Application app){
+	public AdminRemoveScreen(ConsoleApplication terminal, ApplicationModel app){
 		super(terminal, app);
 		users = this.generateList();
 	}

@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.entities.*;
-import model.*;
+import library.entities.*;
+import library.*;
 import lang.*;
 import java.sql.*;
 import java.util.*;
@@ -17,7 +17,7 @@ public class AdminUpScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public AdminUpScreen(ConsoleApplication terminal, Application app){
+    public AdminUpScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
         usersList = this.generateList();
 
