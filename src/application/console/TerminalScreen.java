@@ -3,21 +3,22 @@
  */
 package application.console;
 
-import model.*;
+import library.*;
 import application.console.screens.*;
 import lang.*;
 
 public abstract class TerminalScreen{
-    protected Application app;
+    protected ApplicationModel app;
     protected ConsoleApplication terminal;
     protected QueryBuilder queryBuilder;
 
     /**
      * The constructor of the TerminalScreen
      */
-    public TerminalScreen(ConsoleApplication terminal, Application app){
+    public TerminalScreen(ConsoleApplication terminal, ApplicationModel app){
         this.terminal = terminal;
         this.app = app;
+        this.queryBuilder = app.getQueryBuilder();
     }
 
     /**
@@ -79,8 +80,13 @@ public abstract class TerminalScreen{
         else if ( request[0].equals("exit") )
             ret = RequestResult.END;
         else if ( request[0].equals("sql") ){
-            ret = RequestResult.SQL;
-            terminal.setCurrentScreen(new SQLQueryScreen(terminal, app));
+            if ( app.getConnection() != null ) {
+                ret = RequestResult.SQL;
+                terminal.setCurrentScreen(new SQLQueryScreen(terminal, app));
+            } else {
+                ret = RequestResult.ERROR;
+                terminal.setMessage(L.get("error-no-database-connection"));
+            }
         }
         else if (request[0].equals("admin")){
             if(this.app.getUser().getAuthorization() == Authorization.ADMIN){

@@ -1,4 +1,4 @@
-package model;
+package library;
 
 public enum RequestResult{
 	END,

@@ -84,6 +84,7 @@
     <word code="table-failure" value="Table loading failed." />
     <word code="table-success" value="Table loaded." />
     <word code="table-nb-columns" value="Number of columns ?" />
+    <word code="table-not-exists" value="This table doesn't exist." />
 
     <!-- Columns -->
     <word code="column-ask-name" value="Column name ?" />

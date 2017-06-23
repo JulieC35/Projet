@@ -4,15 +4,15 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 
 public class HomeScreen extends TerminalScreen{
     /**
      * Constructor of the home screen
      */
-    public HomeScreen(ConsoleApplication terminal, Application app){
+    public HomeScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 
@@ -22,6 +22,7 @@ public class HomeScreen extends TerminalScreen{
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("home-connect"), L.get("home-subscribe")});
         terminal.startPrompting();
+        
         this.exit();
     }
     

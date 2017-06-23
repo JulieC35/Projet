@@ -4,15 +4,15 @@
 package application.console.screens;
 
 import application.console.*;
-import model.entities.*;
-import model.*;
+import library.entities.*;
+import library.*;
 import lang.*;
 
 public class ConnectionAddScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionAddScreen(ConsoleApplication terminal, Application app){
+    public ConnectionAddScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

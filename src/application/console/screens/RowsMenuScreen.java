@@ -1,56 +1,52 @@
 /**
- * Connections menu screen
+ * 
  */
+
 package application.console.screens;
 
 import application.console.*;
+import lang.*;
 import library.*;
 import library.entities.*;
-import lang.*;
 
-public class ConnectionsMenuScreen extends TerminalScreen{
+public class RowsMenuScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionsMenuScreen(ConsoleApplication terminal, ApplicationModel app){
+    public RowsMenuScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
-    } 
+    }
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("my-connections"));
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + app.getCurrentTable());
         terminal.printMessage();
-        terminal.printMenu(new String[]{L.get("list"), L.get("add"), L.get("remove")});
+        terminal.printMenu(new String[]{L.get("entries"), L.get("add"), L.get("remove")});
         terminal.startPrompting();
-        
+
         this.exit();
     }
 
     public RequestResult proceedRequest(String[] request){
         RequestResult ret = super.proceedRequest(request);
-        
+
         if ( ret == RequestResult.OK ){            
             switch ( request[0] ){
                 case "1":
-                    terminal.setCurrentScreen(new ConnectionsListScreen(terminal, app));
+                    terminal.setCurrentScreen(new RowsListScreen(terminal, app));
                     break;
                 case "2": 
-                    terminal.setCurrentScreen(new ConnectionAddScreen(terminal, app));
+                    
                     break;
                 case "3":
-                    terminal.setCurrentScreen(new ConnectionRemoveScreen(terminal, app));
+                    
                     break;
                 default:
-                    terminal.setMessage(L.get("not-valid-input"));
                     ret = RequestResult.ERROR;
                     break;
             }
         }
-        
-        return ret;
-    }
 
-    public void exit(){
-        app.logout();
+        return ret;
     }
 }

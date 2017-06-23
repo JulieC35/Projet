@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.entities.*;
-import model.*;
+import library.entities.*;
+import library.*;
 import lang.*;
 
 import java.sql.*;
@@ -15,18 +15,17 @@ public class TableRemoveScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TableRemoveScreen(ConsoleApplication terminal, Application app){
+    public TableRemoveScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
         this.queryBuilder = app.getQueryBuilder();
     } 
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("my-tables") + " : " + L.get("remove") );
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables") + " : " + L.get("remove") );
         terminal.printMessage();
         terminal.printList(this.generateList());
-        this.removeTable(this.requestInformation());
-        startPrompting();
+        terminal.startPrompting();
         this.exit();
     }
 
@@ -56,12 +55,12 @@ public class TableRemoveScreen extends TerminalScreen{
 
         if ( ret == RequestResult.OK ){
             try {
-                if ( !this.removeTable(request[0]) )
+                if ( !this.removeTable(Integer.parseInt(request[0])) )
                     ret = RequestResult.ERROR;
                 else
                     ret = RequestResult.BACK; // When the table is removed, we go back
-            } catch (Exception ex ){
-                System.out.println(ex.getMessage());
+            } catch (NumberFormatException ex){
+                terminal.setMessage(L.get("not-valid-input"));
                 ret = RequestResult.ERROR;
             }
         }
@@ -69,40 +68,31 @@ public class TableRemoveScreen extends TerminalScreen{
     }
 
     /**
-     * Requesting information to remove a Table
-     */
-    public String requestInformation(){
-
-        String ret = new String();
-        ret = terminal.prompt(L.get("table-name"));
-        return ret;            
-    }
-
-    /**
      * Removing a table to the database
      */
-    public boolean removeTable(String nameTable){
+    public boolean removeTable(int tableId){
         boolean ret = false;
-        try{
-            DatabaseMetaData metaData = app.getConnection().getMetaData();
-            ResultSet result = metaData.getTables(null, null, "%", null);
-        } catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        
-        if ( nameTable != null ) {
-            queryBuilder.dropTable(nameTable);
-            System.out.println(queryBuilder.getQuery());
-            try{
-                Statement state = app.getConnection().createStatement();
-                state.executeUpdate(queryBuilder.getQuery());
-                ret = true;
-                terminal.setMessage(L.get("table-removal-success"));
-            } catch(SQLException ex){
-                terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
+        String nameTable = "";
+
+        try {
+            nameTable = this.generateList().get(tableId);
+
+            if ( nameTable != null ) {
+                queryBuilder.dropTable(nameTable);
+                //System.out.println(queryBuilder.getQuery());
+                try{
+                    Statement state = app.getConnection().createStatement();
+                    state.executeUpdate(queryBuilder.getQuery());
+                    terminal.setMessage(L.get("table-removal-success"));
+                    ret = true;
+                } catch(SQLException ex){
+                    terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
+                }
             }
+        } catch(IndexOutOfBoundsException ex){
+            terminal.setMessage(L.get("not-valid-input"));
         }
-        System.out.println(ret);
+
         return ret;
     }
 }

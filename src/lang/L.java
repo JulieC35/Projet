@@ -5,7 +5,7 @@
 package lang;
 
 import java.util.*;
-import model.*;
+import library.*;
 
 public class L {
     private static Language currentLanguage = Language.FRENCH;

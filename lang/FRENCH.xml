@@ -104,6 +104,7 @@
     <word code="table-access-failure" value="Impossible d'accéder à la table." />
     <word code="table-access-success" value="Accès à la table." />
     <word code="table-ask-nb-columns" value="Nombre de colonnes ?" />
+    <word code="table-not-exists" value="Cette table n'existe pas." />
 
     <!-- Columns -->
     <word code="column-ask-name" value="Nom de la colonne ?" />
