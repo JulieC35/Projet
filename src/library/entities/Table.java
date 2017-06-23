@@ -8,7 +8,7 @@ public class Table{
 	private ArrayList<Column> scheme;
 
 	/**
-	 * The constructor
+	 * The constructor of the class
 	 */
 	public Table(){
 		this.name = null;
@@ -16,7 +16,7 @@ public class Table{
 	}
 
 	/**
-	 * The constructor
+	 * The constructor of the class
 	 * @param name the name of the table
 	 * @param scheme all the column of the table
 	 */
@@ -33,7 +33,7 @@ public class Table{
 	}
 	
 	/**
-	 * The constructor
+	 * The constructor of the class
 	 * @param name the name of the table
 	 * @param scheme all the column of the table
 	 */

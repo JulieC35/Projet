@@ -15,8 +15,8 @@ public class DBConnection implements Serializable{
 	private String prefix;
 
 	/**
-	 * Constructeur de la classe
-	 * @param name le nom de la connexion
+	 * The constructor of the class
+	 * @param name the name of the connection
 	 * @param username le nom utilisé sur JDBC (nom de l'utilisateur sur la BDD)
 	 * @param password le mot de passe pour la connexion JDBC
 	 * @param host le lieu de stockage de la BDD
