@@ -1,11 +1,11 @@
 /**
- * Connections list screen
+ * Tables list screen
  */
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 import java.util.*;
 import java.sql.*;
@@ -14,13 +14,13 @@ public class TablesListScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TablesListScreen(ConsoleApplication terminal, Application app){
+    public TablesListScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(L.get("my-tables") + " : " + L.get("list"));
+        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables") + " : " + L.get("list"));
         terminal.printMessage();
         terminal.printList(this.generateList());
         terminal.startPrompting();

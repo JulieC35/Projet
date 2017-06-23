@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class ConnectionsListScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public ConnectionsListScreen(ConsoleApplication terminal, Application app){
+    public ConnectionsListScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

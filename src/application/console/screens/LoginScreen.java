@@ -4,15 +4,15 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 
 public class LoginScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public LoginScreen(ConsoleApplication terminal, Application app){
+    public LoginScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     } 
 

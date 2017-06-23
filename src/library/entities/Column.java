@@ -1,4 +1,4 @@
-package model.entities;
+package library.entities;
 
 import lang.*;
 
@@ -139,7 +139,7 @@ public class Column{
 	 * Show a description of the column
 	 * @return the description
 	 */
-	public String toString(){
+	public String toSQL(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("`" + this.name + "` " + this.type);
 		if ( this.primary ){

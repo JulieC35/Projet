@@ -2,7 +2,7 @@
  * Defines the different types of users
  */
 
-package model;
+package library;
 
 public enum Authorization{
 	ADMIN,

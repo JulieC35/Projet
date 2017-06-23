@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class TablesMenuScreen extends TerminalScreen{
     /**
      * Constructor of the screen
      */
-    public TablesMenuScreen(ConsoleApplication terminal, Application app){
+    public TablesMenuScreen(ConsoleApplication terminal, ApplicationModel app){
         super(terminal, app);
     }
 

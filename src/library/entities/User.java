@@ -1,8 +1,8 @@
-package model.entities;
+package library.entities;
 
 import java.util.*;
 import java.io.Serializable;
-import model.*;
+import library.*;
 import lang.*;
 
 public class User implements Serializable{
