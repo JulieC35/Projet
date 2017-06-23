@@ -5,9 +5,9 @@
  * key and value of a HashMap<String,String>
  */
 
-package model;
+package library;
 
-import model.entities.*;
+import library.entities.*;
 import lang.*;
 
 import java.io.*;

@@ -6,8 +6,8 @@ package application.console.screens;
 
 import application.console.*;
 import lang.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 
 public class RowsMenuScreen extends TerminalScreen{
     /**

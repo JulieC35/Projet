@@ -1,9 +1,9 @@
 /**
  * 
  */
-package model;
+package library;
 
-import model.entities.*;
+import library.entities.*;
 import java.util.*;
 import java.sql.*;
 

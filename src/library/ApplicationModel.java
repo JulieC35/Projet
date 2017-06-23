@@ -2,10 +2,10 @@
  * The application class
  */
 
-package model;
+package library;
 
-import model.entities.*;
-import model.managers.*;
+import library.entities.*;
+import library.managers.*;
 import lang.*;
 import java.sql.*;
 

@@ -5,8 +5,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.*;
-import model.entities.*;
+import library.*;
+import library.entities.*;
 import lang.*;
 
 public class SQLQueryScreen extends TerminalScreen {

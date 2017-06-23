@@ -4,8 +4,8 @@
 package application.console.screens;
 
 import application.console.*;
-import model.entities.*;
-import model.*;
+import library.entities.*;
+import library.*;
 import lang.*;
 
 import java.sql.*;

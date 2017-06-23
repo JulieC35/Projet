@@ -6,9 +6,9 @@ package application.console;
 import java.util.*;
 import java.io.*;
 
-import model.*;
-import model.entities.*;
-import model.managers.*;
+import library.*;
+import library.entities.*;
+import library.managers.*;
 import lang.*;
 import application.console.screens.*;
 

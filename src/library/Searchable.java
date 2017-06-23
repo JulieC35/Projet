@@ -1,6 +1,6 @@
-package model;
+package library;
 
-import model.entities.*;
+import library.entities.*;
 
 public interface Searchable{
 	public QueryResult search(String keywords);

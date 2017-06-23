@@ -2,12 +2,12 @@
  * Handles the authentication process of the application
  */
 
-package model.managers;
+package library.managers;
 
 import java.util.*;
 import java.util.regex.*;
-import model.entities.*;
-import model.*;
+import library.entities.*;
+import library.*;
 
 public class UserManager{
 	private ArrayList<User> users;

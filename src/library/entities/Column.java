@@ -1,4 +1,4 @@
-package model.entities;
+package library.entities;
 
 import lang.*;
 

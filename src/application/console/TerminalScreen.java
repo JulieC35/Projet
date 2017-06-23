@@ -3,7 +3,7 @@
  */
 package application.console;
 
-import model.*;
+import library.*;
 import application.console.screens.*;
 import lang.*;
 
