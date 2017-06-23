@@ -111,9 +111,9 @@ public class ConsoleApplication{
         System.out.println("\n" + L.get("instructions") + " :");
         System.out.println(" - sql : " + L.get("instruction-sql"));
         System.out.println(" - back : " + L.get("instruction-back"));
-        System.out.println(" - exit : " + L.get("instruction-exit") + "\n");
+        System.out.println(" - exit : " + L.get("instruction-exit"));
         if((this.app.getUser() != null) && (this.app.getUser().getAuthorization() == Authorization.ADMIN)){
-            System.out.println(" - admin : " + L.get("instructions-admin"));
+            System.out.println(" - admin : " + L.get("instruction-admin"));
         }
     }
 
