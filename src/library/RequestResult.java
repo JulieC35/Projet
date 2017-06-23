@@ -5,5 +5,6 @@ public enum RequestResult{
 	BACK,
 	SQL,
 	ERROR,
+	ADMIN,
 	OK;
 }

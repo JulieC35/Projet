@@ -88,6 +88,14 @@ public abstract class TerminalScreen{
                 terminal.setMessage(L.get("error-no-database-connection"));
             }
         }
+        else if (request[0].equals("admin")){
+            if(this.app.getUser().getAuthorization() == Authorization.ADMIN){
+                ret = RequestResult.ADMIN;
+                terminal.setCurrentScreen(new AdminPanelScreen(terminal, app));
+            } else{
+                ret = RequestResult.ERROR;
+            }
+        }
 
         return ret;
     }
