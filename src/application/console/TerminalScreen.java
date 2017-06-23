@@ -6,6 +6,7 @@ package application.console;
 import library.*;
 import application.console.screens.*;
 import lang.*;
+import java.io.*;
 
 public abstract class TerminalScreen{
     protected ApplicationModel app;
@@ -91,7 +92,9 @@ public abstract class TerminalScreen{
         else if (request[0].equals("admin")){
             if(this.app.getUser().getAuthorization() == Authorization.ADMIN){
                 ret = RequestResult.ADMIN;
-                terminal.setCurrentScreen(new AdminPanelScreen(terminal, app));
+                try{
+                    terminal.setCurrentScreen(new AdminPanelScreen(terminal, app));    
+                } catch(NullPointerException ex){System.out.println(ex.getMessage());}
             } else{
                 ret = RequestResult.ERROR;
             }
