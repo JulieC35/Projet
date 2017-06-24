@@ -6,8 +6,9 @@ package library.managers;
 
 import java.util.*;
 import java.util.regex.*;
-import library.entities.*;
+
 import library.*;
+import library.entities.*;
 
 public class UserManager{
 	private ArrayList<User> users;
