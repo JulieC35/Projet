@@ -1,3 +1,6 @@
+/**
+ * A MySQL table. This class is mostly used to create tables
+ */
 package library.entities;
 
 import java.util.*;
@@ -18,7 +21,7 @@ public class Table{
 	/**
 	 * The constructor of the class
 	 * @param name the name of the table
-	 * @param scheme all the column of the table
+	 * @param scheme all the column of the table in an array
 	 */
 	public Table(String name, Column[] scheme){
 		if(name != null){
@@ -35,7 +38,7 @@ public class Table{
 	/**
 	 * The constructor of the class
 	 * @param name the name of the table
-	 * @param scheme all the column of the table
+	 * @param scheme all the column of the table in an ArrayList object
 	 */
 	public Table(String name, ArrayList<Column> scheme){
 		if(name != null){
@@ -50,7 +53,6 @@ public class Table{
 	}
 
 	/**
-	 * Getter of the name
 	 * @return the name of the current table
 	 */
 	public String getName(){
@@ -58,8 +60,8 @@ public class Table{
 	}
 
 	/**
-	 * Setter of the name
-	 * @param the new name of the table
+	 * @param name the new name of the table
+	 * @return true if the setting succeeded
 	 */
 	public boolean setName(String name){
 		boolean ret = false;
@@ -72,7 +74,6 @@ public class Table{
 	}
 
 	/**
-	 * Getter of the scheme 
 	 * @return a table of all the column
 	 */
 	public ArrayList<Column> getScheme(){
@@ -106,8 +107,7 @@ public class Table{
 	}
 
 	/**
-	 * Print a description of the object
-	 * @return the description
+	 * @return The table as a String.
 	 */
 	public String toString(){
 		String s = "name: " + this.name;

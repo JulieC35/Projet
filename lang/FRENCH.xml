@@ -14,6 +14,7 @@
     <word code="email-address" value="Adresse email" />
     <word code="login" value="Connexion" />
     <word code="subscribe" value="Inscription" />
+    <word code="cancel" value="Annuler" />
     <word code="welcome" value="Bienvenue" />
     <word code="request-error" value="Requête invalide, veuillez re-essayer." />
     <word code="mandatory-fields" value="Les champs marqués d'un (*) sont obligatoires." />
@@ -83,7 +84,8 @@
     <!-- Subscribe -->
     <word code="username-not-available" value="Ce nom d'utilisateur n'est pas disponible." />
     <word code="username-too-short" value="Ce nom d'utilisateur est trop court." />
-    <word code="email-address-not-valid" value="L'adresse email n'est pas valide." />
+    <word code="username-not-valid" value="Ce nom d'utilisateur n'est pas valide." />
+    <word code="email-address-not-valid" value="Cette adresse email n'est pas valide." />
 
     <!-- DBConnections -->
     <word code="my-connections" value="Mes connexions" />

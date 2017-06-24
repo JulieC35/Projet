@@ -1,5 +1,9 @@
 /**
- * 
+ * Builds SQL queries based on several information types, such as table names, tables, etc.<br><br>
+ * Example : <br>
+ * dropTable("MyTable");<br><br>
+ * Result : <br>
+ * DROP TABLE MyTable;
  */
 package library;
 
@@ -25,6 +29,7 @@ public class QueryBuilder{
     }
 
     /**
+     * Builds a a query to select all elements from a table
      * @param tableName The table's name
      */
     public void selectAllFromTable(String tableName){
@@ -37,6 +42,7 @@ public class QueryBuilder{
     }
 
     /**
+     * Builds a a query to select all elements from a table
      * @param table The table
      */
     public void selectAllFromTable(Table table){
@@ -49,6 +55,7 @@ public class QueryBuilder{
     }
 
     /**
+     * Builds a a query to create a table
      * @param table The table to be created
      */
     public void createTable(Table table){
@@ -72,7 +79,8 @@ public class QueryBuilder{
     }
 
     /**
-     *
+     * Builds a a query to drop a table
+     * @param nameTable The table to drop
      */
     public void dropTable(String nameTable){
         if(nameTable != null){

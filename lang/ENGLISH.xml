@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <localization>
     <!-- Generiques -->
-    <word code="app-name" value="Est-ce QL ?" />
+    <word code="app-name" value="JavaMyAdmin" />
     <word code="instructions" value="Global commands available" />
     <word code="instruction-sql" value="execute a query" />
     <word code="instruction-back" value="return to the previous screen" />
     <word code="instruction-exit" value="terminate the application" />
+    <word code="instruction-admin" value="Admin panel" />
     <word code="username" value="Username" />
     <word code="password" value="Password" />
     <word code="first-name" value="First name" />
     <word code="last-name" value="Last name" />
     <word code="email-address" value="Email address" />
     <word code="login" value="Login" />
-    <word code="subscribe" value="Subscribe" />
+    <word code="subscribe" value="Register" />
+    <word code="cancel" value="Cancel" />
     <word code="welcome" value="Welcome" />
     <word code="request-error" value="Invalid request, please try again." />
     <word code="mandatory-fields" value="Fields marked with an (*) are mandatory." />
@@ -73,7 +75,7 @@
     <!-- Home -->
     <word code="home-title" value="Login/subscribing screen" />
     <word code="home-connect" value="Login" />
-    <word code="home-subscribe" value="Subscribe" />
+    <word code="home-subscribe" value="Register" />
 
     <!-- Login -->
     <word code="login-failed" value="Login failed." />
@@ -81,7 +83,8 @@
     <!-- Subscribe -->
     <word code="username-not-available" value="This username is not available." />
     <word code="username-too-short" value="This username is too short." />
-    <word code="email-address-not-valid" value="The email address is not valid." />
+    <word code="username-not-valid" value="This username is not valid." />
+    <word code="email-address-not-valid" value="This email address is not valid." />
 
     <!-- DBConnections -->
     <word code="my-connections" value="My connections" />

@@ -1,5 +1,6 @@
 /**
- * This class represent the main class of the graphical version of the application
+ * Central point of the gui application.
+ * Stores the primary stage, the controllers and all the methods to switch between the different views.
  */
 package application.graphical;
 
@@ -34,6 +35,7 @@ public class GraphicalApplication extends Application{
 
     /**
      * Entry points of the graphical application
+     * @param args The list of parameters of the application
      */
     public static void main(String[] args){
         launch(args);
@@ -60,7 +62,6 @@ public class GraphicalApplication extends Application{
 
     /**
      * Loads the login screen into the stage
-     * @throws Exception 
      */
     public void loadLoginScreen(){
         try {
@@ -76,7 +77,6 @@ public class GraphicalApplication extends Application{
 
     /**
      * Loads the subscribe screen into the stage
-     * @throws Exception
      */
     public void loadSubscribeScreen(){
         try {
@@ -99,7 +99,7 @@ public class GraphicalApplication extends Application{
     }
 
     /**
-     * Sents  the current message of the application to the current scene's message label
+     * Sends the current message of the application to the current scene's message label
      */
     public void displayMessage(){
         try {
