@@ -1,3 +1,7 @@
+/**
+ * Controller of the Login screen.<br>
+ * Handles access to the model to try logging in the user
+ */
 package application.graphical.controllers;
 
 import javafx.fxml.FXML;
@@ -31,10 +35,18 @@ public class LoginController extends AppController{
     @FXML
     private Button btn_subscribe;
 
+    /**
+     * The constructor, sends the stage and application model to the parent class
+     * @param stage Contains the primary stage of the application
+     * @param app Contains an instance of the application model : current user, current connection, etc.
+     */
     public LoginController(GraphicalApplication stage, ApplicationModel app){
         super(stage, app);
     }
 
+    /**
+     * Default behaviour on loading of the associated views
+     */
     @FXML
     public void initialize(){
         super.initialize();
@@ -46,6 +58,9 @@ public class LoginController extends AppController{
 
     }
 
+    /**
+     * Logs the the user in
+     */
     @FXML
     void login(ActionEvent event) {
         if ( app.login(this.txf_username.getText(), this.psw_password.getText()) ){
@@ -57,6 +72,9 @@ public class LoginController extends AppController{
         stage.displayMessage();
     }
 
+    /**
+     * Goes to the registering panel
+     */
     @FXML
     void subscribe(ActionEvent event) {
         stage.loadSubscribeScreen();

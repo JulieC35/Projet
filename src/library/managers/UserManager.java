@@ -54,6 +54,7 @@ public class UserManager{
 	/**
 	 * Allows to remove an user from the list
 	 * @param user The user to be removed
+	 * @return true if the user was successfully removed
 	 */
 	public boolean removeUser(User user){
 		boolean ret = false;
@@ -84,14 +85,15 @@ public class UserManager{
 	}
 
 	/**
-	 * Allows to retrieve the list of users
+	 * @return The list of users
 	 */
 	public ArrayList<User> getUsers(){
 		return this.users;
 	}
 
 	/**
-	 * @param username The username to verify
+	 * Allows to verify that a username is not already taken
+	 * @param username The username to check the availability
 	 * @return true if the username is not already being used
 	 */
 	public boolean checkUsernameAvailability(String username){
@@ -107,8 +109,10 @@ public class UserManager{
 	}
 
 	/**
+	 * Allows to check that the email address if valid
 	 * @param emailAddress The emailAddress to verify
 	 * @return true if the emailAddress is valid
+	 * @deprecated
 	 */
 	public boolean checkEmailAddress(String emailAddress){
 		boolean ret = false;

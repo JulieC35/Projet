@@ -8,13 +8,12 @@ import lang.*;
 public class Launcher{
     /**
      * Entry point
-     * @param args The lsit of arguments of the application
+     * @param args The list of arguments of the application
      */
     public static void main(String[]args){
-        if ( args.length > 0 && args[0].equals("gui") ) {
-            GraphicalApplication.main(args);
-        }
-        else
+        if ( args.length > 0 && args[0].equals("console") )
             new ConsoleApplication();
+        else
+            GraphicalApplication.main(args);
     }
 }

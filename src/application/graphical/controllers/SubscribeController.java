@@ -1,3 +1,8 @@
+/**
+ * Controller of the Subscribe screen.<br>
+ * Handles access to the model to try registering the user
+ */
+
 package application.graphical.controllers;
 
 import javafx.fxml.FXML;
@@ -55,10 +60,18 @@ public class SubscribeController extends AppController{
     @FXML
     private TextField txf_email;
 
+    /**
+     * The constructor, sends the stage and application model to the parent class
+     * @param stage Contains the primary stage of the application
+     * @param app Contains an instance of the application model : current user, current connection, etc.
+     */
     public SubscribeController(GraphicalApplication stage, ApplicationModel app){
         super(stage, app);
     }
-    
+
+    /**
+     * Default behaviour on loading of the associated views
+     */
     @FXML
     public void initialize(){
         super.initialize();
@@ -74,11 +87,17 @@ public class SubscribeController extends AppController{
 
     }
 
+    /**
+     * Returns to the login page
+     */
     @FXML
     void login(ActionEvent event) {
         stage.loadLoginScreen();
     }
 
+    /**
+     * Registers the user
+     */
     @FXML
     void subscribe(ActionEvent event) {
         try {

@@ -1,5 +1,8 @@
 /**
- * 
+ * The result of a query on the database
+ * Stores the rows of the JDBC ResultSet and a possible message.<br>
+ * Two ArrayList objects are created : one for the scheme (the list of attributes) and 
+ * another one for the rows of the result themselves
  */
 
 package library.entities;
@@ -14,7 +17,8 @@ public class QueryResult{
 	private String message;
 
 	/**
-	 * The constructor
+	 * The constructor of the class.<br>
+	 * It recieves a ResultSet and fills the two ArrayList objects with the MetaData for the scheme and the ResultSet itself for the rows.
 	 * @param result The SQL ResultSet
 	 */
 	public QueryResult(ResultSet result){
@@ -28,7 +32,7 @@ public class QueryResult{
 			// Creating the scheme
 			ResultSetMetaData metaData = result.getMetaData();
 			for ( int i = 1 ; i <= metaData.getColumnCount() ; i++ ) {
-				this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, false));
+				this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, false, false));
 			}
 
 			// inserting entries
@@ -45,8 +49,7 @@ public class QueryResult{
 	}
 
 	/**
-	 * The constructor
-	 * @param result The SQL ResultSet
+	 * The constructor of the class
 	 */
 	public QueryResult(){
 		this.message = "";
@@ -55,31 +58,28 @@ public class QueryResult{
 	}
 
 	/**
-	 * Allwos to set the message
-	 * @param message The message of this query result
+	 * @param message The message of this QueryResult
 	 */
 	public void setMessage(String message){
 		this.message = ( message != null ) ? message : "";
 	}
 
 	/**
-	 * Allows to retrieve the message
-	 * @return The message of this query result
+	 * @return The message of this QueryResult
 	 */
 	public String getMessage(){
 		return this.message;
 	}
 
 	/**
-	 * @return The rows of the query result
+	 * @return The rows of the QueryResult
 	 */
 	public ArrayList<Row> getRows(){
 		return this.rows;
 	}
 
 	/** 
-	 * Allows to retrive the scheme of the query result
-	 * @return the scheme
+	 * @return the scheme of the QueryResult
 	 */
 	public ArrayList<Column> getScheme(){
 		return this.scheme;

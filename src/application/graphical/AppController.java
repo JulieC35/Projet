@@ -30,6 +30,9 @@ public abstract class AppController {
         this.queryBuilder = new QueryBuilder();
     }
 
+    /**
+     * Default behaviour on loading of the associated views
+     */
     @FXML
     public void initialize(){
         this.lbl_message.setText("");

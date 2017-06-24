@@ -1,5 +1,6 @@
 /**
- * The application class
+ * The global information of the application.<br>
+ * Contains the current user, DBConnection, database, table name that are used by the whole application.
  */
 
 package library;
@@ -19,7 +20,8 @@ public class ApplicationModel {
 	private String currentTable;
 
 	/**
-	 * Initialisation des paramètres
+	 * The constructor of the class.<br>
+	 * Initializes the UserManager and the QueryBuilder of the application
 	 */
 	public ApplicationModel(){
 		this.authSystem = new UserManager();
@@ -38,21 +40,21 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * @return The auth systeù
+	 * @return The auth system
 	 */
 	public UserManager getAuthSystem(){
 		return this.authSystem;
 	}
 
 	/**
-	 * Getter de l'utilisateur
+	 * @return The current user
 	 */
 	public User getUser(){
 		return this.currentUser;
 	}
 
 	/**
-	 * Getter de la connexion à la base de données
+	 * @return the current connection profile
 	 */
 	public DBConnection getConnectionProfile(){
 		return this.currentConnectionProfile;
@@ -66,8 +68,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Permet d'indiquer quel utilisateur est connecté
-	 * s'il à les bons identifiants/mot de passe
+	 * Allows to log in the user, granted that the username and password are valid
 	 * @param currentUsername The currentUsername
 	 * @param password  the password
 	 * @return true if the login process succeeded
@@ -84,7 +85,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Permet à l'utilisateur courant de se déconnecter
+	 * Allows to log out the user
 	 */
 	public void logout(){
         this.disconnect();
@@ -92,7 +93,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Configuration du profil de connexion
+	 * @param dbC The DBConnection to connect to
 	 */
 	public void setConnectionProfile(DBConnection dbC){
 		if ( dbC != null ) {
@@ -125,7 +126,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Sets the currentConnection profile and initializes the database
+	 * Initializes the database connection based on the current connection profile
 	 */
 	public void connect(){
 		if ( this.currentConnectionProfile != null )
@@ -133,7 +134,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Déconnexion de la base de données courante et du profil de connexion
+	 * Allows to disconnect from the current database/connection profile
 	 */
 	public void disconnect(){
 		try{
@@ -147,7 +148,8 @@ public class ApplicationModel {
 
     /**
      * Executes the reieved query on the current connection
-     * @param query
+     * @param query The query to process
+	 * @return The result of the SQL query
      */
     public QueryResult processSQL(String query) {
         QueryResult ret = new QueryResult();
