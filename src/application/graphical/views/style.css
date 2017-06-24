@@ -1,0 +1,63 @@
+.root{
+    -fx-background-color: #efefef;
+
+    -fx-font-family: "Calibri";
+}
+    .button{
+        -fx-cursor: hand;
+    }
+
+.popup{
+    -fx-background-color: #2d3950;
+}
+    .popup .label{
+        -fx-text-fill: #efefef;
+        -fx-font-size: 15;
+    }
+    .popup .error-label{
+        -fx-text-fill: #ef702a;
+        -fx-font-size: 18;
+    }
+    .popup .text-field, .popup .password-field{
+        -fx-background-color: #efefef;
+
+        -fx-text-fill: #777777;
+        -fx-font-size: 20;
+    }
+
+    .popup .button{
+        -fx-background-color: #efefef;
+        -fx-text-fill: #ef702a;
+        -fx-font-size: 20;
+        -fx-font-weight: bold;
+    }
+    .popup .button:hover{
+        -fx-background-color: #ef702a;
+        -fx-text-fill: #efefef;
+    }
+
+    .popup .href-like-button{
+        -fx-background-color: none;
+
+        -fx-text-fill: #efefef;
+        -fx-font-weight: normal;
+    }
+
+    .popup .href-like-button:hover{
+        -fx-background-color: none;
+
+        -fx-underline: true;
+        -fx-text-fill: #efefef;
+    }
+
+
+.system-button-bar{
+
+}
+    .system-button-bar .button{
+        -fx-pref-width: 20;
+        -fx-pref-height: 20;
+        -fx-margin-left: 20;
+
+        -fx-background-color: #efefef;
+    }
