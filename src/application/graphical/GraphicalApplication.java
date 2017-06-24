@@ -42,6 +42,7 @@ public class GraphicalApplication extends Application{
     @Override
     public void start(final Stage primaryStage) throws Exception {
         this.app = new ApplicationModel();
+        this.message = "";
         this.primaryStage = primaryStage;
         this.fxmlLoader = new FXMLLoader();
 

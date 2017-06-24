@@ -9,6 +9,7 @@ import java.util.regex.*;
 
 import library.*;
 import library.entities.*;
+import library.exceptions.UserException;
 
 public class UserManager{
 	private ArrayList<User> users;
@@ -24,8 +25,13 @@ public class UserManager{
 			this.users.add((User)u);
 		}
 
-		if ( this.users.size() == 0 )
-			this.addUser(new User("root", "Administrator", "", "root@localhost", "", Authorization.SUPERADMIN, null, null));
+		if ( this.users.size() == 0 ){
+			try {
+				this.addUser(new User("root", "Administrator", "", "root@localhost", "", Authorization.SUPERADMIN, null, null));
+			} catch (UserException ex){
+
+			}
+		}
 	}
 	
 	/**

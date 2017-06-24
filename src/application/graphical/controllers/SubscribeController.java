@@ -12,6 +12,7 @@ import lang.*;
 import application.graphical.*;
 import library.*;
 import library.entities.*;
+import library.exceptions.UserException;
 
 public class SubscribeController extends AppController{
 
@@ -80,14 +81,25 @@ public class SubscribeController extends AppController{
 
     @FXML
     void subscribe(ActionEvent event) {
-        /*if ( app.getAuthSystem().addUser(new User(username, firstName, lastName, emailAddress, password, null, null, null)) ) {
-            stage.setMessage();
-            stage.displayMessage();
-        } else {            
-            stage.setMessage();
-            stage.displayMessage();
+        try {
+            String username = this.txf_username.getText();
+            if ( !app.getAuthSystem().checkUsernameAvailability(username) )
+                throw new UserException(L.get("username-not-available"));
+
+            String firstName = this.txf_firstName.getText();
+            String lastName = this.txf_lastName.getText();
+            String email = this.txf_email.getText();
+            String password = this.psw_password.getText();
+
+            // If the data are not valid here, an UserException will be thrown by the User class
+            app.getAuthSystem().addUser(new User(username, firstName, lastName, email, password, null, null, null));
+
+            stage.setMessage(L.get("subscribal-succes"));
             stage.loadLoginScreen();
-        }*/
+        } catch (UserException ex){
+            stage.setMessage(ex.getMessage());
+            stage.displayMessage();
+        }
     }
 
 }
