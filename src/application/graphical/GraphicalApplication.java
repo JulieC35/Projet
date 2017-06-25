@@ -30,7 +30,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController;
 
 
     /**
@@ -51,6 +51,9 @@ public class GraphicalApplication extends Application{
         // Controllers
         this.loginController = new LoginController(this, app);
         this.subscribeController = new SubscribeController(this, app);
+        this.connectionsListController = new ConnectionsListController(this, app);
+        this.connectionAddController = new ConnectionAddController(this, app);
+        this.languageSelectionController = new LanguageSelectionController(this, app);
 
         // First screen
         this.loadLoginScreen();
@@ -69,6 +72,7 @@ public class GraphicalApplication extends Application{
             this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/LoginScreen.fxml")); // Loader creation
             this.fxmlLoader.setController(this.loginController); // setting the controller
             this.primaryStage.setScene(new Scene((HBox) fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen"));
             this.displayMessage();
@@ -91,6 +95,64 @@ public class GraphicalApplication extends Application{
     }
 
     /**
+     * Loads the subscribe screen into the stage
+     */
+    public void loadUserPanel(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/ConnectionsListScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.connectionsListController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen"));
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the connection adding screen into the stage
+     */
+    public void loadAddConnectionScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/ConnectionAddScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.connectionAddController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the language selection screen
+     */
+    public void loadLanguageSelectionScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/LanguageSelectionScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.languageSelectionController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Closes the current panel
+     */
+    public void closePanel(){
+        if ( this.currentScene != null ) {
+            this.primaryStage.setScene(this.currentScene);
+        }
+        else {
+            this.setMessage("Impossible to load the current screen");
+            this.displayMessage();
+        }
+    }
+
+    /**
      * Allows the transmission of a message to the current scene
      * @param message The message to be sent
      */
@@ -105,7 +167,7 @@ public class GraphicalApplication extends Application{
         try {
             Label lbl_message = (Label) this.primaryStage.getScene().lookup("#lbl_message");
             lbl_message.setText(message);
-        } catch (NullPointerException ex){
+        } catch (Exception ex){
             System.out.println(this.message);
         }
         this.message = "";

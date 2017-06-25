@@ -56,6 +56,8 @@ public class LoginController extends AppController{
         this.btn_login.setText(L.get("login"));
         this.btn_subscribe.setText(L.get("subscribe"));
 
+        app.logout();
+
     }
 
     /**
@@ -64,12 +66,15 @@ public class LoginController extends AppController{
     @FXML
     void login(ActionEvent event) {
         if ( app.login(this.txf_username.getText(), this.psw_password.getText()) ){
-            stage.setMessage(L.get("welcome") + " " + app.getUser().getFirstName() + " !");
+            this.lbl_message.setText("");
+            stage.loadUserPanel();
+            stage.setMessage(L.get("welcome") + " " + app.getUser().getUsername() + " !");
+            stage.displayMessage();
         }
         else {
             stage.setMessage(L.get("login-failed"));
+            stage.displayMessage();
         }
-        stage.displayMessage();
     }
 
     /**

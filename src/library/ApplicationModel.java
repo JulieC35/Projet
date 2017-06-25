@@ -9,6 +9,7 @@ import library.entities.*;
 import library.managers.*;
 import lang.*;
 import java.sql.*;
+import java.util.*;
 
 public class ApplicationModel {
     private UserManager authSystem;
@@ -18,18 +19,55 @@ public class ApplicationModel {
 	private DBConnection currentConnectionProfile;
 	private Connection currentConnection;
 	private String currentTable;
+	private HashMap<String, String> currentConfiguration;
 
 	/**
 	 * The constructor of the class.<br>
 	 * Initializes the UserManager and the QueryBuilder of the application
 	 */
 	public ApplicationModel(){
+		this.currentConfiguration = FilesHandler.xmlToMap("data/config.xml");
+
+		// If the HashMap is empty, we create it and save the file for further use
+		if ( this.currentConfiguration == null ){
+			this.currentConfiguration = new HashMap<String, String>();
+			this.currentConfiguration.put("language", "FRENCH");
+			this.saveConfiguration();
+		}
+
+		L.initialize(this.currentConfiguration.get("language"));
+
+
 		this.authSystem = new UserManager();
 		this.queryBuilder = new QueryBuilder();
 		this.currentUser = null;
 		this.currentConnectionProfile = null;
 		this.currentConnection = null;
-	
+	}
+
+	/**
+	 * Allows to save the current configuration of the application
+	 */
+	public void saveConfiguration(){
+		FilesHandler.mapToXml("data/config.xml", this.currentConfiguration);
+	}
+
+	/**
+	 * Allows to edit a configuration rule of the application
+	 * @param code The configuration rule's identifier
+	 * @param code The rule new value
+	 */
+	public void editConfigurationRule(String code, String value){
+		if ( code != null & value != null && !code.equals("") )
+			this.currentConfiguration.put(code, value);
+	}
+
+	/**
+	 * Allows to retrieve a configuration rule of the application
+	 * @param code The configuration rule's identifier
+	 */
+	public String getConfigurationRule(String code){
+		return this.currentConfiguration.get(code);
 	}
 
 	/**

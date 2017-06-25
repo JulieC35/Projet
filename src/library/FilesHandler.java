@@ -52,6 +52,35 @@ public abstract class FilesHandler {
     }
 
     /**
+     * Allows to save a config map in an xml file
+     * @param location The xml file's path (absolute or relative)
+     * @param map The HashMap
+     */
+    public static void mapToXml(String location, HashMap<String, String> map) {
+        System.out.println("Saving the map to " + location);
+        try{
+            FileWriter preOUT = new FileWriter(new File(location));
+            BufferedWriter out = new BufferedWriter(preOUT);
+            
+            out.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>");
+            out.newLine();
+            out.write("<config>");
+            out.newLine();
+            for(Map.Entry<String, String> entry : map.entrySet()){
+                out.write("\t<rule key=\"" + entry.getKey() + "\" value=\"" + entry.getValue() + "\" />");
+                out.newLine();
+            }
+            out.write("</config>");
+
+            out.flush();
+            out.close();
+        } catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
+    /**
      * Allows to get an ArrayList of objects from an objects file
      * @param location the location of the file
      * @return a list of objects

@@ -3,6 +3,7 @@ package library.entities;
 import java.util.*;
 import java.util.regex.*;
 import java.io.Serializable;
+
 import library.*;
 import lang.*;
 import library.exceptions.UserException;
@@ -180,6 +181,14 @@ public class User implements Serializable{
 	}
 
 	/**
+	* Returns the observable DBConnection list
+	* @return The observable list of connections
+	*/
+	public List<DBConnection> observeDBConnections(){
+		return (List<DBConnection>)this.connections;
+	}
+
+	/**
 	* Get the DBConnection with the corresponding name
 	* @param idCo the name of the DBConnection
 	* @return The connection
@@ -245,6 +254,15 @@ public class User implements Serializable{
 			ret = true;
 
 		return ret;
+	}
+
+	/**
+	* Remove a connection
+	* @param dbC the connection to remove
+	* @return true if the connection was successfully removed
+	*/
+	public boolean removeDBConnection(DBConnection dbC){
+		return this.connections.remove(dbC);
 	}
 
 	/**
