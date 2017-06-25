@@ -13,7 +13,6 @@ import library.exceptions.UserException;
 
 public class UserManager{
 	private ArrayList<User> users;
-	
 	/**
 	 * The constructor
 	 */

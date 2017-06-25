@@ -34,12 +34,6 @@ public class SubscribeController extends AppController{
     private PasswordField psw_password;
 
     @FXML
-    private Button btn_subscribe;
-
-    @FXML
-    private Button btn_cancel;
-
-    @FXML
     private Label lbl_message;
 
     @FXML
@@ -59,6 +53,12 @@ public class SubscribeController extends AppController{
 
     @FXML
     private TextField txf_email;
+
+    @FXML
+    private Button btn_subscribe;
+
+    @FXML
+    private Button btn_cancel;
 
     /**
      * The constructor, sends the stage and application model to the parent class
@@ -113,8 +113,9 @@ public class SubscribeController extends AppController{
             // If the data are not valid here, an UserException will be thrown by the User class
             app.getAuthSystem().addUser(new User(username, firstName, lastName, email, password, null, null, null));
 
-            stage.setMessage(L.get("subscribal-succes"));
             stage.loadLoginScreen();
+            stage.setMessage(L.get("subscribal-succes"));
+            stage.displayMessage();
         } catch (UserException ex){
             stage.setMessage(ex.getMessage());
             stage.displayMessage();

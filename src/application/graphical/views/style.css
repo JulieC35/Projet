@@ -14,10 +14,6 @@
         -fx-text-fill: #efefef;
         -fx-font-size: 15;
     }
-    .popup .error-label{
-        -fx-text-fill: #ef702a;
-        -fx-font-size: 18;
-    }
     .popup .text-field, .popup .password-field{
         -fx-background-color: #efefef;
 
@@ -35,19 +31,23 @@
         -fx-background-color: #ef702a;
         -fx-text-fill: #efefef;
     }
+        .popup .href-like-button{
+            -fx-background-color: none;
 
-    .popup .href-like-button{
-        -fx-background-color: none;
+            -fx-text-fill: #efefef;
+            -fx-font-weight: normal;
+        }
 
-        -fx-text-fill: #efefef;
-        -fx-font-weight: normal;
-    }
+        .popup .href-like-button:hover{
+            -fx-background-color: none;
 
-    .popup .href-like-button:hover{
-        -fx-background-color: none;
+            -fx-underline: true;
+            -fx-text-fill: #efefef;
+        }
 
-        -fx-underline: true;
-        -fx-text-fill: #efefef;
+    .popup .error-label{
+        -fx-text-fill: #ef702a;
+        -fx-font-size: 18;
     }
 
 
@@ -60,4 +60,88 @@
         -fx-margin-left: 20;
 
         -fx-background-color: #efefef;
+    }
+    .system-button-bar .button:hover{
+        -fx-opacity: 0.5;
+    }
+
+.controls-button-bar{
+
+}
+    .controls-button-bar .button{
+        -fx-pref-width: 20;
+        -fx-pref-height: 20;
+        -fx-margin-left: 20;
+
+        -fx-background-color: #2d3950;
+        -fx-effect: dropshadow( two-pass-box , rgba(0,0,0,0.1) , 4,0,-2,2 );
+
+        -fx-text-fill: #efefef;
+        -fx-font-size: 22;
+    }
+    .controls-button-bar .button:hover{
+        -fx-background-color: #efefef;
+
+        -fx-text-fill: #ef702a;
+    }
+
+.left-panel{
+    -fx-background-color: #2d3950;
+
+    -fx-text-fill: #efefef;
+}
+    .left-panel .logo-block{
+        -fx-background-color: #181e2b;
+        
+    }
+    .left-panel .href-like-button{
+        -fx-font-size: 18;
+    }
+
+
+
+
+.href-like-button{
+    -fx-background-color: none;
+
+    -fx-text-fill: #efefef;
+    -fx-font-weight: normal;
+}
+
+.href-like-button:hover{
+    -fx-background-color: none;
+
+    -fx-underline: true;
+    -fx-text-fill: #efefef;
+}
+
+.section-title{
+    -fx-font-size: 40;
+    -fx-text-fill: #555555;
+}
+.section-subtitle{
+    -fx-font-size: 20;
+    -fx-text-fill: #777777;
+}
+
+.error-label{
+    -fx-text-fill: #ef702a;
+    -fx-font-size: 18;
+}
+
+.form{
+
+}
+    .form .label{
+    -fx-text-fill: #555555;
+    -fx-font-size: 20;
+    }
+
+    .form .text-field{
+        -fx-pref-width: 400;
+        
+        -fx-background-color: #2d3950;
+
+        -fx-text-fill: #efefef;
+        -fx-font-size: 20;
     }

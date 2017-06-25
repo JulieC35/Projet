@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="300.0" styleClass="left-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutY="-72.0" prefHeight="65.0" prefWidth="200.0" styleClass="logo-block" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="btn_connections" layoutX="22.0" layoutY="88.0" mnemonicParsing="false" onAction="#connections" styleClass="href-like-button" text="DBConnections" AnchorPane.leftAnchor="30.0" />
+            <Button fx:id="btn_profile" layoutX="30.0" layoutY="129.0" mnemonicParsing="false" onAction="#profile" styleClass="href-like-button" text="Profile" AnchorPane.leftAnchor="30.0" />
+            <Button fx:id="btn_language" layoutX="30.0" layoutY="170.0" mnemonicParsing="false" onAction="#language" styleClass="href-like-button" text="Language" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="276.0" layoutY="105.0" prefHeight="720.0" prefWidth="1004.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lbl_title" styleClass="section-title" text="Title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0" />
+            <Label fx:id="lbl_subtitle" layoutX="10.0" layoutY="10.0" styleClass="section-subtitle" text="Subtitle" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="90.0" />
+            <Label fx:id="lbl_message" layoutX="30.0" layoutY="125.0" styleClass="error-label" text="Message displayed here" />
+            <ButtonBar buttonMinWidth="0.0" prefHeight="40.0" prefWidth="200.0" styleClass="system-button-bar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#closeUserPanel">
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+              </buttons>
+            </ButtonBar>
+            <ButtonBar fx:id="btnBar_form" buttonMinWidth="100.0" layoutX="30.0" layoutY="147.0" prefHeight="40.0" prefWidth="920.0" styleClass="controls-button-bar" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+              <buttons>
+                  <Button fx:id="btn_add" mnemonicParsing="false" onAction="#onAddButtonClick" text="Add" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

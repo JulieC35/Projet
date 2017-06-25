@@ -36,6 +36,5 @@ public abstract class AppController {
     @FXML
     public void initialize(){
         this.lbl_message.setText("");
-        stage.displayMessage();
     }    
 }
