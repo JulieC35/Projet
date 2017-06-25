@@ -24,6 +24,7 @@
     <word code="list" value="List" />
     <word code="add" value="Add" />
     <word code="remove" value="Remove" />
+    <word code="edit" value="Edit" />
     <word code="input-too-short" value="Input too short" />
     <word code="not-valid-input" value="Input not valid" />
     <word code="host" value="Host" />
@@ -33,6 +34,7 @@
     <word code="boolean-answer" value="(y/n)" />
     <word code="sql-query" value="SQL Query" />
     <word code="query-result" value="Query result" />
+    <word code="validate" value="Validate" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -64,6 +66,10 @@
     <word code="user-removal-success" value="User deletion succeeded" />
     <word code="user-removal-failure" value="The user could not be removed" />
 
+    <!-- User panel -->
+    <word code="my-language" value="Language" />
+    <word code="my-informations" value="Informations" />
+
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Console mode" />
     <word code="launcher-gui-mode" value=" - GUI mode" />
@@ -85,6 +91,7 @@
     <word code="username-too-short" value="This username is too short." />
     <word code="username-not-valid" value="This username is not valid." />
     <word code="email-address-not-valid" value="This email address is not valid." />
+    <word code="subscribal-success" value="Compte ajouté avec succès." />
 
     <!-- DBConnections -->
     <word code="my-connections" value="My connections" />
@@ -95,6 +102,12 @@
     <word code="connection-removal-success" value="Connection removed." />
     <word code="connection-failure" value="Connection initializing failed." />
     <word code="connection-success" value="Connection initialized." />
+    <word code="name-not-valid" value="This name is not valid." />
+    <word code="host-not-valid" value="This host is not valid." />
+    <word code="database-name-not-valid" value="This database name is not valid." />
+
+    <!-- Language -->
+    <word code="language-change-success" value="The language was just changed. Please reload the application to make theese changes effective." />
 
     <!-- Tables -->
     <word code="my-tables" value="My tables" />
@@ -118,4 +131,6 @@
 
     <!-- Rows -->
     <word code="entries" value="Entries" />
+
+    <!-- User Panel -->
 </localization>
