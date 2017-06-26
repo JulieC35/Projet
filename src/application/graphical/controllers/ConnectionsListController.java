@@ -144,7 +144,6 @@ public class ConnectionsListController extends AppController{
 
     @FXML
     void profile(ActionEvent event) {
-        System.out.println("profile");
     }
 
     @FXML
