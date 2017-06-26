@@ -17,7 +17,7 @@ public class AdminModifyMenuScreen extends TerminalScreen{
 
 	public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("user-to-admin"), L.get("user-to-restricted")});
         terminal.startPrompting();
@@ -38,7 +38,7 @@ public class AdminModifyMenuScreen extends TerminalScreen{
                 if (Integer.parseInt(request[0]) == 1){
                     terminal.setCurrentScreen(new AdminUpScreen(terminal, app));
                 }
-                else if(Integer.parseInt(request[0]) == 1){
+                else if(Integer.parseInt(request[0]) == 2){
                 	terminal.setCurrentScreen(new AdminLowScreen(terminal, app));
                 }
             } catch (NumberFormatException ex ){

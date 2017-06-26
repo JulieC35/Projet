@@ -19,7 +19,7 @@ public class AdminPanelScreen extends TerminalScreen{
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-panel"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-panel"));
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("admin-list"), L.get("admin-modify-access"), L.get("admin-remove")});
         terminal.startPrompting();

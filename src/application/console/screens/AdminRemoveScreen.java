@@ -20,7 +20,7 @@ public class AdminRemoveScreen extends TerminalScreen{
 
 	public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printList(this.generateList());
         terminal.startPrompting();
@@ -66,16 +66,15 @@ public class AdminRemoveScreen extends TerminalScreen{
     private boolean remove(int userId){
         boolean ret = false;
         User user = app.getAuthSystem().getUsers().get(userId);
-
-        if (app.getAuthSystem().removeUser(user)) {
-            app.getAuthSystem().saveUsers();
-            terminal.setMessage(L.get("user-removal-success"));
-            ret = true;
-        }
-        else {
+        if((user != app.getUser()) && (user.getUsername() != "root")){
+            if (app.getAuthSystem().removeUser(user)) {
+                app.getAuthSystem().saveUsers();
+                terminal.setMessage(L.get("user-removal-success"));
+                ret = true;
+            }
+        }else {
             terminal.setMessage(L.get("user-removal-failure"));
         }
-
         return ret;
     }
 }

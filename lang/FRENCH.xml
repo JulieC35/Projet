@@ -65,6 +65,7 @@
     <word code="admin-down" value="Vous ne pouvez restreindre un administrateur" />
     <word code="user-removal-success" value="Utilisateur supprimé" />
     <word code="user-removal-failure" value="L'utilisateur n'a pas pu être supprimé" />
+    <word code="admin-superadmin" value="Vous ne pouvez modifier les droits du super administrateur" />
 
     <!-- User panel -->
     <word code="my-language" value="Langue" />

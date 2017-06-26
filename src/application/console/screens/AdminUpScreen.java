@@ -25,7 +25,7 @@ public class AdminUpScreen extends TerminalScreen{
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printList(usersList);
         this.upgrade(this.requestInformation());
@@ -73,11 +73,13 @@ public class AdminUpScreen extends TerminalScreen{
                 case RESTRICTED:
                     user.setAuthorization(Authorization.DEFAULT);
                     terminal.setMessage(L.get("restricted-up"));
+                    app.getAuthSystem().saveUsers();
                     ret = true;
                 break;
                 case DEFAULT:
                     user.setAuthorization(Authorization.ADMIN);
                     terminal.setMessage(L.get("default-up"));
+                    app.getAuthSystem().saveUsers();
                     ret = true;
                 break;
                 case ADMIN:

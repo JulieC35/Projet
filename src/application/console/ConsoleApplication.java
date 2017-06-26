@@ -112,7 +112,7 @@ public class ConsoleApplication{
         System.out.println(" - sql : " + L.get("instruction-sql"));
         System.out.println(" - back : " + L.get("instruction-back"));
         System.out.println(" - exit : " + L.get("instruction-exit"));
-        if((this.app.getUser() != null) && (this.app.getUser().getAuthorization() == Authorization.ADMIN)){
+        if((this.app.getUser() != null) && ((this.app.getUser().getAuthorization() == Authorization.ADMIN) || (this.app.getUser().getAuthorization() == Authorization.SUPERADMIN))){
             System.out.println(" - admin : " + L.get("instruction-admin"));
         }
     }
