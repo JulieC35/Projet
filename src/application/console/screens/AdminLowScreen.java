@@ -51,7 +51,7 @@ public class AdminLowScreen extends TerminalScreen{
      */
     public int requestInformation(){
         int ret = -1;
-        while((ret < 0) || (ret >= usersList.size())){
+        while((ret <= 0) || (ret > usersList.size())){
             try{
                 ret = Integer.parseInt(terminal.prompt(L.get("user-down-ask")));    
             } catch(Exception ex){}

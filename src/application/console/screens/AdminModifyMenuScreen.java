@@ -17,7 +17,7 @@ public class AdminModifyMenuScreen extends TerminalScreen{
 
 	public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printMenu(new String[]{L.get("user-to-admin"), L.get("user-to-restricted")});
         terminal.startPrompting();

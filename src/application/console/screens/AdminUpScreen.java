@@ -25,7 +25,7 @@ public class AdminUpScreen extends TerminalScreen{
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printList(usersList);
         this.upgrade(this.requestInformation());
