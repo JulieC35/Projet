@@ -35,6 +35,9 @@
     <word code="sql-query" value="SQL Query" />
     <word code="query-result" value="Query result" />
     <word code="validate" value="Validate" />
+    <word code="access" value="Access" />
+    <word code="error-loading-screen" value="Impossible to load the chosen screen" />
+    <word code="reload-current-screen-failure" value="Impossible to return to the previous screen" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -68,7 +71,9 @@
 
     <!-- User panel -->
     <word code="my-language" value="Language" />
-    <word code="my-informations" value="Informations" />
+    <word code="my-profile" value="Profile" />
+    <word code="user-profile-edit-success" value="Profile edit succeeded" />
+    <word code="empty-password-instruction" value="Not updated if nothing is typed here" />
 
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Console mode" />
@@ -112,6 +117,7 @@
     <!-- Tables -->
     <word code="my-tables" value="My tables" />
     <word code="table-name" value="Table name" />
+    <word code="table-list-failure" value="Impossible to load the list of tables" />
     <word code="table-add-failure" value="Table adding failed." />
     <word code="table-add-success" value="Table added." />
     <word code="table-removal-failure" value="Table removal failed." />

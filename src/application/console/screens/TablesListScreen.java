@@ -22,31 +22,16 @@ public class TablesListScreen extends TerminalScreen{
         terminal.printHeader();
         terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("my-tables") + " : " + L.get("list"));
         terminal.printMessage();
-        terminal.printList(this.generateList());
-        terminal.startPrompting();
-
-        this.exit();
-    }
-
-    /**
-     * Generates a list of the different possible actions
-     * @return The list of strings
-     */
-    public ArrayList<String> generateList(){
-        ArrayList<String> ret = new ArrayList<String>();
-        try{
-            DatabaseMetaData metaData = app.getConnection().getMetaData();
-            ResultSet result = metaData.getTables(null, null, "%", null);
-
-            while(result.next()){
-                ret.add(result.getString("TABLE_NAME"));
-            }
-        } catch(SQLException ex){
+        try {
+            terminal.printList(DBConnection.getTablesList(app.getConnection()));
+        } catch ( SQLException ex ){
             terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
             terminal.loadPreviousScreen();
         }
+        
+        terminal.startPrompting();
 
-        return ret;
+        this.exit();
     }
 
     /**
@@ -62,7 +47,7 @@ public class TablesListScreen extends TerminalScreen{
             try {
                 tableId = Integer.parseInt(request[0]);
                 try {
-                    String tableName = this.generateList().get(tableId);
+                    String tableName = DBConnection.getTablesList(app.getConnection()).get(tableId);
                     try {
                         app.setCurrentTable(tableName);
                         terminal.setCurrentScreen(new RowsMenuScreen(terminal, app));
@@ -73,6 +58,9 @@ public class TablesListScreen extends TerminalScreen{
                 } catch (IndexOutOfBoundsException ex){
                     terminal.setMessage(L.get("not-valid-input"));
                     ret = RequestResult.ERROR;
+                } catch (SQLException ex) {
+                    terminal.setMessage(L.get("sql-error") + "\n" + ex.getMessage());
+                    terminal.loadPreviousScreen();
                 }
             } catch (NumberFormatException ex){
                 terminal.setMessage(L.get("not-valid-input"));

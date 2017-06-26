@@ -70,7 +70,7 @@ public class ConnectionsListController extends AppController{
         super.initialize();
 
         this.btn_connections.setText("> " + L.get("my-connections"));
-        this.btn_profile.setText(L.get("my-informations"));
+        this.btn_profile.setText(L.get("my-profile"));
         this.btn_language.setText(L.get("my-language"));
         this.btn_add.setText(L.get("add"));
 
@@ -91,21 +91,32 @@ public class ConnectionsListController extends AppController{
         // We get the observable list of connections of the current user from the model
         tbl_connections.getItems().setAll(app.getUser().observeDBConnections());
 
-        // Context menu creation
+        this.createContextMenu();
+    }
+
+    @FXML
+    void createContextMenu(){
         tbl_connections.setRowFactory(new Callback<TableView<DBConnection>, TableRow<DBConnection>>() {  
             @Override  
             public TableRow<DBConnection> call(TableView<DBConnection> tableView) {  
                 final TableRow<DBConnection> row = new TableRow<>();  
                 final ContextMenu contextMenu = new ContextMenu();  
+                // Menu elements creation
+                final MenuItem accessMenuItem = new MenuItem(L.get("access"));  
                 final MenuItem removeMenuItem = new MenuItem(L.get("remove"));  
                 final MenuItem editMenuItem = new MenuItem(L.get("edit"));  
+
+                // Actions handling
+                accessMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
+                    @Override  
+                    public void handle(ActionEvent event) {  
+                        accessDBConnection(row.getItem());
+                    }  
+                });
                 removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
                     @Override  
                     public void handle(ActionEvent event) {  
-                        if ( app.getUser().removeDBConnection(row.getItem()) ){
-                            app.getAuthSystem().saveUsers();
-                            tbl_connections.getItems().remove(row.getItem());
-                        }
+                        removeDBConnection(row.getItem());
                     }  
                 });  
                 editMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
@@ -114,9 +125,13 @@ public class ConnectionsListController extends AppController{
                         System.out.println("editing " + row.getItem());
                     }  
                 }); 
+
+                // Then we add the elements to the context menu
+                contextMenu.getItems().add(accessMenuItem);  
                 contextMenu.getItems().add(removeMenuItem);  
                 contextMenu.getItems().add(editMenuItem);  
-            // Set context menu on row, but use a binding to make it only show for non-empty rows:  
+
+            // Hiding the menu for empty rows
                 row.contextMenuProperty().bind(  
                         Bindings.when(row.emptyProperty())  
                         .then((ContextMenu)null)  
@@ -128,27 +143,28 @@ public class ConnectionsListController extends AppController{
     }
 
     @FXML
-    void closeUserPanel(ActionEvent event) {
-        stage.closePanel();
-    }
-
-    @FXML
-    void connections(ActionEvent event) {
-        stage.loadUserPanel();
-    }
-
-    @FXML
-    void language(ActionEvent event) {
-        stage.loadLanguageSelectionScreen();
-    }
-
-    @FXML
-    void profile(ActionEvent event) {
-    }
-
-    @FXML
     void onAddButtonClick(ActionEvent event) {
         stage.loadAddConnectionScreen();
+    }
+
+    @FXML
+    void accessDBConnection(DBConnection dbC){
+        if ( dbC != null ) {
+            app.setConnectionProfile(dbC);
+            app.connect();
+            stage.loadDatabaseHomeScreen();
+        } else {
+            stage.setMessage(L.get("connection-failure"));
+            stage.displayMessage();
+        }
+    }
+
+    @FXML 
+    void removeDBConnection(DBConnection dbC){
+        if ( app.getUser().removeDBConnection(dbC) ){
+            app.getAuthSystem().saveUsers();
+            tbl_connections.getItems().remove(dbC);
+        }
     }
 
 }

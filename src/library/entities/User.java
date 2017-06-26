@@ -266,20 +266,6 @@ public class User implements Serializable{
 	}
 
 	/**
-	* Edit a connection 
-	* @param nameCo the name of the connection
-	* @param db the dbConnection to change name
-	*/
-	public void editDBConnection(String nameCo, DBConnection db){
-		if((nameCo != null) && (db != null)){
-			if(connections.contains(db)){
-				int index = connections.indexOf(db);
-				connections.get(index).setName(nameCo);
-			}
-		}
-	}
-
-	/**
 	 * Verifies if the given password matches the user's
 	 * @param password The password to check
 	 * @return true if the passwords match

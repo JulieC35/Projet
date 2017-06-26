@@ -95,7 +95,7 @@ public class ConnectionAddController extends AppController{
         super.initialize();
 
         this.btn_connections.setText("> " + L.get("my-connections"));
-        this.btn_profile.setText(L.get("my-informations"));
+        this.btn_profile.setText(L.get("my-profile"));
         this.btn_language.setText(L.get("my-language"));
 
         this.lbl_name.setText(L.get("connection-name"));
@@ -109,26 +109,7 @@ public class ConnectionAddController extends AppController{
 
         this.btn_add.setText(L.get("add"));
         this.btn_cancel.setText(L.get("cancel"));
-    }
-
-    @FXML
-    void closeUserPanel(ActionEvent event) {
-        stage.closePanel();
-    }
-
-    @FXML
-    void connections(ActionEvent event) {
-        stage.loadUserPanel();
-    }
-
-    @FXML
-    void language(ActionEvent event) {
-        stage.loadLanguageSelectionScreen();
-    }
-
-    @FXML
-    void profile(ActionEvent event) {
-    }    
+    }  
     
     @FXML
     void add(ActionEvent event) {

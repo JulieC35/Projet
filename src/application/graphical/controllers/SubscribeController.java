@@ -114,7 +114,7 @@ public class SubscribeController extends AppController{
             app.getAuthSystem().addUser(new User(username, firstName, lastName, email, password, null, null, null));
 
             stage.loadLoginScreen();
-            stage.setMessage(L.get("subscribal-succes"));
+            stage.setMessage(L.get("subscribal-success"));
             stage.displayMessage();
         } catch (UserException ex){
             stage.setMessage(ex.getMessage());

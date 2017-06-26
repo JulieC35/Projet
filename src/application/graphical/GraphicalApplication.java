@@ -30,7 +30,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController;
 
 
     /**
@@ -54,8 +54,10 @@ public class GraphicalApplication extends Application{
         this.connectionsListController = new ConnectionsListController(this, app);
         this.connectionAddController = new ConnectionAddController(this, app);
         this.languageSelectionController = new LanguageSelectionController(this, app);
+        this.userProfileEditController = new UserProfileEditController(this, app);
+        this.databaseHomeController = new DatabaseHomeController(this, app);
 
-        // First screen
+        // We first load the login screen
         this.loadLoginScreen();
 
         //primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -76,6 +78,9 @@ public class GraphicalApplication extends Application{
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen"));
             this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
         }
     }
 
@@ -90,6 +95,9 @@ public class GraphicalApplication extends Application{
             this.primaryStage.setScene(new Scene((HBox) this.fxmlLoader.load()));
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen"));
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
             this.displayMessage();
         }
     }
@@ -106,6 +114,9 @@ public class GraphicalApplication extends Application{
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen"));
             this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
         }
     }
 
@@ -119,6 +130,9 @@ public class GraphicalApplication extends Application{
             this.fxmlLoader.setController(this.connectionAddController); // setting the controller
             this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
         } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
             this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
             this.displayMessage();
         }
@@ -136,6 +150,46 @@ public class GraphicalApplication extends Application{
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
             this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads user profile edit screen
+     */
+    public void loadUserProfileEditScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/UserProfileEditScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.userProfileEditController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the database main screen
+     */
+    public void loadDatabaseHomeScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/DatabaseHomeScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.databaseHomeController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
         }
     }
 
@@ -147,7 +201,7 @@ public class GraphicalApplication extends Application{
             this.primaryStage.setScene(this.currentScene);
         }
         else {
-            this.setMessage("Impossible to load the current screen");
+            this.setMessage(L.get("reload-current-screen-failure"));
             this.displayMessage();
         }
     }

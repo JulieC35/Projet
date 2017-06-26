@@ -62,7 +62,7 @@ public class LanguageSelectionController extends AppController{
         super.initialize();
 
         this.btn_connections.setText(L.get("my-connections"));
-        this.btn_profile.setText(L.get("my-informations"));
+        this.btn_profile.setText(L.get("my-profile"));
         this.btn_language.setText("> " + L.get("my-language"));
 
         this.lbl_title.setText(L.get("my-language"));
@@ -77,26 +77,6 @@ public class LanguageSelectionController extends AppController{
                 this.btn_en.setSelected(true);
                 break;
         }
-    }
-
-    @FXML
-    void closeUserPanel(ActionEvent event) {
-        stage.closePanel();
-    }
-
-    @FXML
-    void connections(ActionEvent event) {
-        stage.loadUserPanel();
-    }
-
-    @FXML
-    void language(ActionEvent event) {
-        stage.loadLanguageSelectionScreen();
-    }
-
-    @FXML
-    void profile(ActionEvent event) {
-
     }
 
     @FXML
