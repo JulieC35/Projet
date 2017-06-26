@@ -84,9 +84,13 @@ public class Table{
 	 * Allows to add a column to the table scheme
 	 * @param col The coloumn to add to the table scheme
 	 */
-	public void addColumn(Column col){
-		if ( col != null ) 
+	public boolean addColumn(Column col){
+		boolean ret = false;
+		if ( col != null ){
 			this.scheme.add(col);
+			ret = true;
+		}
+		return ret;
 	}
 
 	/**

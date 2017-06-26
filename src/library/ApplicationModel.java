@@ -14,7 +14,6 @@ import java.util.*;
 public class ApplicationModel {
     private UserManager authSystem;
 	private QueryBuilder queryBuilder;
-
 	private User currentUser;
 	private DBConnection currentConnectionProfile;
 	private Connection currentConnection;
