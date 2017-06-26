@@ -38,7 +38,7 @@ public class AdminModifyMenuScreen extends TerminalScreen{
                 if (Integer.parseInt(request[0]) == 1){
                     terminal.setCurrentScreen(new AdminUpScreen(terminal, app));
                 }
-                else if(Integer.parseInt(request[0]) == 1){
+                else if(Integer.parseInt(request[0]) == 2){
                 	terminal.setCurrentScreen(new AdminLowScreen(terminal, app));
                 }
             } catch (NumberFormatException ex ){

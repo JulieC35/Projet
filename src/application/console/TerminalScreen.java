@@ -90,7 +90,7 @@ public abstract class TerminalScreen{
             }
         }
         else if (request[0].equals("admin")){
-            if(this.app.getUser().getAuthorization() == Authorization.ADMIN){
+            if((this.app.getUser().getAuthorization() == Authorization.ADMIN) || (this.app.getUser().getAuthorization() == Authorization.SUPERADMIN)){
                 ret = RequestResult.ADMIN;
                 terminal.setCurrentScreen(new AdminPanelScreen(terminal, app));
             } else{

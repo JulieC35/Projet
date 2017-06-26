@@ -25,7 +25,7 @@ public class AdminLowScreen extends TerminalScreen{
 
     public void initialize(){
         terminal.printHeader();
-        terminal.printTitle(app.getConnectionProfile().getName() + " : " + L.get("admin-list"));
+        terminal.printTitle(app.getUser().getUsername() + " : " + L.get("admin-list"));
         terminal.printMessage();
         terminal.printList(usersList);
         this.upgrade(this.requestInformation());
@@ -78,6 +78,9 @@ public class AdminLowScreen extends TerminalScreen{
                 break;
                 case ADMIN:
                     terminal.setMessage(L.get("admin-down"));
+                break;
+                case SUPERADMIN:
+                    terminal.setMessage(L.get("admin-superadmin"));
                 break;
             }
         }
