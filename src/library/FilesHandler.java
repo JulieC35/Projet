@@ -57,7 +57,6 @@ public abstract class FilesHandler {
      * @param map The HashMap
      */
     public static void mapToXml(String location, HashMap<String, String> map) {
-        System.out.println("Saving the map to " + location);
         try{
             FileWriter preOUT = new FileWriter(new File(location));
             BufferedWriter out = new BufferedWriter(preOUT);

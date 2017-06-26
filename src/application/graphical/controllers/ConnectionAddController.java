@@ -98,6 +98,12 @@ public class ConnectionAddController extends AppController{
         this.btn_profile.setText(L.get("my-informations"));
         this.btn_language.setText(L.get("my-language"));
 
+        this.lbl_name.setText(L.get("connection-name"));
+        this.lbl_username.setText(L.get("username"));
+        this.psw_password.setText(L.get("password"));
+        this.lbl_host.setText(L.get("host"));
+        this.lbl_dbName.setText(L.get("database-name"));
+
         this.lbl_title.setText(L.get("my-connections"));
         this.lbl_subtitle.setText(L.get("add"));
 
@@ -122,7 +128,6 @@ public class ConnectionAddController extends AppController{
 
     @FXML
     void profile(ActionEvent event) {
-        System.out.println("profile");
     }    
     
     @FXML

@@ -168,7 +168,8 @@ public class GraphicalApplication extends Application{
             Label lbl_message = (Label) this.primaryStage.getScene().lookup("#lbl_message");
             lbl_message.setText(message);
         } catch (Exception ex){
-            System.out.println(this.message);
+            if ( this.message != null )
+                System.out.println(this.message);
         }
         this.message = "";
     }
