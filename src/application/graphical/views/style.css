@@ -97,8 +97,15 @@
     .left-panel .href-like-button{
         -fx-font-size: 18;
     }
-
-
+    .menu {
+        -fx-background-color: none;
+        }
+        .menu .list-cell:even {
+            -fx-background-color: none;
+        }
+        .menu .list-cell:odd {
+            -fx-background-color: none;
+        }
 
 
 .href-like-button{
@@ -145,3 +152,17 @@
         -fx-text-fill: #efefef;
         -fx-font-size: 20;
     }
+
+.text-field.read-only-property{
+    -fx-text-fill: #808a9d;
+}
+
+.stats-container{
+    -fx-background-color: #efefef;
+}
+    .stats-container .split-pane-divider{
+        -fx-opacity: 0;
+    }
+        .stats-container .split-pane-divider .horizontal-grabber{
+            -fx-opacity: 0;
+        }

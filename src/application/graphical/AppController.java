@@ -5,6 +5,7 @@ package application.graphical;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.event.*;
 
 import library.*;
 import library.entities.*;
@@ -36,5 +37,36 @@ public abstract class AppController {
     @FXML
     public void initialize(){
         this.lbl_message.setText("");
-    }    
+    }   
+
+    @FXML 
+    public void logout(){
+        app.logout();
+        stage.loadLoginScreen();
+    }
+
+    @FXML
+    void closeUserPanel(ActionEvent event) {
+        stage.closePanel();
+    }
+
+    @FXML
+    void connections(ActionEvent event) {
+        stage.loadUserPanel();
+    }
+
+    @FXML
+    void language(ActionEvent event) {
+        stage.loadLanguageSelectionScreen();
+    }
+
+    @FXML
+    void profile(ActionEvent event) {
+        stage.loadUserProfileEditScreen();
+    }  
+
+    @FXML
+    void sql(ActionEvent event){
+        System.out.println("SQL");
+    }
 }

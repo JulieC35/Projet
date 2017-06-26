@@ -11,6 +11,8 @@ package library.entities;
 
 import java.sql.*;
 import java.io.Serializable;
+import java.util.*;
+
 import lang.*;
 
 public class DBConnection implements Serializable{
@@ -182,6 +184,27 @@ public class DBConnection implements Serializable{
 			ret = DriverManager.getConnection(address, this.username, this.password);
         } catch (SQLException ex) {
         }
+
+		return ret;
+	}
+
+	/**
+	 * Allows to retrive the list of tables of this database
+	 * @param connection The database connection
+	 * @throws SQLException if the table list could not be retrieved
+	 */
+	public static ArrayList<String> getTablesList(Connection connection) throws SQLException{
+		ArrayList<String> ret = new ArrayList<String>();
+		if ( connection != null ) {
+			DatabaseMetaData metaData = connection.getMetaData();
+			ResultSet result = metaData.getTables(null, null, "%", null);
+
+			while(result.next()){
+				ret.add(result.getString("TABLE_NAME"));
+			}
+		} else {
+			throw new SQLException("Connection not set");
+		}
 
 		return ret;
 	}
