@@ -1,18 +1,18 @@
+/**
+ * A QueryResult row.<br>
+ * Two ArrayList objects are used : the first one stores the MySQL attributes, and the other the associated values.
+ */
 package library.entities;
 
 import java.util.*;
 import lang.*;
 
-/**
-* Class Row
-*/
 public class Row{
 	private ArrayList<String> keys;
 	private ArrayList<String> values;
 
 	/**
 	* The constructor of the class
-	* @param schema the list of column
 	*/
 	public Row(){
 		this.keys = new ArrayList<String>();
@@ -20,20 +20,22 @@ public class Row{
 	}
 
 	/**
-	* Get the value
-	* @param col the column
+	* Allows to retrieve a value based on the associated attribute.
+	* @param attribute the column
+	* @return The value if found, or null
 	*/
-	public String getValue(String col){
-		String ret = "n/a";
-		if ( col != null ) {
-			if ( this.keys.indexOf(col) != -1 )
-				ret = this.values.get(this.keys.indexOf(col));
+	public String getValue(String attribute){
+		String ret = null;
+		if ( attribute != null ) {
+			if ( this.keys.indexOf(attribute) != -1 )
+				ret = this.values.get(this.keys.indexOf(attribute));
 		}
 		return ret;
 	}
 
 	/**
-	* Set the value
+	* Allows to modify a value of the row based on its associated attribute.<br>
+	* If the attribute doesn't exist in the row, it is created.
 	* @param col the column
 	* @param val the value
 	*/
@@ -47,8 +49,7 @@ public class Row{
 	}
 
 	/**
-	* Display informations
-	* @return the row as a string
+	* @return The values of the row as a String, separated with tabulations
 	*/
 	public String toString(){
 		StringBuilder sb = new StringBuilder();

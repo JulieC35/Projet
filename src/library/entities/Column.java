@@ -1,3 +1,10 @@
+/**
+ * A MySQL database table attribute.<br>
+ * A Column object have several attributes meant to describe it in a SQL way : a name, a type and also several
+ * boolean indicators : primary, unique, notNull and autoIncrement<br>
+ * Besides accessors, a Column can be converted into an SQL attribute declaration<br><br>
+ */
+
 package library.entities;
 
 import lang.*;
@@ -6,19 +13,23 @@ public class Column{
 
 	private String name, type;
 	private boolean primary, unique, notNull, autoIncrement;
-	public final String[] ALLOWED_TYPES = {"INT", "DATETIME", "VARCHAR", "TEXT", "TIMESTAMP", "DECIMAL", "BOOLEAN"};
 	
 	/**
 	 * The constructor of the class
 	 * @param name the name of the column
 	 * @param type the type of the column
+	 * @param primary true if this is a primary key
+	 * @param unique true if this attribute is unique
+	 * @param notNull true if this attribute should not be null
+	 * @param autoIncrement true if the attribute has auto increment
 	 */
-	public Column(String name, String type, boolean primary, boolean unique, boolean notNull){
+	public Column(String name, String type, boolean primary, boolean unique, boolean notNull, boolean autoIncrement){
 		this.name = ( name != null ) ? name : "n/a";
 		this.type = ( type != null ) ? type : "n/a";
 		this.primary = primary;
 		this.unique = unique;
 		this.notNull = notNull;
+		this.autoIncrement = autoIncrement;
 	}
 
 	/**
@@ -34,16 +45,14 @@ public class Column{
 	}
 
 	/**
-	 * Getter of the name
-	 * @return the current name
+	 * @return the name of the column
 	 */
 	public String getName(){
 		return this.name;
 	}
 
 	/**
-	 * Getter of the type
-	 * @return the current type
+	 * @return the type of the column
 	 */
 	public String getType(){
 		return this.type;
@@ -78,8 +87,7 @@ public class Column{
 	}
 
 	/**
-	 * Setter of name
-	 * @param name the new name of the column
+	 * @param name the new name of the column. Should not be null or empty
 	 * @return true if the name is valid
 	 */
 	public boolean setName(String name){
@@ -93,8 +101,7 @@ public class Column{
 	}
 
 	/**
-	 * Setter of type
-	 * @param type the new type of the column
+	 * @param type the new type of the column. Should not be null or empty
 	 * @return true is the type is valid
 	 */
 	public boolean setType(String type){
@@ -108,36 +115,44 @@ public class Column{
 	}
 	
 	/**
-	 * @param primary Is the column a primary key ?
+	 * @param primary true if the column is a primary key
 	 */
 	public void setPrimary(boolean primary){
 		this.primary = primary;
 	}
 	
 	/**
-	 * @param unique Is the column unique ?
+	 * @param unique true if the column is unique
 	 */
 	public void setUnique(boolean unique){
 		this.unique = unique;
 	}
 	
 	/**
-	 * @param notNull Is the column not null ?
+	 * @param notNull true if the column is not null
 	 */
 	public void setNotNull(boolean notNull){
 		this.notNull = notNull;
 	}
 
 	/**
-	 * @param autoI Has the column auto increment ?
+	 * @param autoI true if the column has auto increment
 	 */
 	public void setAutoIncrement(boolean autoI){
 		this.autoIncrement = autoI;
 	}
 
 	/**
-	 * Show a description of the column
-	 * @return the description
+	 * Returns the column as a MySQL declaration.<br>
+	 * Intended to be used in a table-creation context.<br><br>
+	 * Example :<br>
+	 * Column col = new Column("id", "INT(11)", true, false, true, true);<br>
+	 * System.out.println(col.toSQL());<br><br>
+	 * 
+	 * Result :<br>
+	 * `id` INT(11) NOT NULL AUTOINCREMENT, <br>
+	 * PRIMARY KEY (`id`)
+	 * @return The SQL declaration of the column
 	 */
 	public String toSQL(){
 		StringBuilder sb = new StringBuilder();

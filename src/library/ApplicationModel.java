@@ -1,5 +1,6 @@
 /**
- * The application class
+ * The global information of the application.<br>
+ * Contains the current user, DBConnection, database, table name that are used by the whole application.
  */
 
 package library;
@@ -8,6 +9,7 @@ import library.entities.*;
 import library.managers.*;
 import lang.*;
 import java.sql.*;
+import java.util.*;
 
 public class ApplicationModel {
     private UserManager authSystem;
@@ -17,17 +19,55 @@ public class ApplicationModel {
 	private DBConnection currentConnectionProfile;
 	private Connection currentConnection;
 	private String currentTable;
+	private HashMap<String, String> currentConfiguration;
 
 	/**
-	 * Initialisation des paramètres
+	 * The constructor of the class.<br>
+	 * Initializes the UserManager and the QueryBuilder of the application
 	 */
 	public ApplicationModel(){
+		this.currentConfiguration = FilesHandler.xmlToMap("data/config.xml");
+
+		// If the HashMap is empty, we create it and save the file for further use
+		if ( this.currentConfiguration == null ){
+			this.currentConfiguration = new HashMap<String, String>();
+			this.currentConfiguration.put("language", "FRENCH");
+			this.saveConfiguration();
+		}
+
+		L.initialize(this.currentConfiguration.get("language"));
+
+
 		this.authSystem = new UserManager();
 		this.queryBuilder = new QueryBuilder();
 		this.currentUser = null;
 		this.currentConnectionProfile = null;
 		this.currentConnection = null;
-	
+	}
+
+	/**
+	 * Allows to save the current configuration of the application
+	 */
+	public void saveConfiguration(){
+		FilesHandler.mapToXml("data/config.xml", this.currentConfiguration);
+	}
+
+	/**
+	 * Allows to edit a configuration rule of the application
+	 * @param code The configuration rule's identifier
+	 * @param code The rule new value
+	 */
+	public void editConfigurationRule(String code, String value){
+		if ( code != null & value != null && !code.equals("") )
+			this.currentConfiguration.put(code, value);
+	}
+
+	/**
+	 * Allows to retrieve a configuration rule of the application
+	 * @param code The configuration rule's identifier
+	 */
+	public String getConfigurationRule(String code){
+		return this.currentConfiguration.get(code);
 	}
 
 	/**
@@ -38,21 +78,21 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * @return The auth systeù
+	 * @return The auth system
 	 */
 	public UserManager getAuthSystem(){
 		return this.authSystem;
 	}
 
 	/**
-	 * Getter de l'utilisateur
+	 * @return The current user
 	 */
 	public User getUser(){
 		return this.currentUser;
 	}
 
 	/**
-	 * Getter de la connexion à la base de données
+	 * @return the current connection profile
 	 */
 	public DBConnection getConnectionProfile(){
 		return this.currentConnectionProfile;
@@ -66,8 +106,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Permet d'indiquer quel utilisateur est connecté
-	 * s'il à les bons identifiants/mot de passe
+	 * Allows to log in the user, granted that the username and password are valid
 	 * @param currentUsername The currentUsername
 	 * @param password  the password
 	 * @return true if the login process succeeded
@@ -84,7 +123,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Permet à l'utilisateur courant de se déconnecter
+	 * Allows to log out the user
 	 */
 	public void logout(){
         this.disconnect();
@@ -92,7 +131,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Configuration du profil de connexion
+	 * @param dbC The DBConnection to connect to
 	 */
 	public void setConnectionProfile(DBConnection dbC){
 		if ( dbC != null ) {
@@ -125,7 +164,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Sets the currentConnection profile and initializes the database
+	 * Initializes the database connection based on the current connection profile
 	 */
 	public void connect(){
 		if ( this.currentConnectionProfile != null )
@@ -133,7 +172,7 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * Déconnexion de la base de données courante et du profil de connexion
+	 * Allows to disconnect from the current database/connection profile
 	 */
 	public void disconnect(){
 		try{
@@ -147,7 +186,8 @@ public class ApplicationModel {
 
     /**
      * Executes the reieved query on the current connection
-     * @param query
+     * @param query The query to process
+	 * @return The result of the SQL query
      */
     public QueryResult processSQL(String query) {
         QueryResult ret = new QueryResult();

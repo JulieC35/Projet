@@ -1,5 +1,5 @@
 /**
- * Allows To read or write in files. Contains solely static methods
+ * Allows To read or write in files. Contains solely static methods.<br>
  * Calling FilesHandler.xmlToMap("myFile.xml") will attempt to add to find xml tags of this shape : 
  * <element code="" value="" /> and use the values of the attributes code and value as 
  * key and value of a HashMap<String,String>
@@ -16,10 +16,10 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
 
-public class FilesHandler {
+public abstract class FilesHandler {
     /**
      * Allows to get a map from an xml file
-     * @param filePath The xml file's path (absolute or relative)
+     * @param location The xml file's path (absolute or relative)
      * @return The generated HashMap
      */
     public static HashMap<String,String> xmlToMap(String location) {
@@ -49,6 +49,34 @@ public class FilesHandler {
         }
 
         return map;
+    }
+
+    /**
+     * Allows to save a config map in an xml file
+     * @param location The xml file's path (absolute or relative)
+     * @param map The HashMap
+     */
+    public static void mapToXml(String location, HashMap<String, String> map) {
+        try{
+            FileWriter preOUT = new FileWriter(new File(location));
+            BufferedWriter out = new BufferedWriter(preOUT);
+            
+            out.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>");
+            out.newLine();
+            out.write("<config>");
+            out.newLine();
+            for(Map.Entry<String, String> entry : map.entrySet()){
+                out.write("\t<rule key=\"" + entry.getKey() + "\" value=\"" + entry.getValue() + "\" />");
+                out.newLine();
+            }
+            out.write("</config>");
+
+            out.flush();
+            out.close();
+        } catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+
     }
 
     /**

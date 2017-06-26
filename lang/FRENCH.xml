@@ -14,6 +14,7 @@
     <word code="email-address" value="Adresse email" />
     <word code="login" value="Connexion" />
     <word code="subscribe" value="Inscription" />
+    <word code="cancel" value="Annuler" />
     <word code="welcome" value="Bienvenue" />
     <word code="request-error" value="Requête invalide, veuillez re-essayer." />
     <word code="mandatory-fields" value="Les champs marqués d'un (*) sont obligatoires." />
@@ -23,6 +24,7 @@
     <word code="list" value="Liste" />
     <word code="add" value="Ajouter" />
     <word code="remove" value="Supprimer" />
+    <word code="edit" value="Modifier" />
     <word code="input-too-short" value="Entrée trop courte" />
     <word code="not-valid-input" value="Entrée non valide" />
     <word code="host" value="Hôte" />
@@ -31,6 +33,8 @@
     <word code="empty-list" value="Il n'y a rien ici" />
     <word code="boolean-answer" value="(o/n)" />
     <word code="sql-query" value="Requête SQL" />
+    <word code="query-result" value="Résultat de la requête" />
+    <word code="validate" value="Valider" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -62,6 +66,9 @@
     <word code="user-removal-success" value="Utilisateur supprimé" />
     <word code="user-removal-failure" value="L'utilisateur n'a pas pu être supprimé" />
 
+    <!-- User panel -->
+    <word code="my-language" value="Langue" />
+    <word code="my-informations" value="Informations" />
 
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Mode console" />
@@ -82,7 +89,9 @@
     <!-- Subscribe -->
     <word code="username-not-available" value="Ce nom d'utilisateur n'est pas disponible." />
     <word code="username-too-short" value="Ce nom d'utilisateur est trop court." />
-    <word code="email-address-not-valid" value="L'adresse email n'est pas valide." />
+    <word code="username-not-valid" value="Ce nom d'utilisateur n'est pas valide." />
+    <word code="email-address-not-valid" value="Cette adresse email n'est pas valide." />
+    <word code="subscribal-success" value="Compte ajouté avec succès." />
 
     <!-- DBConnections -->
     <word code="my-connections" value="Mes connexions" />
@@ -93,6 +102,12 @@
     <word code="connection-removal-success" value="Connexion supprimée." />
     <word code="connection-failure" value="Impossible d'initialiser la connexion." />
     <word code="connection-success" value="Connexion initialisée." />
+    <word code="name-not-valid" value="Ce nom n'est pas valide." />
+    <word code="host-not-valid" value="Cet hôte n'est pas valide." />
+    <word code="database-name-not-valid" value="Ce nom de base de données n'est pas valide." />
+
+    <!-- Language -->
+    <word code="language-change-success" value="Le langage a bien été changé. Veuilliez relancer l'application pour que ces modifications prennent effet." />
 
     <!-- Tables -->
     <word code="my-tables" value="Mes tables" />
@@ -113,4 +128,9 @@
     <word code="column-ask-unique" value="Créer unique ?" />
     <word code="column-ask-notnull" value="Créer non nulle ?" />
     <word code="column-ask-autoincrement" value="Activer l'auto incrémentation ?" />
+
+    <!-- Rows -->
+    <word code="entries" value="T-uples" />
+    
+    <!-- User Panel -->
 </localization>

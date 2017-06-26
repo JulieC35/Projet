@@ -79,7 +79,6 @@ public class TableRemoveScreen extends TerminalScreen{
 
             if ( nameTable != null ) {
                 queryBuilder.dropTable(nameTable);
-                //System.out.println(queryBuilder.getQuery());
                 try{
                     Statement state = app.getConnection().createStatement();
                     state.executeUpdate(queryBuilder.getQuery());

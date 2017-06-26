@@ -1,3 +1,12 @@
+/**
+ * A MySQL database connection.<br>
+ * Stores all the information to access a database (username, password, host, database name).<br>
+ * The name attribute is used to distinguish the connections in a collection context, and the driver and prefix 
+ * attributes are used bu JDBC to create the connection.<br>
+ * When a DBConnection is created, the testConnectivity() method should be used to make sure that the connection is
+ * correctly configured and available.<br>
+ */
+
 package library.entities;
 
 import java.sql.*;
@@ -16,11 +25,11 @@ public class DBConnection implements Serializable{
 
 	/**
 	 * The constructor of the class
-	 * @param name the name of the connection
-	 * @param username le nom utilisé sur JDBC (nom de l'utilisateur sur la BDD)
-	 * @param password le mot de passe pour la connexion JDBC
-	 * @param host le lieu de stockage de la BDD
-	 * @param databaseName le nom de la bdd
+	 * @param name The name of the connection
+	 * @param username The username to access the database with
+	 * @param password The password for this database
+	 * @param host The location of the database
+	 * @param databaseName The name of the database
 	 */
 	public DBConnection(String name, String username, String password, String host, String databaseName){
 		if(name != null){
@@ -45,7 +54,7 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Constructeur de la classe
+	 * The constructor of the class
 	 */
 	public DBConnection(){
 		this.name = "";
@@ -58,16 +67,14 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Getter du nom
-	 * @return l'attribut name
+	 * @return the name attribute
 	 */
 	public String getName(){
 		return this.name;
 	}
 
 	/**
-	 * Setter du nom
-	 * @param nom le nouveau nom
+	 * @param name the new name
 	 * @return true if the setting succeeded
 	 */
 	public boolean setName(String name){
@@ -81,16 +88,14 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Getter de l'username
-	 * @return l'attribut username
+	 * @return the username attribute
 	 */
 	public String getUsername(){
 		return this.username;
 	}
 
 	/**
-	 * Setter de l'username
-	 * @param username le nouveau nom d'utilisateur
+	 * @param username The new database username
 	 * @return true if the setting succeeded
 	 */
 	public boolean setUsername(String username){
@@ -104,8 +109,7 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Setter du password
-	 * @param password le nouveau mot de passe
+	 * @param password The new password
 	 * @return true if the setting succeeded
 	 */
 	public boolean setPassword(String password){
@@ -119,16 +123,14 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Getter du host
-	 * @return l'attribut host
+	 * @return the host attribute
 	 */
 	public String getHost(){
 		return this.host;
 	}
 
 	/**
-	 * Setter du host
-	 * @param host la nouvelle valeur de host
+	 * @param host the new location
 	 * @return true if the setting succeeded
 	 */
 	public boolean setHost(String host){
@@ -142,16 +144,14 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Getter du databaseName
-	 * @return l'attribut databaseName
+	 * @return the databaseName attribute
 	 */
 	public String getDatabaseName(){
 		return this.databaseName;
 	}
 
 	/**
-	 * Setter du databaseName
-	 * @param databaseName le nouveau databaseName
+	 * @param databaseName the new databaseName
 	 * @return true if the setting succeeded
 	 */
 	public boolean setDatabaseName(String databaseName){
@@ -187,8 +187,8 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
-	 * Test la connexion à la BDD 
-	 * @return vrai si la connexion s'effectue
+	 * Tests the connection
+	 * @return true if the connection is working
 	 */
 	public boolean testConnectivity(){
 		boolean ret = false;
@@ -197,17 +197,5 @@ public class DBConnection implements Serializable{
 			ret = true;
 			
 		return ret;
-	}
-
-	/**
-	 * Affiche les caractéristiques de la connexion
-	 * @return les caractéristiques
-	 */
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-
-		sb.append(this.username + "@" + this.databaseName);
-
-		return sb.toString();
 	}
 }

@@ -6,6 +6,7 @@ package application.console.screens;
 import application.console.*;
 import library.*;
 import library.entities.*;
+import library.exceptions.UserException;
 import lang.*;
 
 public class SubscribeScreen extends TerminalScreen{
@@ -69,6 +70,10 @@ public class SubscribeScreen extends TerminalScreen{
             }
         }
 
-        app.getAuthSystem().addUser(new User(username, firstName, lastName, emailAddress, password, null, null, null));
+        try{
+            app.getAuthSystem().addUser(new User(username, firstName, lastName, emailAddress, password, null, null, null));
+        } catch(UserException ex) {
+            terminal.setMessage(ex.getMessage());
+        }
     }
 }

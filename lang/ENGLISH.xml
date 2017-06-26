@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <localization>
     <!-- Generiques -->
-    <word code="app-name" value="Est-ce QL ?" />
+    <word code="app-name" value="JavaMyAdmin" />
     <word code="instructions" value="Global commands available" />
     <word code="instruction-sql" value="execute a query" />
     <word code="instruction-back" value="return to the previous screen" />
     <word code="instruction-exit" value="terminate the application" />
+    <word code="instruction-admin" value="Admin panel" />
     <word code="username" value="Username" />
     <word code="password" value="Password" />
     <word code="first-name" value="First name" />
     <word code="last-name" value="Last name" />
     <word code="email-address" value="Email address" />
     <word code="login" value="Login" />
-    <word code="subscribe" value="Subscribe" />
+    <word code="subscribe" value="Register" />
+    <word code="cancel" value="Cancel" />
     <word code="welcome" value="Welcome" />
     <word code="request-error" value="Invalid request, please try again." />
     <word code="mandatory-fields" value="Fields marked with an (*) are mandatory." />
@@ -22,6 +24,7 @@
     <word code="list" value="List" />
     <word code="add" value="Add" />
     <word code="remove" value="Remove" />
+    <word code="edit" value="Edit" />
     <word code="input-too-short" value="Input too short" />
     <word code="not-valid-input" value="Input not valid" />
     <word code="host" value="Host" />
@@ -30,6 +33,8 @@
     <word code="empty-list" value="There's nothing here" />
     <word code="boolean-answer" value="(y/n)" />
     <word code="sql-query" value="SQL Query" />
+    <word code="query-result" value="Query result" />
+    <word code="validate" value="Validate" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -43,6 +48,28 @@
     <word code="user-authorization-label" value="Son authorisation est: " />
     <word code="user-connection-label" value="Il possède " />
 
+    <!-- Administrateur -->
+    <word code="admin-panel" value="Admin panel" />
+    <word code="admin-modify-access" value="Edit authorization" />
+    <word code="admin-remove" value="Delete user" />
+    <word code="admin-list" value="Users list" />
+    <word code="user-to-admin" value="Promote" />
+    <word code="user-to-restricted" value="Demote" />
+    <word code="user-up-ask" value="Who do you want to promote ?" />
+    <word code="user-down-ask" value="Who do you want to demote ?" />
+    <word code="restricted-up" value="User promoted from restricted to default." />
+    <word code="default-up" value="User propoted from default to administrator" />
+    <word code="already-admin" value="This user is already an administrator" />
+    <word code="already-restricted" value="This user is already restricted" />
+    <word code="default-down" value="User demoted from default to restricted" />
+    <word code="admin-down" value="Impossible to demote an administrator" />
+    <word code="user-removal-success" value="User deletion succeeded" />
+    <word code="user-removal-failure" value="The user could not be removed" />
+
+    <!-- User panel -->
+    <word code="my-language" value="Language" />
+    <word code="my-informations" value="Informations" />
+
     <!-- Launcher -->
     <word code="launcher-console-mode" value=" - Console mode" />
     <word code="launcher-gui-mode" value=" - GUI mode" />
@@ -54,7 +81,7 @@
     <!-- Home -->
     <word code="home-title" value="Login/subscribing screen" />
     <word code="home-connect" value="Login" />
-    <word code="home-subscribe" value="Subscribe" />
+    <word code="home-subscribe" value="Register" />
 
     <!-- Login -->
     <word code="login-failed" value="Login failed." />
@@ -62,7 +89,9 @@
     <!-- Subscribe -->
     <word code="username-not-available" value="This username is not available." />
     <word code="username-too-short" value="This username is too short." />
-    <word code="email-address-not-valid" value="The email address is not valid." />
+    <word code="username-not-valid" value="This username is not valid." />
+    <word code="email-address-not-valid" value="This email address is not valid." />
+    <word code="subscribal-success" value="Compte ajouté avec succès." />
 
     <!-- DBConnections -->
     <word code="my-connections" value="My connections" />
@@ -73,6 +102,12 @@
     <word code="connection-removal-success" value="Connection removed." />
     <word code="connection-failure" value="Connection initializing failed." />
     <word code="connection-success" value="Connection initialized." />
+    <word code="name-not-valid" value="This name is not valid." />
+    <word code="host-not-valid" value="This host is not valid." />
+    <word code="database-name-not-valid" value="This database name is not valid." />
+
+    <!-- Language -->
+    <word code="language-change-success" value="The language was just changed. Please reload the application to make theese changes effective." />
 
     <!-- Tables -->
     <word code="my-tables" value="My tables" />
@@ -93,4 +128,9 @@
     <word code="column-ask-unique" value="Set unique ?" />
     <word code="column-ask-notnull" value="Set not null ?" />
     <word code="column-ask-autoincrement" value="Set auto increment ?" />
+
+    <!-- Rows -->
+    <word code="entries" value="Entries" />
+
+    <!-- User Panel -->
 </localization>
