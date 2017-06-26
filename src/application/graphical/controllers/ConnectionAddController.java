@@ -100,7 +100,7 @@ public class ConnectionAddController extends AppController{
 
         this.lbl_name.setText(L.get("connection-name"));
         this.lbl_username.setText(L.get("username"));
-        this.psw_password.setText(L.get("password"));
+        this.lbl_password.setText(L.get("password"));
         this.lbl_host.setText(L.get("host"));
         this.lbl_dbName.setText(L.get("database-name"));
 
