@@ -108,6 +108,8 @@
     <word code="connection-name" value="Nom de la connexion" />
     <word code="connection-add-failure" value="L'ajout de connexion a échoué." />
     <word code="connection-add-success" value="Connexion ajoutée." />
+    <word code="connection-edit-failure" value="La modification de connexion a échoué." />
+    <word code="connection-edit-success" value="Connexion modifiée." />
     <word code="connection-removal-failure" value="La suppression de connexion a échoué." />
     <word code="connection-removal-success" value="Connexion supprimée." />
     <word code="connection-failure" value="Impossible d'initialiser la connexion." />

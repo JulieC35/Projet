@@ -19,7 +19,7 @@
     <word code="request-error" value="Invalid request, please try again." />
     <word code="mandatory-fields" value="Fields marked with an (*) are mandatory." />
     <word code="feedback" value="System feedback" />
-    <word code="unkown-error" value="An unkown error happened." />
+    <word code="unknown-error" value="An unkown error happened." />
     <word code="sql-error" value="A SQL error happened." />
     <word code="list" value="List" />
     <word code="add" value="Add" />
@@ -105,8 +105,10 @@
     <!-- DBConnections -->
     <word code="my-connections" value="My connections" />
     <word code="connection-name" value="Connection name" />
-    <word code="connection-add-failure" value="Connection adding failed." />
+    <word code="connection-add-failure" value="Connection addition failed." />
     <word code="connection-add-success" value="Connection added." />
+    <word code="connection-edit-failure" value="Connection edition failed." />
+    <word code="connection-edit-success" value="Connection edited." />
     <word code="connection-removal-failure" value="Connection removal failed." />
     <word code="connection-removal-success" value="Connection removed." />
     <word code="connection-failure" value="Connection initializing failed." />
@@ -150,6 +152,12 @@
     <word code="column-ask-unique" value="Set unique ?" />
     <word code="column-ask-notnull" value="Set not null ?" />
     <word code="column-ask-autoincrement" value="Set auto increment ?" />
+    <word code="column-name" value="Column name" />
+    <word code="column-type" value="Column type" />
+    <word code="column-primary" value="Primary key" />
+    <word code="column-unique" value="Unique" />
+    <word code="column-notnull" value="Not null" />
+    <word code="column-autoincrement" value="Auto increment" />
     <word code="type" value="Type" />
     <word code="primary" value="Primary Key" />
     <word code="not-null" value="Not null" />
