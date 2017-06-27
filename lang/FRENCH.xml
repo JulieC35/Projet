@@ -39,6 +39,9 @@
     <word code="access" value="Accéder" />
     <word code="error-loading-screen" value="Impossible de charger l'écran choisi" />
     <word code="reload-current-screen-failure" value="Impossible de retourner à l'écran précedant" />
+    <word code="continue" value="Continuer" />
+    <word code="mysql-message" value="Message MySQL" />
+    <word code="name" value="Nom" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -131,15 +134,29 @@
     <word code="table-not-exists" value="Cette table n'existe pas." />
     <word code="empty-table" value="Supprimer toutes les entrées de la table" />
     <word code="empty-table-success" value="Suppression réussie." />
-    <word code="empty-table-failure" value="La suppréssio a échoué." />
+    <word code="empty-table-failure" value="La suppression a échoué." />
+    <word code="table-name-not-valid" value="Le nom de la table n'est pas valide." />
+    <word code="columns-count-not-valid" value="Le nombre de colonnes n'est pas valide." />
 
     <!-- Columns -->
+    <word code="column-add" value="Ajout de colonne" />
+    <word code="column-removal" value="Supression de colonne" />
+    <word code="column-add-success" value="Ajout de colonne réussi." />
+    <word code="column-add-failure" value="L'Ajout de colonne a échoué." />
+    <word code="column-removal-failure" value="La supression de colonne a échoué." />
+    <word code="column-removal-success" value="Colonne supprimée." />
     <word code="column-ask-name" value="Nom de la colonne ?" />
     <word code="column-ask-type" value="Type de la colonne ?" />
     <word code="column-ask-primary" value="Définir comme clé primaire ?" />
     <word code="column-ask-unique" value="Créer unique ?" />
     <word code="column-ask-notnull" value="Créer non nulle ?" />
     <word code="column-ask-autoincrement" value="Activer l'auto incrémentation ?" />
+    <word code="column-name" value="Nom de la colonne" />
+    <word code="column-type" value="Type de la colonne" />
+    <word code="column-primary" value="Clé primaire" />
+    <word code="column-unique" value="Unique" />
+    <word code="column-notnull" value="Non nulle" />
+    <word code="column-autoincrement" value="Auto incrémentation" />
     <word code="type" value="Type" />
     <word code="primary" value="Clé primaire" />
     <word code="not-null" value="Non nulle" />

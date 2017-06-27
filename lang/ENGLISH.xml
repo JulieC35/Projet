@@ -39,6 +39,9 @@
     <word code="access" value="Access" />
     <word code="error-loading-screen" value="Impossible to load the chosen screen" />
     <word code="reload-current-screen-failure" value="Impossible to return to the previous screen" />
+    <word code="continue" value="Continue" />
+    <word code="mysql-message" value="MySQL message" />
+    <word code="name" value="Name" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
@@ -126,13 +129,21 @@
     <word code="drop-table" value="Drop table" />
     <word code="table-access-failure" value="Table loading failed." />
     <word code="table-access-access-failure" value="Table loaded." />
-    <word code="table-nb-columns" value="Number of columns ?" />
+    <word code="table-ask-nb-columns" value="Number of columns ?" />
     <word code="table-not-exists" value="This table doesn't exist." />
     <word code="empty-table" value="Delete all entries from table" />
     <word code="empty-table-success" value="Deletion succeeded" />
     <word code="empty-table-failure" value="Deletion failed" />
+    <word code="table-name-not-valid" value="The table name is not valid." />
+    <word code="columns-count-not-valid" value="The number of columns is not valid." />
 
     <!-- Columns -->
+    <word code="column-add" value="Column addition" />
+    <word code="column-removal" value="Column removal" />
+    <word code="column-add-success" value="Column added." />
+    <word code="column-add-failure" value="Column adding failed." />
+    <word code="column-removal-failure" value="Column removal failed." />
+    <word code="column-removal-success" value="Column removed." />
     <word code="column-ask-name" value="Column name ?" />
     <word code="column-ask-type" value="Column type ?" />
     <word code="column-ask-primary" value="Set primary key ?" />
