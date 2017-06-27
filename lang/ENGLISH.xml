@@ -42,6 +42,9 @@
     <word code="continue" value="Continue" />
     <word code="mysql-message" value="MySQL message" />
     <word code="name" value="Name" />
+    <word code="load-sql-ask" value="Choose a SQL file." />
+    <word code="load-sql-error" value="SQL laoding failed." />
+    <word code="result" value="Result" />
 
     <!-- A TRIER -->
     <word code="connection-name-label" value="Le nom de la connexion est: " />
