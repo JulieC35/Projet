@@ -30,6 +30,7 @@
     <word code="host" value="Host" />
     <word code="database-name" value="Database name" />
     <word code="confirmation-prompt" value="Are you sure ? (y/n)" />
+    <word code="confirmation-dialog" value="Are you sure ?" />
     <word code="empty-list" value="There's nothing here" />
     <word code="boolean-answer" value="(y/n)" />
     <word code="sql-query" value="SQL Query" />
@@ -122,8 +123,9 @@
     <word code="table-add-success" value="Table added." />
     <word code="table-removal-failure" value="Table removal failed." />
     <word code="table-removal-success" value="Table removed." />
-    <word code="table-failure" value="Table loading failed." />
-    <word code="table-success" value="Table loaded." />
+    <word code="drop-table" value="Drop table" />
+    <word code="table-access-failure" value="Table loading failed." />
+    <word code="table-access-access-failure" value="Table loaded." />
     <word code="table-nb-columns" value="Number of columns ?" />
     <word code="table-not-exists" value="This table doesn't exist." />
 

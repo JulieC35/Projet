@@ -34,6 +34,13 @@ public class Row{
 	}
 
 	/**
+	 * @return The values of the row
+	 */
+	public ArrayList<String> getValues(){
+		return this.values;
+	}
+
+	/**
 	* Allows to modify a value of the row based on its associated attribute.<br>
 	* If the attribute doesn't exist in the row, it is created.
 	* @param col the column

@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import java.io.IOException;
+import java.util.*;
 
 import lang.*;
 import library.*;
@@ -30,7 +31,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController;
 
 
     /**
@@ -56,6 +57,9 @@ public class GraphicalApplication extends Application{
         this.languageSelectionController = new LanguageSelectionController(this, app);
         this.userProfileEditController = new UserProfileEditController(this, app);
         this.databaseHomeController = new DatabaseHomeController(this, app);
+        this.sqlQueryController = new SQLQueryController(this, app);
+        this.tableHomeController = new TableHomeController(this, app);
+        
 
         // We first load the login screen
         this.loadLoginScreen();
@@ -191,6 +195,61 @@ public class GraphicalApplication extends Application{
             this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
             this.displayMessage();
         }
+    }
+
+    /**
+     * Loads the database main screen
+     */
+    public void loadSQLQueryScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/SQLQueryScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.sqlQueryController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the database main screen
+     */
+    public void loadTableHomeScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableHomeScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.tableHomeController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    public boolean askConfirmation(String title){
+        Alert alert = new Alert(javafx.scene.control.Alert.AlertType.CONFIRMATION);
+        boolean ret = false;
+        if ( title != null ) 
+            alert.setTitle(title);
+        else
+            alert.setTitle("Confirmation");
+
+        alert.setHeaderText(L.get("confirmation-dialog"));
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if ( result.get() == ButtonType.OK )
+            ret = true;
+
+        return ret;
     }
 
     /**

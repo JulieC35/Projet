@@ -1,6 +1,5 @@
 /**
- * Controller of the UserPanelConnections screen.<br>
- * This is where events to modify the connections are proceeded
+ * Controller of the Database home screen.<br>
  */
 
 package application.graphical.controllers;
@@ -32,6 +31,8 @@ public class DatabaseHomeController extends AppController{
     @FXML
     private ListView lst_menu;
 
+    @FXML
+    private Button btn_menu_databaseName;
 
     /**
      * The constructor, sends the stage and application model to the parent class
@@ -51,26 +52,18 @@ public class DatabaseHomeController extends AppController{
 
         this.lbl_title.setText(app.getConnectionProfile().getDatabaseName());
         this.lbl_subtitle.setText(app.getConnectionProfile().getUsername() + "@" + app.getConnectionProfile().getHost());
+        this.btn_menu_databaseName.setText(app.getConnectionProfile().getDatabaseName().toUpperCase());
     
-        try {
-            ObservableList<String> tablesList = FXCollections.observableArrayList(DBConnection.getTablesList(app.getConnection()));
-            lst_menu.setItems(tablesList);
-
-            lst_menu.setCellFactory(new Callback<ListView<String>, ListCell>() {
-                @Override
-                public ListCell call(ListView<String> param) {
-                    return new MenuListCell();
-                }
-            });
-        } catch (SQLException ex){
-            stage.setMessage(L.get("table-list-failure") + " : " + ex.getMessage());
-            stage.displayMessage();
-        }
-
-}
+        this.integrateMenu(this.lst_menu);
+    }
 
     @FXML
-    void openUserPanel(ActionEvent event) {
-        stage.loadUserPanel();
+    public void export(ActionEvent event){
+        System.out.println("exporting");
+    }
+
+    @FXML
+    public void create(ActionEvent event){
+        System.out.println("Creating table");
     }
 }
