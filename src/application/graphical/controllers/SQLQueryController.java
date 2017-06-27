@@ -34,6 +34,9 @@ public class SQLQueryController extends AppController{
     @FXML
     private Button btn_menu_databaseName;
 
+    @FXML
+    private TextArea txa_query;
+
     /**
      * The constructor, sends the stage and application model to the parent class
      * @param stage Contains the primary stage of the application
@@ -55,10 +58,18 @@ public class SQLQueryController extends AppController{
         this.btn_menu_databaseName.setText(app.getConnectionProfile().getDatabaseName().toUpperCase());
 
         this.integrateMenu(this.lst_menu);
-}
+    }
+
     @FXML
     void execute(ActionEvent event) {
-        System.out.println("executing");
+        String[] statements = this.txa_query.getText().split(";");
+        QueryResult[] results = new QueryResult[statements.length];
+        for (int i = 0 ; i < statements.length ; i++){
+            results[i] = app.processSQL(statements[i]);
+        }
+
+        app.postValue("sqlResults", results);
+        stage.loadSQLQueryResultScreen();
     }
 
     @FXML

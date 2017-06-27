@@ -124,26 +124,23 @@ public abstract class AppController {
     @FXML
     public void integrateQueryResult(TableView<Row> table, QueryResult result){
         if ( result != null ){
-            if ( result.getRows().size() >= 1 ) {
-                try {
-                    // We define the table columns
-                    for (int i = 0; i < result.getScheme().size(); i++) {
-                        TableColumn<Row, String> column = new TableColumn<>(result.getScheme().get(i).getName());
-                        column.setCellValueFactory(param -> {
-                            int index = param.getTableView().getColumns().indexOf(param.getTableColumn());
-                            List<String> cells = param.getValue().getValues();
-                            return new SimpleStringProperty( ( cells.size() > index ) ? cells.get(index) : null);
-                        });
-                        table.getColumns().add(column);
-                    }
-
-                    table.getItems().addAll(result.getRows());
-                } catch ( Exception ex) {
-                    stage.setMessage(L.get("entries-access-failure"));
-                    stage.displayMessage();  
+            try {
+                // We define the table columns
+                for (int i = 0; i < result.getScheme().size(); i++) {
+                    TableColumn<Row, String> column = new TableColumn<>(result.getScheme().get(i).getName());
+                    column.setCellValueFactory(param -> {
+                        int index = param.getTableView().getColumns().indexOf(param.getTableColumn());
+                        List<String> cells = param.getValue().getValues();
+                        return new SimpleStringProperty( ( cells.size() > index ) ? cells.get(index) : null);
+                    });
+                    table.getColumns().add(column);
                 }
-            }
 
+                table.getItems().addAll(result.getRows());
+            } catch ( Exception ex) {
+                stage.setMessage(L.get("entries-access-failure"));
+                stage.displayMessage();  
+            }
         } else {
             stage.setMessage(L.get("tuple-access-error"));
             stage.displayMessage();

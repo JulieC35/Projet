@@ -100,4 +100,37 @@ public class QueryBuilder{
             this.query = requeteText;
         }
     }
+
+    /**
+     * Builds a a query to drop a column from table
+     * @param tableName The table
+     * @param colName The column to drop
+     */
+    public void alterTableDropColumn(String tableName, String colName){
+        if(tableName != null && colName != null){
+            String query = "ALTER TABLE `" + tableName + "` DROP `" + colName + "`";
+            this.query = query;
+        }
+    }
+
+    /**
+     * Builds a a query to drop a column from table
+     * @param tableName The table
+     * @param col The column to add
+     */
+    public void alterTableAddColumn(String tableName, Column col){
+        if(tableName != null && col != null){
+            String query = "";
+            if ( col.isUnique() ){
+                col.setUnique(false);
+                query = "ALTER TABLE " + tableName + " ADD COLUMN " + col.toSQL();
+                query += ", ADD UNIQUE (" + col.getName() + ")";
+            }
+            else
+                query = "ALTER TABLE " + tableName + " ADD COLUMN " + col.toSQL();
+
+            System.out.println(query);
+            this.query = query;
+        }
+    }
 }

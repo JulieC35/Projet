@@ -19,6 +19,7 @@ public class ApplicationModel {
 	private Connection currentConnection;
 	private String currentTable;
 	private HashMap<String, String> currentConfiguration;
+	private HashMap<String, Object> post;
 
 	/**
 	 * The constructor of the class.<br>
@@ -42,6 +43,31 @@ public class ApplicationModel {
 		this.currentUser = null;
 		this.currentConnectionProfile = null;
 		this.currentConnection = null;
+		this.post = new HashMap<String, Object>();
+	}
+
+	/**
+	 * Allows to store posted values
+	 * @param key The key of the value
+	 * @param posted The value to store
+	 */
+	public void postValue(String key, Object value){
+		if ( key != null && value != null && !key.equals("") )
+			this.post.put(key, value);
+	}
+
+	/**
+	 * Allows to retrive a posted value in the map. Once the value is retrieved, it gets deleted from the map
+	 * @return The key of the value
+	 * @throws Exception In case something went wrong
+	 */
+	public Object getPostedValue(String key) throws Exception{
+		Object ret = null;
+		
+		ret = this.post.get(key);
+		this.post.remove(key);
+
+		return ret;
 	}
 
 	/**

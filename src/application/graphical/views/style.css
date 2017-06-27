@@ -7,6 +7,20 @@
         -fx-cursor: hand;
     }
 
+.scrollable-form{
+    -fx-focus-color: none;
+    -fx-background-color: none;
+}
+    .scrollable-form .viewport{
+        -fx-background-color: none;
+    }
+
+.column-form{
+    -fx-border-color: #aaaaaa;
+    -fx-background-color: #efefef;
+    -fx-border-width: 0 0 2 0;
+}
+
 .popup{
     -fx-background-color: #2d3950;
 }
@@ -153,6 +167,22 @@
         -fx-text-fill: #efefef;
         -fx-font-size: 20;
     }
+
+.check-box:determinate{
+    -fx-label-padding: 0 0 0 10;
+}
+    .check-box .text{
+        -fx-font-size: 18;
+    }
+    .check-box .box{
+        -fx-background-color: #efefef;
+        -fx-border-color: #2d3950; 
+        -fx-font-size: 20; 
+        -fx-border-radius: 2;
+        -fx-border-width: 2;
+    }
+        .check-box .box .mark{
+        }
 
 .text-field.read-only-property{
     -fx-text-fill: #808a9d;
