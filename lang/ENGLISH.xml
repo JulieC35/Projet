@@ -170,6 +170,9 @@
     <!-- Rows -->
     <word code="entries" value="Entries" />
     <word code="entries-access-failure" value="Content of table display failed." />
+    <word code="entry-removal-failure" value="Row removal failed." />
+    <word code="entry-removal-success" value="Row removed" />
+    <word code="entry-removal" value="Entry removal" />
 
     <!-- User Panel -->
 </localization>
