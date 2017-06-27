@@ -27,24 +27,24 @@ public class QueryResult{
 		this.rows = new ArrayList<Row>();
 
 		Row tempRow = null;
-
-		try {
-			// Creating the scheme
-			ResultSetMetaData metaData = result.getMetaData();
-			for ( int i = 1 ; i <= metaData.getColumnCount() ; i++ ) {
-				this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, false, false));
-			}
-
-			// inserting entries
-			while ( result.next() ){
-				tempRow = new Row();
-				for (int i = 1 ; i <= metaData.getColumnCount() ; i++){
-					tempRow.setValue(metaData.getColumnName(i), result.getString(i));
+		if(result != null){
+			try {
+				// Creating the scheme
+				ResultSetMetaData metaData = result.getMetaData();
+				for ( int i = 1 ; i <= metaData.getColumnCount() ; i++ ) {
+					this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, false, false));
 				}
-				this.rows.add(tempRow);
+				// inserting entries
+				while ( result.next() ){
+					tempRow = new Row();
+					for (int i = 1 ; i <= metaData.getColumnCount() ; i++){
+						tempRow.setValue(metaData.getColumnName(i), result.getString(i));
+					}
+					this.rows.add(tempRow);
+				}
+			} catch (SQLException ex){
+				this.message = ex.getMessage();
 			}
-		} catch (SQLException ex){
-			this.message = ex.getMessage();
 		}
 	}
 

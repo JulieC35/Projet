@@ -208,19 +208,29 @@ public class User implements Serializable{
 	* @param password The password to connect with the username
 	* @param host The location of the database
 	* @param databaseName The name of the database
+	* @return true if the connection is added
 	*/
-	public void addDBConnection(String name, String username, String password, String host, String databaseName){
-		this.connections.add(new DBConnection(name, username, password, host, databaseName));
+	public boolean addDBConnection(String name, String username, String password, String host, String databaseName){
+		boolean ret = false;
+		if((name != null) && (username != null) && (password != null) && (host != null) && (databaseName != null)){
+			this.connections.add(new DBConnection(name, username, password, host, databaseName));
+			ret = true;
+		}
+		return ret;		
 	}
 
 	/**
 	* Adds a connection
 	* @param dbC The connection to add
+	* @return true if the connection is added
 	*/
-	public void addDBConnection(DBConnection dbC){
+	public boolean addDBConnection(DBConnection dbC){
+		boolean ret = false;
 		if ( dbC != null ){
 			this.connections.add(dbC);
+			ret = true;
 		}
+		return ret;
 	}
 
 	/**

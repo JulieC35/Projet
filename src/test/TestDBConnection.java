@@ -6,37 +6,34 @@ import static org.junit.Assert.*;
 
 public class TestDBConnection{
 
-	private DBConnection co1;
-	private DBConnection co2;
+	private DBConnection coOk;
+	private DBConnection coNnOk;
 
 	/*
 	 * Initialise les objets avant chaque tests
 	 */
 	@Before()
-	protected void beforeTest(){
-		co1 = new DBConnection("Celie", "e16", "1000", "string", "bdd1");
-		co2 = new DBConnection("Marc", "e17", "lol", "host", "bdd2");
+	public void beforeTest(){
+		coOk = new DBConnection("testOk", "sql11182120", "TuMf9tYKN5", "sql11.freemysqlhosting.net", "sql11182120");
+		coNnOk = new DBConnection("testNnOk", "e17", "lol", "host", "bdd2");
 	}
-
-	
-
 
 	/*
 	 * test de la méthode testConnectivity de la classe DBConnection
 	 */
 	@Test()
 	public void testTestConnectivity(){
-		Assert.assertTrue(co1.testConnectivity());
-		Assert.assertFalse(co2.testConnectivity());
+		Assert.assertTrue(coOk.testConnectivity());
+		Assert.assertFalse(coNnOk.testConnectivity());
 	}
 
 	/*
 	 * Nettoie les objets après chaque tests
 	 */
 	@After()
-	protected void clearTest(){
-		co1 = null;
-		co2 = null;
+	public void clearTest(){
+		coOk = null;
+		coNnOk = null;
 	}
 
 
