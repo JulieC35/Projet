@@ -133,4 +133,16 @@ public class QueryBuilder{
             this.query = query;
         }
     }
+
+    /**
+     * Builds a a query to drop a column from table
+     * @param tableName The table
+     * @param pkName The name of the primary key
+     * @param pkValue The the value of the primary key
+     */
+    public void deleteFromTable(String tableName, String pkName, String pkValue){
+        if(tableName != null && pkName != null && pkValue != null ){
+            this.query = "DELETE FROM " + tableName + " WHERE " + pkName + "=" + pkValue;
+        }
+    }
 }

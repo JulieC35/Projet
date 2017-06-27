@@ -171,6 +171,9 @@
     <!-- Rows -->
     <word code="entries" value="T-uples" />
     <word code="entries-access-failure" value="Impossible d'afficher le contenu de la table." />
+    <word code="entry-removal-failure" value="La suppression de t-uple a échoué." />
+    <word code="entry-removal-success" value="T-uple supprimé." />
+    <word code="entry-removal" value="Supression de t-uple" />
     
     <!-- User Panel -->
 </localization>

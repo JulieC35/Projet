@@ -67,26 +67,22 @@ public class TableHomeController extends AppController{
 
     @FXML
     public void createContextMenu(){
-        this.tbl_tableContent.setRowFactory(new Callback<TableView<DBConnection>, TableRow<DBConnection>>() {  
+        this.tbl_tableContent.setRowFactory(new Callback<TableView<Row>, TableRow<Row>>() {
             @Override  
-            public TableRow<DBConnection> call(TableView<DBConnection> tableView) {  
-                final TableRow<DBConnection> row = new TableRow<>();  
+            public TableRow<Row> call(TableView<Row> tableView) {  
+                final TableRow<Row> row = new TableRow<>();  
                 final ContextMenu contextMenu = new ContextMenu();  
                 // Menu elements creation
                 final MenuItem accessMenuItem = new MenuItem(L.get("access"));  
                 final MenuItem removeMenuItem = new MenuItem(L.get("remove"));  
                 final MenuItem editMenuItem = new MenuItem(L.get("edit"));  
 
-                removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
+                removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {
                     @Override  
-                    public void handle(ActionEvent event) {  
-                    }  
-                });  
-                editMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
-                    @Override  
-                    public void handle(ActionEvent event) {  
-                    }  
-                }); 
+                    public void handle(ActionEvent event) {
+                        removeRow(row.getItem());
+                    }
+                });
 
                 row.setOnMouseClicked(event -> {
                     if ( event.getClickCount() == 2 && (! row.isEmpty()) ) {
@@ -95,7 +91,6 @@ public class TableHomeController extends AppController{
 
                 // Then we add the elements to the context menu
                 contextMenu.getItems().add(removeMenuItem);  
-                contextMenu.getItems().add(editMenuItem);  
 
             // Hiding the menu for empty rows
                 row.contextMenuProperty().bind(  
@@ -116,6 +111,25 @@ public class TableHomeController extends AppController{
     @FXML
     public void structure(){
         stage.loadTableStructureScreen();
+    }
+
+    @FXML
+    public void removeRow(Row row){
+        if ( row != null && stage.askConfirmation(L.get("entry-removal")) ){
+            try {
+                QueryResult result = app.processSQL(queryBuilder.getQuery());
+                queryBuilder.deleteFromTable(app.getCurrentTable(), row.getKey(0), row.getValue(row.getKey(0)));
+                if ( !result.getMessage().equals("") )
+                    throw new Exception(result.getMessage());
+
+                    stage.loadTableHomeScreen();
+                    stage.setMessage(L.get("entry-removal-success"));
+                    stage.displayMessage();
+            } catch(Exception ex){
+                stage.setMessage(ex.getMessage());
+                stage.displayMessage();
+            }
+        }
     }
 
     @FXML 
