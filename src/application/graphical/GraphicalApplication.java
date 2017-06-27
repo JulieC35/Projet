@@ -31,7 +31,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController, tableStructureController;
 
 
     /**
@@ -59,6 +59,7 @@ public class GraphicalApplication extends Application{
         this.databaseHomeController = new DatabaseHomeController(this, app);
         this.sqlQueryController = new SQLQueryController(this, app);
         this.tableHomeController = new TableHomeController(this, app);
+        this.tableStructureController = new TableStructureController(this, app);
         
 
         // We first load the login screen
@@ -217,13 +218,32 @@ public class GraphicalApplication extends Application{
     }
 
     /**
-     * Loads the database main screen
+     * Loads the table main screen
      */
     public void loadTableHomeScreen(){
         try {
             this.fxmlLoader = new FXMLLoader();
             this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableHomeScreen.fxml")); // Loader creation
             this.fxmlLoader.setController(this.tableHomeController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the table structure screen
+     */
+    public void loadTableStructureScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableStructureScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.tableStructureController); // setting the controller
             this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
             this.currentScene = this.primaryStage.getScene();
         } catch (IOException ex){

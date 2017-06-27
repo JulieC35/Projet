@@ -128,9 +128,9 @@
     <word code="table-access-access-failure" value="Table loaded." />
     <word code="table-nb-columns" value="Number of columns ?" />
     <word code="table-not-exists" value="This table doesn't exist." />
-    <word code="empty-table" value="Empty" />
-    <word code="empty-table-success" value="" />
-    <word code="empty-table-failure" value="" />
+    <word code="empty-table" value="Delete all entries from table" />
+    <word code="empty-table-success" value="Deletion succeeded" />
+    <word code="empty-table-failure" value="Deletion failed" />
 
     <!-- Columns -->
     <word code="column-ask-name" value="Column name ?" />
@@ -139,6 +139,11 @@
     <word code="column-ask-unique" value="Set unique ?" />
     <word code="column-ask-notnull" value="Set not null ?" />
     <word code="column-ask-autoincrement" value="Set auto increment ?" />
+    <word code="type" value="Type" />
+    <word code="primary" value="Primary Key" />
+    <word code="not-null" value="Not null" />
+    <word code="unique" value="Unique" />
+    <word code="auto-increment" value="Auto increment" />
 
     <!-- Rows -->
     <word code="entries" value="Entries" />

@@ -129,6 +129,9 @@
     <word code="table-access-success" value="Accès à la table." />
     <word code="table-ask-nb-columns" value="Nombre de colonnes ?" />
     <word code="table-not-exists" value="Cette table n'existe pas." />
+    <word code="empty-table" value="Supprimer toutes les entrées de la table" />
+    <word code="empty-table-success" value="Suppression réussie." />
+    <word code="empty-table-failure" value="La suppréssio a échoué." />
 
     <!-- Columns -->
     <word code="column-ask-name" value="Nom de la colonne ?" />
@@ -137,6 +140,11 @@
     <word code="column-ask-unique" value="Créer unique ?" />
     <word code="column-ask-notnull" value="Créer non nulle ?" />
     <word code="column-ask-autoincrement" value="Activer l'auto incrémentation ?" />
+    <word code="type" value="Type" />
+    <word code="primary" value="Clé primaire" />
+    <word code="not-null" value="Non nulle" />
+    <word code="unique" value="Unique" />
+    <word code="auto-increment" value="Auto incrémentation" />
 
     <!-- Rows -->
     <word code="entries" value="T-uples" />
