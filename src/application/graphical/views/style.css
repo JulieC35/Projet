@@ -69,8 +69,6 @@
 
 }
     .controls-button-bar .button{
-        -fx-pref-width: 20;
-        -fx-pref-height: 20;
         -fx-margin-left: 20;
 
         -fx-background-color: #2d3950;
@@ -90,6 +88,9 @@
 
     -fx-text-fill: #efefef;
 }
+    .left-panel .database-name{
+        -fx-text-fill: #aaaaaa;
+    }
     .left-panel .logo-block{
         -fx-background-color: #181e2b;
         

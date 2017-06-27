@@ -77,7 +77,6 @@ public class ConnectionAddController extends AppController{
     @FXML
     private TextField txf_dbName;
 
-
     /**
      * The constructor, sends the stage and application model to the parent class
      * @param stage Contains the primary stage of the application

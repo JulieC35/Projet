@@ -126,6 +126,12 @@ public class ConnectionsListController extends AppController{
                     }  
                 }); 
 
+                row.setOnMouseClicked(event -> {
+                    if ( event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                        accessDBConnection(row.getItem());
+                    }
+                });
+
                 // Then we add the elements to the context menu
                 contextMenu.getItems().add(accessMenuItem);  
                 contextMenu.getItems().add(removeMenuItem);  

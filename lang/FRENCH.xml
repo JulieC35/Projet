@@ -29,7 +29,8 @@
     <word code="not-valid-input" value="Entrée non valide" />
     <word code="host" value="Hôte" />
     <word code="database-name" value="Nom de la base de données" />
-    <word code="confirmation-prompt" value="Êtes-vous sûr ?" />
+    <word code="confirmation-prompt" value="Êtes-vous sûr ? (o/n)" />
+    <word code="confirmation-dialog" value="Êtes-vous sûr ?" />
     <word code="empty-list" value="Il n'y a rien ici" />
     <word code="boolean-answer" value="(o/n)" />
     <word code="sql-query" value="Requête SQL" />
@@ -123,6 +124,7 @@
     <word code="table-add-success" value="Table ajoutée." />
     <word code="table-removal-failure" value="La suppression de table a échoué." />
     <word code="table-removal-success" value="Table supprimée." />
+    <word code="drop-table" value="Supprimer la table" />
     <word code="table-access-failure" value="Impossible d'accéder à la table." />
     <word code="table-access-success" value="Accès à la table." />
     <word code="table-ask-nb-columns" value="Nombre de colonnes ?" />

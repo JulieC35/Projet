@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,13 @@
       <AnchorPane layoutX="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="300.0" styleClass="left-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutY="-72.0" prefHeight="65.0" prefWidth="200.0" styleClass="logo-block" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <ListView fx:id="lst_menu" layoutX="38.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" styleClass="menu" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="95.0" />
+            <Button fx:id="btn_menu_databaseName" mnemonicParsing="false" onAction="#databaseHome" text="dbName" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="95.0">
+               <styleClass>
+                  <String fx:value="href-like-button" />
+                  <String fx:value="database-name" />
+               </styleClass>
+            </Button>
+            <ListView fx:id="lst_menu" layoutX="38.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" styleClass="menu" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="125.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="276.0" layoutY="105.0" prefHeight="720.0" prefWidth="1004.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -46,8 +53,8 @@
             <ButtonBar fx:id="btnBar_controls" buttonMinWidth="100.0" layoutX="30.0" layoutY="147.0" prefHeight="40.0" prefWidth="920.0" styleClass="controls-button-bar" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0">
                <buttons>
                   <Button fx:id="btn_sql" mnemonicParsing="false" onAction="#sql" text="SQL" />
-                  <Button mnemonicParsing="false" text="Import" />
-                  <Button mnemonicParsing="false" text="Export" />
+                  <Button mnemonicParsing="false" onAction="#create" text="Create table" />
+                  <Button mnemonicParsing="false" onAction="#export" text="Export" />
                </buttons>
             </ButtonBar>
             <AnchorPane fx:id="anc_content" layoutX="32.0" layoutY="191.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="230.0" />
