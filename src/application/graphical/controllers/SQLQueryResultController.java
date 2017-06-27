@@ -1,5 +1,5 @@
 /**
- * Controller of the SQLQuery screen.<br>
+ * Controller of the SQLQuery result screen.<br>
  */
 
 package application.graphical.controllers;
@@ -53,7 +53,7 @@ public class SQLQueryResultController extends AppController{
     public void initialize(){
         super.initialize();
 
-        this.lbl_title.setText(app.getConnectionProfile().getDatabaseName() + " : " + L.get("sql-query"));
+        this.lbl_title.setText(app.getConnectionProfile().getDatabaseName() + " : " + L.get("sql-query") + " : " + L.get("result"));
         this.lbl_subtitle.setText(app.getConnectionProfile().getUsername() + "@" + app.getConnectionProfile().getHost());
         this.btn_menu_databaseName.setText(app.getConnectionProfile().getDatabaseName().toUpperCase());
 
@@ -62,7 +62,7 @@ public class SQLQueryResultController extends AppController{
     }
 
     /**
-     * 
+     * Allwos to integrate the query results to the view
      */
     @FXML
     public void integrateResults(){
