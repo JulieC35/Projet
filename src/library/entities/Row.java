@@ -34,6 +34,19 @@ public class Row{
 	}
 
 	/**
+	* Allows to retrieve a key based on its index
+	* @param index the index
+	* @return The key if found, or null
+	*/
+	public String getKey(int index){
+		String ret = null;
+		if ( index >= 0 && index < this.keys.size() )
+			ret = this.keys.get(index);
+
+		return ret;
+	}
+
+	/**
 	 * @return The values of the row
 	 */
 	public ArrayList<String> getValues(){

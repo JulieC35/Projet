@@ -79,3 +79,5 @@ public class SQLQueryController extends AppController{
         this.txa_query.setText(query);
     }
 }
+
+
