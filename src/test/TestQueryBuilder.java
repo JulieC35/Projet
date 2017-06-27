@@ -31,7 +31,7 @@ public class TestQueryBuilder{
 		Assert.assertNotNull(queryOk.getQuery());
 		queryOk.selectAllFromTable("table");
 		Assert.assertNotNull(queryOk.getQuery());
-		queryNnOk.selectAllFromTable(new String(null));
+		queryNnOk.selectAllFromTable(new String());
 		Assert.assertNotNull(queryNnOk.getQuery());
 	}
 
@@ -52,9 +52,9 @@ public class TestQueryBuilder{
 	@Test()
 	public void testDropTable(){
 		queryOk.dropTable("table");
-		Assert.assertTrue(queryOk.getQuery());
+		Assert.assertNotNull(queryOk.getQuery());
 		queryNnOk.dropTable(null);
-		Assert.assertFalse(queryNnOk.getQuery());
+		Assert.assertNotNull(queryNnOk.getQuery());
 	}
 
 	/**

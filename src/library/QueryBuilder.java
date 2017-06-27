@@ -60,9 +60,8 @@ public class QueryBuilder{
      */
     public void createTable(Table table){
         StringBuilder sb = new StringBuilder();
-        ArrayList<Column> scheme = table.getScheme();
-
         if ( table != null ){
+            ArrayList<Column> scheme = table.getScheme();
             sb.append("CREATE TABLE `" + table.getName() + "` (\n");
                 for ( int i = 0 ; i < scheme.size() ; i++ ) {
                     sb.append(scheme.get(i).toSQL());
