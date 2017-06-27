@@ -41,9 +41,9 @@ public class Row{
 	*/
 	public void setValue(String col, String val){
 		if ( col != null && val != null ) {
-			if ( this.keys.indexOf(col) == -1 )
+			if ( this.keys.indexOf(col) == -1 ){
 				this.keys.add(col);
-
+			}
 			this.values.add(this.keys.indexOf(col), val);
 		}
 	}
