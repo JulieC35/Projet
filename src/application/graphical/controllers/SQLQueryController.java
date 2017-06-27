@@ -13,6 +13,7 @@ import javafx.util.*;
 import javafx.collections.*;
 import java.util.*;
 import java.sql.SQLException;
+import javafx.stage.*;
 
 import lang.*;
 import application.graphical.*;
@@ -74,6 +75,7 @@ public class SQLQueryController extends AppController{
 
     @FXML
     void load(ActionEvent event) {
-        System.out.println("loading");
+        String query = stage.askSQLFile();
+        this.txa_query.setText(query);
     }
 }

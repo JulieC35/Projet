@@ -13,6 +13,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import java.io.IOException;
 import java.util.*;
+import java.io.*;
 
 import lang.*;
 import library.*;
@@ -367,6 +368,22 @@ public class GraphicalApplication extends Application{
         Optional<ButtonType> result = alert.showAndWait();
         if ( result.get() == ButtonType.OK )
             ret = true;
+
+        return ret;
+    }
+
+    public String askSQLFile(){
+        String ret = "";
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle(L.get("load-sql-ask"));
+            File sqlFile = fileChooser.showOpenDialog(this.primaryStage);
+
+            ret = new Scanner(sqlFile).useDelimiter("\\Z").next();
+        } catch (Exception ex){
+            this.setMessage(L.get("load-sql-failure"));
+            this.displayMessage();
+        }
 
         return ret;
     }
