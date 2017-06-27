@@ -43,16 +43,7 @@ public class TableStructureController extends AppController{
     private TableColumn<Column, String> cln_type;
 
     @FXML
-    private TableColumn<Column, String> cln_primary;
-
-    @FXML
     private TableColumn<Column, String> cln_null;
-
-    @FXML
-    private TableColumn<Column, String> cln_unique;
-
-    @FXML
-    private TableColumn<Column, String> cln_autoIncrement;
 
     @FXML
     private Button btn_menu_databaseName;
@@ -73,7 +64,7 @@ public class TableStructureController extends AppController{
     public void initialize(){
         super.initialize();
 
-        this.lbl_title.setText(app.getCurrentTable());
+        this.lbl_title.setText(app.getCurrentTable() + " : structure");
         this.lbl_subtitle.setText(app.getConnectionProfile().getUsername() + "@" + app.getConnectionProfile().getHost());
         this.btn_menu_databaseName.setText(app.getConnectionProfile().getDatabaseName().toUpperCase());
         
@@ -83,18 +74,12 @@ public class TableStructureController extends AppController{
         
         cln_name.setText(L.get("name"));
         cln_type.setText(L.get("type"));
-        cln_primary.setText(L.get("primary"));
         cln_null.setText(L.get("not-null"));
-        cln_unique.setText(L.get("unique"));
-        cln_autoIncrement.setText(L.get("auto-increment"));
 
          // Filling of the table view
         cln_name.setCellValueFactory(new PropertyValueFactory<Column, String>("name"));
         cln_type.setCellValueFactory(new PropertyValueFactory<Column, String>("type"));
-        cln_primary.setCellValueFactory(new PropertyValueFactory<Column, String>("primary"));
         cln_null.setCellValueFactory(new PropertyValueFactory<Column, String>("notNull"));
-        cln_unique.setCellValueFactory(new PropertyValueFactory<Column, String>("unique"));
-        cln_autoIncrement.setCellValueFactory(new PropertyValueFactory<Column, String>("autoIncrement"));
 
         // We get list of columns of the table with a SQL query and add it to the table
         this.tbl_tableContent.getItems().setAll(app.processSQL(queryBuilder.getQuery()).getScheme());
@@ -115,14 +100,9 @@ public class TableStructureController extends AppController{
 
                 removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
                     @Override  
-                    public void handle(ActionEvent event) {  
+                    public void handle(ActionEvent event) { 
+                        remove(row.getItem()); 
                     }  
-                });
-
-                row.setOnMouseClicked(event -> {
-                    if ( event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                        remove();
-                    }
                 });
 
                 // Then we add the elements to the context menu
@@ -141,11 +121,27 @@ public class TableStructureController extends AppController{
 
     @FXML
     public void add(){
-        System.out.println("adding");
+        stage.loadColumnAddScreen();
     }
 
     @FXML
-    public void remove(){
-        System.out.println("removing");
+    public void remove(Column col){
+        if ( stage.askConfirmation(L.get("column-removal") + " : " + col.getName()) ) {
+            try {
+                queryBuilder.alterTableDropColumn(app.getCurrentTable(), col.getName());
+                QueryResult result = app.processSQL(queryBuilder.getQuery());
+
+                // If the query result holds a message, there msut have been an error somewhere
+                if ( !result.getMessage().equals("") )
+                    throw new Exception(result.getMessage());
+
+                stage.loadTableStructureScreen();
+                stage.setMessage(L.get("column-removal-success"));
+                stage.displayMessage();
+            } catch ( Exception ex){
+                stage.setMessage(ex.getMessage());
+                stage.displayMessage();
+            }
+        }
     }
 }

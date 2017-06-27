@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anc_group" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lbl_name" text="Name" />
+      <TextField fx:id="txf_name" layoutY="28.0" />
+      <Label fx:id="lbl_type" layoutX="1.0" layoutY="78.0" text="Type" />
+      <TextField fx:id="txf_type" layoutY="106.0" />
+      <CheckBox fx:id="chk_primary" layoutX="439.0" layoutY="28.0" mnemonicParsing="false" onAction="#primary" text="Primary" />
+      <CheckBox fx:id="chk_notNull" layoutX="436.0" layoutY="114.0" mnemonicParsing="false" onAction="#notPrimary" text="Not null" />
+      <CheckBox fx:id="chk_unique" layoutX="622.0" layoutY="28.0" mnemonicParsing="false" onAction="#notPrimary" text="Unique" />
+      <CheckBox fx:id="chk_autoInc" disable="true" layoutX="622.0" layoutY="114.0" mnemonicParsing="false" onAction="#notPrimary" text="Auto increment" />
+   </children>
+   <styleClass>
+      <String fx:value="form" />
+      <String fx:value="column-form" />
+   </styleClass>
+</AnchorPane>

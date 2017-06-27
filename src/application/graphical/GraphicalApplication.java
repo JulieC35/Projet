@@ -31,7 +31,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController, tableStructureController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController, tableStructureController, tableAddController, tableColumnsController, sqlQueryResultController, columnAddController;
 
 
     /**
@@ -60,8 +60,12 @@ public class GraphicalApplication extends Application{
         this.sqlQueryController = new SQLQueryController(this, app);
         this.tableHomeController = new TableHomeController(this, app);
         this.tableStructureController = new TableStructureController(this, app);
+        this.tableAddController = new TableAddController(this, app);
+        this.tableColumnsController = new TableColumnsController(this, app);
+        this.sqlQueryResultController = new SQLQueryResultController(this, app);
+        this.columnAddController = new ColumnAddController(this, app);
         
-
+        
         // We first load the login screen
         this.loadLoginScreen();
 
@@ -237,6 +241,25 @@ public class GraphicalApplication extends Application{
     }
 
     /**
+     * Loads the sql result screen
+     */
+    public void loadSQLQueryResultScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/SQLQueryResultScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.sqlQueryResultController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
      * Loads the table structure screen
      */
     public void loadTableStructureScreen(){
@@ -244,6 +267,63 @@ public class GraphicalApplication extends Application{
             this.fxmlLoader = new FXMLLoader();
             this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableStructureScreen.fxml")); // Loader creation
             this.fxmlLoader.setController(this.tableStructureController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the table structure screen
+     */
+    public void loadTableAddScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableAddScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.tableAddController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the table columns form
+     */
+    public void loadTableColumnsScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/TableColumnsScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.tableColumnsController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+            this.currentScene = this.primaryStage.getScene();
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the add column form
+     */
+    public void loadColumnAddScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/ColumnAddScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.columnAddController); // setting the controller
             this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
             this.currentScene = this.primaryStage.getScene();
         } catch (IOException ex){

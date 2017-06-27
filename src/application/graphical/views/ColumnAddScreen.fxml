@@ -3,10 +3,10 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,9 +27,27 @@
       </AnchorPane>
       <AnchorPane fx:id="anc_container" layoutX="276.0" layoutY="105.0" prefHeight="720.0" prefWidth="1004.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <ButtonBar fx:id="btnBar_form" buttonMinWidth="120.0" prefHeight="40.0" prefWidth="920.0" styleClass="controls-button-bar" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+               <buttons>
+                  <Button fx:id="btn_cancel" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+                  <Button fx:id="btn_add" mnemonicParsing="false" onAction="#add" text="Add" />
+               </buttons>
+            </ButtonBar>
             <Label fx:id="lbl_title" styleClass="section-title" text="Title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="50.0" />
             <Label fx:id="lbl_subtitle" layoutX="10.0" layoutY="10.0" styleClass="section-subtitle" text="Subtitle" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="90.0" />
             <Label fx:id="lbl_message" layoutX="30.0" layoutY="125.0" styleClass="error-label" text="Message displayed here" />
+            <AnchorPane fx:id="anc_group" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="800.0" styleClass="form" stylesheets="@style.css" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0">
+               <children>
+                  <Label fx:id="lbl_name" text="Name" />
+                  <TextField fx:id="txf_name" layoutY="28.0" />
+                  <Label fx:id="lbl_type" layoutX="1.0" layoutY="78.0" text="Type" />
+                  <TextField fx:id="txf_type" layoutY="106.0" />
+                  <CheckBox fx:id="chk_primary" disable="true" layoutX="439.0" layoutY="28.0" mnemonicParsing="false" text="Primary" />
+                  <CheckBox fx:id="chk_notNull" layoutX="436.0" layoutY="114.0" mnemonicParsing="false" text="Not null" />
+                  <CheckBox fx:id="chk_unique" layoutX="622.0" layoutY="28.0" mnemonicParsing="false" text="Unique" />
+                  <CheckBox fx:id="chk_autoInc" disable="true" layoutX="622.0" layoutY="114.0" mnemonicParsing="false" text="Auto increment" />
+               </children>
+            </AnchorPane>
             <ButtonBar buttonMinWidth="0.0" prefHeight="40.0" prefWidth="200.0" styleClass="system-button-bar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
               <buttons>
                 <Button mnemonicParsing="false" onAction="#openUserPanel">
@@ -52,19 +70,6 @@
                   </Button>
               </buttons>
             </ButtonBar>
-            <ButtonBar fx:id="btnBar_controls" buttonMinWidth="100.0" layoutX="30.0" layoutY="147.0" prefHeight="40.0" prefWidth="920.0" styleClass="controls-button-bar" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0">
-               <buttons>
-                  <Button fx:id="btn_sql" mnemonicParsing="false" onAction="#sql" text="SQL" />
-                  <Button mnemonicParsing="false" onAction="#add" text="Add" />
-               </buttons>
-            </ButtonBar>
-            <TableView fx:id="tbl_tableContent" layoutX="217.0" layoutY="349.0" prefHeight="200.0" prefWidth="200.0" styleClass="custom-table" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="230.0">
-               <columns>
-                  <TableColumn fx:id="cln_name" prefWidth="75.0" text="name" />
-                  <TableColumn fx:id="cln_type" prefWidth="75.0" text="type" />
-                  <TableColumn fx:id="cln_null" prefWidth="75.0" text="null" />
-               </columns>
-            </TableView>
          </children>
       </AnchorPane>
    </children>

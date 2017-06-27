@@ -32,7 +32,9 @@ public class QueryResult{
 				// Creating the scheme
 				ResultSetMetaData metaData = result.getMetaData();
 				for ( int i = 1 ; i <= metaData.getColumnCount() ; i++ ) {
-					this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, false, false));
+
+					boolean notNull = ( metaData.isNullable(i) == ResultSetMetaData.columnNoNulls ) ? true : false;
+					this.scheme.add(new Column(metaData.getColumnName(i), metaData.getColumnTypeName(i), false, false, notNull, false));
 				}
 				// inserting entries
 				while ( result.next() ){
@@ -43,7 +45,7 @@ public class QueryResult{
 					this.rows.add(tempRow);
 				}
 			} catch (SQLException ex){
-				this.message = ex.getMessage();
+				this.message = L.get("mysql-message") + " : " + ex.getMessage();
 			}
 		}
 	}
