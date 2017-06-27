@@ -140,6 +140,7 @@
 
     <!-- Rows -->
     <word code="entries" value="T-uples" />
+    <word code="entries-access-failure" value="Impossible d'afficher le contenu de la table." />
     
     <!-- User Panel -->
 </localization>
