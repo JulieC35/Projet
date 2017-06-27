@@ -1,5 +1,5 @@
 /**
- * Controller of the SQLQuery screen.<br>
+ * Controller of the table home screen.<br>
  */
 
 package application.graphical.controllers;
@@ -103,7 +103,7 @@ public class TableHomeController extends AppController{
                         .then((ContextMenu)null)  
                         .otherwise(contextMenu)  
                 );  
-                return row ;  
+                return row;  
             }  
         });  
     }
@@ -115,7 +115,7 @@ public class TableHomeController extends AppController{
 
     @FXML
     public void structure(){
-
+        stage.loadTableStructureScreen();
     }
 
     @FXML 
@@ -125,6 +125,17 @@ public class TableHomeController extends AppController{
             app.processSQL(queryBuilder.getQuery());
             stage.loadDatabaseHomeScreen();
             stage.setMessage(L.get("table-removal-success"));
+            stage.displayMessage();
+        }
+    }
+
+    @FXML
+    public void empty(){
+        if ( stage.askConfirmation(L.get("empty-table") + " " + app.getCurrentTable()) ) {
+            queryBuilder.deleteFromTable(app.getCurrentTable());
+            app.processSQL(queryBuilder.getQuery());
+            stage.loadTableHomeScreen();
+            stage.setMessage(L.get("empty-table-success"));
             stage.displayMessage();
         }
     }

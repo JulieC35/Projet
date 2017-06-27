@@ -55,6 +55,19 @@ public class QueryBuilder{
     }
 
     /**
+     * Builds a a query to remove all elements from a table
+     * @param table The table
+     */
+    public void deleteFromTable(String table){
+        StringBuilder sb = new StringBuilder();
+        if ( table != null ){
+            sb.append("DELETE FROM `" + table + "`");
+        }
+
+        this.query = sb.toString();
+    }
+
+    /**
      * Builds a a query to create a table
      * @param table The table to be created
      */
