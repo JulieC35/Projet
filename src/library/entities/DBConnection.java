@@ -125,6 +125,13 @@ public class DBConnection implements Serializable{
 	}
 
 	/**
+	 * @return The password of the connection
+	 */
+	public String getPassword(){
+		return this.password;
+	}
+
+	/**
 	 * @return the host attribute
 	 */
 	public String getHost(){
