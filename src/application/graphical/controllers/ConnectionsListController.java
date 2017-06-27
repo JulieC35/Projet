@@ -122,7 +122,7 @@ public class ConnectionsListController extends AppController{
                 editMenuItem.setOnAction(new EventHandler<ActionEvent>() {  
                     @Override  
                     public void handle(ActionEvent event) {  
-                        System.out.println("editing " + row.getItem());
+                        editDBConnection(row.getItem());
                     }  
                 }); 
 
@@ -167,9 +167,20 @@ public class ConnectionsListController extends AppController{
 
     @FXML 
     void removeDBConnection(DBConnection dbC){
-        if ( app.getUser().removeDBConnection(dbC) ){
-            app.getAuthSystem().saveUsers();
-            tbl_connections.getItems().remove(dbC);
+        if ( stage.askConfirmation(null) ) {
+            if ( app.getUser().removeDBConnection(dbC) ){
+                app.getAuthSystem().saveUsers();
+                tbl_connections.getItems().remove(dbC);
+            }
+        }
+    }
+
+    @FXML 
+    void editDBConnection(DBConnection dbC){
+        if ( dbC != null ){
+            System.out.println(dbC);
+            app.postValue("db-connection", dbC);
+            stage.loadConnectionEditScreen();
         }
     }
 

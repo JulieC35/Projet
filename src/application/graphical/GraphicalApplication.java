@@ -31,7 +31,7 @@ public class GraphicalApplication extends Application{
     private String message;
 
     // Controllers
-    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController, tableStructureController, tableAddController, tableColumnsController, sqlQueryResultController, columnAddController;
+    private AppController loginController, subscribeController, connectionsListController, connectionAddController, languageSelectionController, userProfileEditController, databaseHomeController, sqlQueryController, tableHomeController, tableStructureController, tableAddController, tableColumnsController, sqlQueryResultController, columnAddController, connectionEditController;
 
 
     /**
@@ -64,6 +64,7 @@ public class GraphicalApplication extends Application{
         this.tableColumnsController = new TableColumnsController(this, app);
         this.sqlQueryResultController = new SQLQueryResultController(this, app);
         this.columnAddController = new ColumnAddController(this, app);
+        this.connectionEditController = new ConnectionEditController(this, app);
         
         
         // We first load the login screen
@@ -137,6 +138,24 @@ public class GraphicalApplication extends Application{
             this.fxmlLoader = new FXMLLoader();
             this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/ConnectionAddScreen.fxml")); // Loader creation
             this.fxmlLoader.setController(this.connectionAddController); // setting the controller
+            this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
+        } catch (IOException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        } catch (IllegalStateException ex){
+            this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
+            this.displayMessage();
+        }
+    }
+
+    /**
+     * Loads the connection adding screen into the stage
+     */
+    public void loadConnectionEditScreen(){
+        try {
+            this.fxmlLoader = new FXMLLoader();
+            this.fxmlLoader.setLocation(getClass().getResource("/application/graphical/views/ConnectionEditScreen.fxml")); // Loader creation
+            this.fxmlLoader.setController(this.connectionEditController); // setting the controller
             this.primaryStage.setScene(new Scene((AnchorPane) this.fxmlLoader.load()));
         } catch (IOException ex){
             this.setMessage(L.get("error-loading-screen") + " : " + ex.getMessage());
