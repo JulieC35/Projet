@@ -128,6 +128,9 @@
     <word code="table-access-access-failure" value="Table loaded." />
     <word code="table-nb-columns" value="Number of columns ?" />
     <word code="table-not-exists" value="This table doesn't exist." />
+    <word code="empty-table" value="Empty" />
+    <word code="empty-table-success" value="" />
+    <word code="empty-table-failure" value="" />
 
     <!-- Columns -->
     <word code="column-ask-name" value="Column name ?" />
@@ -139,6 +142,7 @@
 
     <!-- Rows -->
     <word code="entries" value="Entries" />
+    <word code="entries-access-failure" value="Content of table display failed." />
 
     <!-- User Panel -->
 </localization>
